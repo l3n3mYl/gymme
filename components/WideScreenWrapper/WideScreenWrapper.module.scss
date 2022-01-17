@@ -1,0 +1,9 @@
+@media screen and (min-width: $breakpoint-wide) {
+  .Wrapper {
+    max-width: $breakpoint-wide;
+    position: absolute;
+    right: 0;
+    left: 0;
+    margin: auto;
+  }
+}
