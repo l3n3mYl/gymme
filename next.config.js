@@ -1,0 +1,15 @@
+const path = require('path')
+
+const nextConfig = {
+  sassOptions: {
+    includePaths: [path.join(__dirname, '/styles/scss/components/')],
+    prependData: `
+      @use "sass:math";
+      @import 'imports';
+    `
+  }
+}
+
+module.exports = (
+  nextConfig
+)
