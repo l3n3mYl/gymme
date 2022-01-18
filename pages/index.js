@@ -42,7 +42,14 @@ const Index = ({ homePageData, whatWeDoPageData, testimonialsPageData, galleryPa
     <Wrapper>
       <Layout refs={allRefs} title={siteSettings.openGraph.title}>
       <Meta {...openGraph} />
-      <HomePage refer={homeRef} id='Home' image={home.image} title={home.title} subtitle={home.subtitle} />
+      <HomePage 
+        refer={homeRef}
+        id='Home'
+        image={home.image}
+        title={home.title}
+        coloredTitle={home.coloredTitle}
+        subtitle={home.subtitle}
+      />
       <WhatWeDo 
       refer={whatWeDo} 
       id='What We Do' 
