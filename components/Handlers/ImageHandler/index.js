@@ -11,8 +11,8 @@ import { PROJECT_ID, PROJECT_DATASET } from '../../../lib/constants'
 import styles from './styles/ImageHandler.module.scss'
 
 const imgUrlBuilder = imageUrlBuilder({
-  projectId: PROJECT_ID,
-  dataset: PROJECT_DATASET
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET
 })
 
 const SanityImage = ({ image, alt, ...other }) => {
@@ -54,7 +54,8 @@ const Image = ({ image, ratio, alt, className, width, height, src, ...other }) =
     )
   }
 
-  return <div className={className}>{imageEl}</div>
+  // return <div className={className}>{imageEl}</div>
+  return imageEl
 }
 
 Image.propTypes = {

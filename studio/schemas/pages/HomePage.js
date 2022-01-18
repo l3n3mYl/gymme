@@ -15,6 +15,11 @@ export default {
       type: "string"
     },
     {
+      title: "Colored Title",
+      name: "coloredTitle",
+      type: "string"
+    },
+    {
       title: "Subtitle",
       name: "subtitle",
       type: "string"
