@@ -1,0 +1,28 @@
+.AboutPage {
+  width: 100vw;
+  margin: auto;
+  padding: 23% 0;
+
+  .description {
+    border: 2px solid red;
+    text-align: left;
+    font-family: $fontSubtitle;
+    font-size: 10px;
+    margin: 0 calc(16% - 40px);
+    color: $backgroundDarker;
+  }
+
+  .sectionName {
+    padding-bottom: 67px;
+  }
+}
+
+@media screen and (min-width: $breakpoint-tablet) {
+  .AboutPage {
+    max-width: 70vw;
+
+    .description {
+      width: 65vw;
+    }
+  }
+}
