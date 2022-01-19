@@ -4,12 +4,34 @@
   padding: 23% 0;
 
   .description {
-    border: 2px solid red;
     text-align: left;
-    font-family: $fontSubtitle;
-    font-size: 10px;
+    color: red;
+    font-family: $fontHeading;
+    font-size: 18px;
     margin: 0 calc(16% - 40px);
     color: $backgroundDarker;
+  }
+
+  .button {
+    display: flex;
+    margin-left: calc(16% - 40px);
+    margin-top: 49px;
+
+    p {
+      font-family: $fontSubtitle;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 14px;
+      line-height: 18px;
+      padding-right: 16px;
+      padding-top: 5px;
+      text-transform: uppercase;
+    }
+
+    .image {
+      width: 25px;
+      height: 25px;
+    }
   }
 
   .sectionName {
@@ -20,9 +42,16 @@
 @media screen and (min-width: $breakpoint-tablet) {
   .AboutPage {
     max-width: 70vw;
+    padding: 10% 0;
 
     .description {
-      width: 65vw;
+      width: fit-content;
     }
+  }
+}
+
+@media screen and (min-width: $breakpoint-desktop) {
+  .AboutPage {
+    max-width: 50vw;
   }
 }

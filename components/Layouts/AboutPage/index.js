@@ -15,6 +15,10 @@ const AboutPage = ({ className, title, description, refer, id }) => {
         className={styles.sectionName}
       />
       {description && <BlockContent className={styles.description} blocks={description} />}
+      <div className={styles.button}>
+        <p>Join Now</p>
+        <AnyImage src={'./Icons/ArrowRight.png'} className={styles.image} />
+      </div>
     </div>
   )
 }

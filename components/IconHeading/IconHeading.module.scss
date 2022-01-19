@@ -19,3 +19,9 @@
     color: $accentColor;
   }
 }
+
+@media screen and (min-width: $breakpoint-tablet) {
+  .IconHeading {
+    font-size: calc(3vmin + 0.4em);
+  }
+}
