@@ -1,0 +1,93 @@
+.Pricing {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 70px;
+
+  .sectionName {
+    padding-bottom: 70px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .plan {
+    margin: auto;
+    width: 90vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+
+    p {
+      font-family: $fontSubtitle;
+    }
+
+    .price {
+      display: flex;
+      flex-direction: column;
+      place-items: center;
+      justify-content: center;
+      height: 300px;
+
+      .freq {
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      .cost {
+        font-size: 50px;
+        font-weight: 800;
+
+        span {
+          font-size: 30px;
+        }
+      }
+
+      .name {
+        background-color: $backgroundLight;
+        width: 100px;
+        height: 30px;
+        text-align: center;
+        padding: 4px 0;
+        color: $elementColor;
+        font-weight: 600;
+      }
+    }
+
+    &:nth-child(odd) {
+      background-color: $elementColor;
+      color: #fff;
+
+      .price {
+        color: $backgroundLight;
+
+        .name {
+          background-color: $backgroundLight;
+          color: $elementColor;
+        }
+      }
+    }
+
+    &:nth-child(even) {
+      background-color: $backgroundLight;
+      color: $elementColor;
+
+      .price {
+        color: $elementColor;
+
+        .freq {
+          color: $backgroundDarker;
+        }
+
+        .name {
+          background-color: $elementColor;
+          color: $backgroundLight;
+        }
+      }
+    }
+  }
+
+}
+
+@media screen and (min-width: $breakpoint-wide) {
+  
+}
