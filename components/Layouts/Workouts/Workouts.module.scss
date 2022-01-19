@@ -1,0 +1,175 @@
+.Workouts {
+  text-align: center;
+  width: 100%;
+  color: #fff;
+  text-shadow: 0 0 3px #000;
+  overflow: hidden;
+  margin: 100px 0 100px 0;
+
+  .sectionName {
+    text-shadow: none;
+    width: 100vw;
+    padding: 0 10px;
+    margin: auto;
+
+    .sectionImg {
+      left: 27%;
+    }
+  }
+
+  .carousel {
+    .nav {
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 100px;
+
+      .next {
+        width: 40px;
+        margin-right: 15px;
+      }
+  
+      .prev {
+        width: 40px;
+        margin-left: 15px;
+      }
+    }
+
+    .offer {
+      padding-top: 70px;
+
+      .image {
+        margin-top: 40px;
+        object-fit: cover;
+        width: 30vmin;
+        height: 30vmin;
+      }
+
+      .title {
+        position: absolute;
+        bottom: 7%;
+        left: 15%;
+        padding: 4px 14px;
+        text-shadow: none;
+        color: $elementColor;
+        font-family: $fontSubtitle;
+        font-weight: 600;
+        line-height: 18px;
+        font-size: 14px;
+        background-color: #fff;
+      }
+    }
+
+    .active {
+      .image {
+        margin-top: 20px;
+        width: 30vmin;
+        height: 40vmin;
+        transform: scale(1.2);
+      }
+
+      .title {
+        bottom: 0.5%;
+        left: 5%;
+      }
+    }
+  }  
+}
+
+@media screen and (min-width: $breakpoint-mobileLandscape) {
+  .Workouts {
+    .carousel {
+      .nav {
+        margin-left: 70vw;
+      }
+      .active {
+        .title {
+          left: 10%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-tablet) {
+  .Workouts {
+    .carousel {
+      .offer .title {
+        bottom: 3%;
+      }
+      .active .title {
+        bottom: -1%;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1156px) {
+  .Workouts {
+    .carousel {
+      .offer .title {
+        bottom: 3%;
+        left: 28%;
+      }
+      .active .title {
+        left: 25%;
+        bottom: -4%;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1272px) {
+  .Workouts {
+    .carousel {
+      .offer .title {
+        left: 30%;
+      }
+      .active .title {
+        left: 25%;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .Workouts {
+    .carousel {
+      .offer {
+        padding-top: 115px;
+      }
+      .offer .title {
+        left: 33%;
+      }
+      .active .title {
+        left: 30%;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-wide) {
+  .Workouts {
+    .sectionName {
+      max-width: 2000px;
+  
+      .sectionImg {
+        // border: 2px solid green;
+        // max-width: 300px;
+        // max-height: 200px;
+        // margin-top: -20px;
+      }
+    }
+
+    .carousel {
+      .offer .image {
+        max-width: 480px;
+        max-height: 480px;
+      }
+
+      .offer .image {
+        max-width: 480px;
+        max-height: 768px;
+      }
+    }
+  }
+}

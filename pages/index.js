@@ -6,7 +6,7 @@ import {
   getHomeData,
   getAboutPageData,
   usePreviewSubscription,
-  getTestimonialsPageData,
+  getWorkoutsPageData,
   getGalleryPageData,
   getContactPageData
  } from '../lib/sanity'
@@ -14,12 +14,12 @@ import {
 import { useRef } from 'react'
 import HomePage from '../components/Layouts/HomePage'
 import AboutPage from '../components/Layouts/AboutPage'
-import Testimonials from '../components/Testimonials'
+import Workouts from '../components/Layouts/Workouts'
 import Gallery from '../components/Gallery'
 import Contact from '../components/Contact'
 import Wrapper from '../components/WideScreenWrapper'
 
-const Index = ({ homePageData, aboutPageData, testimonialsPageData, galleryPageData, contactPageData }) => {
+const Index = ({ homePageData, aboutPageData, workoutsPageData, galleryPageData, contactPageData }) => {
 
   const router = useRouter()
   const { data: pageData } = usePreviewSubscription(getHomeDataQuery, {
@@ -32,11 +32,11 @@ const Index = ({ homePageData, aboutPageData, testimonialsPageData, galleryPageD
   
   const homeRef = useRef(null)
   const about = useRef(null)
-  const testimonials = useRef(null)
+  const workouts = useRef(null)
   const gallery = useRef(null)
   const contact = useRef(null)
 
-  const allRefs = [homeRef, about, testimonials, gallery, contact]
+  const allRefs = [homeRef, about, workouts, gallery, contact]
 
   return (
     <Wrapper>
@@ -57,14 +57,11 @@ const Index = ({ homePageData, aboutPageData, testimonialsPageData, galleryPageD
       description={aboutPageData.description}
       offerings={aboutPageData.offerings}
       />
-      <Testimonials
-        refer={testimonials}
-        id='Testimonials'
-        bckImage={testimonialsPageData.bckImage}
-        alt={testimonialsPageData.alt}
-        title={testimonialsPageData.title}
-        description={testimonialsPageData.description}
-        testimonials={testimonialsPageData.testimonials}
+      <Workouts
+        refer={workouts}
+        id='Workouts'
+        title={workoutsPageData.title}
+        offerings={workoutsPageData.offerings}
       />
       <Gallery
       refer={gallery}
@@ -89,7 +86,7 @@ const Index = ({ homePageData, aboutPageData, testimonialsPageData, galleryPageD
 export const getStaticProps = async () => {
   const homePageData = await getHomeData()
   const aboutPageData = await getAboutPageData()
-  const testimonialsPageData = await getTestimonialsPageData()
+  const workoutsPageData = await getWorkoutsPageData()
   const galleryPageData = await getGalleryPageData()
   const contactPageData = await getContactPageData()
 
@@ -97,7 +94,7 @@ export const getStaticProps = async () => {
     props: { 
       homePageData: homePageData,
       aboutPageData: aboutPageData,
-      testimonialsPageData: testimonialsPageData,
+      workoutsPageData: workoutsPageData,
       galleryPageData: galleryPageData,
       contactPageData: contactPageData
      },
