@@ -94,3 +94,22 @@
     }
   }
 }
+
+@media screen and (min-width: $breakpoint-wide) {
+  .HomePage {
+    max-height: 1500px;
+    .image {
+      max-height: 1500px;
+    }
+
+    .quote  {
+      .title {
+      font-size: 50px;
+    }
+
+      .subtitle {
+        font-size: 50px;
+      }
+    }
+  }
+}
