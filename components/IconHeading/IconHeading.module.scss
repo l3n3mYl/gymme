@@ -1,0 +1,27 @@
+.IconHeading {
+  color: $elementColor;
+  font-family: $fontHeading;
+  font-weight: 800;
+  font-size: calc(3vmin + 0.5em);
+  padding: 0 16%;
+
+  .image {
+    position: absolute;
+    opacity: 0.5;
+    width: 24vmin;
+    height: 16vmin;
+    opacity: 0.5;
+    margin-top: -20px;
+    margin-left: -40px;
+  }
+
+  span {
+    color: $accentColor;
+  }
+}
+
+@media screen and (min-width: $breakpoint-tablet) {
+  .IconHeading {
+    font-size: calc(3vmin + 0.4em);
+  }
+}

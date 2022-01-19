@@ -4,7 +4,7 @@ import { getHomeDataQuery } from '../lib/queries'
 import Meta from '../components/Meta/Meta'
 import { 
   getHomeData,
-  getWhatWeDoData,
+  getAboutPageData,
   usePreviewSubscription,
   getTestimonialsPageData,
   getGalleryPageData,
@@ -12,14 +12,14 @@ import {
  } from '../lib/sanity'
 
 import { useRef } from 'react'
-import HomePage from '../components/HomePage'
-import WhatWeDo from '../components/WhatWeDo'
+import HomePage from '../components/Layouts/HomePage'
+import AboutPage from '../components/Layouts/AboutPage'
 import Testimonials from '../components/Testimonials'
 import Gallery from '../components/Gallery'
 import Contact from '../components/Contact'
 import Wrapper from '../components/WideScreenWrapper'
 
-const Index = ({ homePageData, whatWeDoPageData, testimonialsPageData, galleryPageData, contactPageData }) => {
+const Index = ({ homePageData, aboutPageData, testimonialsPageData, galleryPageData, contactPageData }) => {
 
   const router = useRouter()
   const { data: pageData } = usePreviewSubscription(getHomeDataQuery, {
@@ -31,12 +31,12 @@ const Index = ({ homePageData, whatWeDoPageData, testimonialsPageData, galleryPa
   const { openGraph } = siteSettings
   
   const homeRef = useRef(null)
-  const whatWeDo = useRef(null)
+  const about = useRef(null)
   const testimonials = useRef(null)
   const gallery = useRef(null)
   const contact = useRef(null)
 
-  const allRefs = [homeRef, whatWeDo, testimonials, gallery, contact]
+  const allRefs = [homeRef, about, testimonials, gallery, contact]
 
   return (
     <Wrapper>
@@ -50,12 +50,12 @@ const Index = ({ homePageData, whatWeDoPageData, testimonialsPageData, galleryPa
         coloredTitle={home.coloredTitle}
         subtitle={home.subtitle}
       />
-      <WhatWeDo 
-      refer={whatWeDo} 
-      id='What We Do' 
-      title={whatWeDoPageData.title}
-      description={whatWeDoPageData.description}
-      offerings={whatWeDoPageData.offerings}
+      <AboutPage 
+      refer={about} 
+      id='About' 
+      title={aboutPageData.title}
+      description={aboutPageData.description}
+      offerings={aboutPageData.offerings}
       />
       <Testimonials
         refer={testimonials}
@@ -88,7 +88,7 @@ const Index = ({ homePageData, whatWeDoPageData, testimonialsPageData, galleryPa
 
 export const getStaticProps = async () => {
   const homePageData = await getHomeData()
-  const whatWeDoPageData = await getWhatWeDoData()
+  const aboutPageData = await getAboutPageData()
   const testimonialsPageData = await getTestimonialsPageData()
   const galleryPageData = await getGalleryPageData()
   const contactPageData = await getContactPageData()
@@ -96,7 +96,7 @@ export const getStaticProps = async () => {
   return {
     props: { 
       homePageData: homePageData,
-      whatWeDoPageData: whatWeDoPageData,
+      aboutPageData: aboutPageData,
       testimonialsPageData: testimonialsPageData,
       galleryPageData: galleryPageData,
       contactPageData: contactPageData

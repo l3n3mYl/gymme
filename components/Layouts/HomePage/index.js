@@ -2,10 +2,9 @@ import React from 'react'
 import classNames from 'classnames'
 import { string, object } from 'prop-types'
 import styles from './HomePage.module.scss'
-import AnyImage from '../Handlers/ImageHandler'
+import AnyImage from '../../Handlers/ImageHandler'
 
 const HomePage = ({ image, title, subtitle, coloredTitle, refer, id, className }) => {
-  console.log(coloredTitle)
   return (
     <div ref={refer} id={id} className={classNames(styles.HomePage, className)}>
       <AnyImage src={image} className={styles.image} />
