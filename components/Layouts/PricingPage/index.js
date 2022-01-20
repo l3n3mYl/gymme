@@ -1,6 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 import { object, string, array } from 'prop-types'
+import Image from '../../Handlers/ImageHandler'
 import SwiperCore, { Pagination } from 'swiper';
 import 'swiper/css'
 import "swiper/css/pagination"
@@ -18,20 +19,25 @@ const PricingPage = ({ id, refer, className, title, pricings }) => {
         text={title}
         className={styles.sectionName}
       />
-      {pricings.map(plan => {
+      <div className={styles.cards}>
+      {pricings.map((plan, i) => {
         return <div className={styles.plan}>
           <div className={styles.price}>
-            <p className={styles.name}>{plan.plan}</p>
+            <h3 className={styles.name}>{plan.plan}</h3>
             <p className={styles.cost}>{plan.price}<span>$</span></p>
             <p className={styles.freq}>/{plan.freq}</p>
           </div>
-          <div className={styles.extras}>
-            {plan.extras.map(ex => (
-              <p>{ex}</p>
+          <div className={styles.extrasDiv}>
+            {plan.extras.map((ex) => (
+              <p><Image className={styles.image} 
+                        src={i % 2 == 1 ? './Icons/CheckmarkW.png' 
+                                        : './Icons/CheckmarkB.png'}/> {ex}</p>
             ))}
+          <div className={styles.joinBtn}>Join Now</div>
           </div>
         </div>
       })}
+      </div>
     </div>
   )
 }

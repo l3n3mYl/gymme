@@ -1,7 +1,7 @@
 .Pricing {
   display: flex;
   flex-direction: column;
-  padding-bottom: 70px;
+  padding-bottom: 100px;
 
   .sectionName {
     padding-bottom: 70px;
@@ -9,85 +9,154 @@
     margin-right: auto;
   }
 
-  .plan {
-    margin: auto;
-    width: 90vw;
+  .cards {
+    padding: 0 20px;
     display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    margin-bottom: 20px;
+    flex-direction: column;
 
-    p {
-      font-family: $fontSubtitle;
-    }
-
-    .price {
+    .plan {
+      height: max-content;
+      margin: auto;
+      width: 100%;
       display: flex;
-      flex-direction: column;
-      place-items: center;
-      justify-content: center;
-      height: 300px;
+      align-items: center;
+      justify-content: space-evenly;
+      margin-bottom: 20px;
 
-      .freq {
-        font-size: 18px;
-        font-weight: 600;
-      }
-
-      .cost {
-        font-size: 50px;
-        font-weight: 800;
-
-        span {
-          font-size: 30px;
-        }
-      }
-
-      .name {
-        background-color: $backgroundLight;
-        width: 100px;
-        height: 30px;
+      .joinBtn {
         text-align: center;
-        padding: 4px 0;
-        color: $elementColor;
-        font-weight: 600;
-      }
-    }
+        padding-top: 30px;
+        border: 1px #fff solid;
+        width: max-content;
+        font-family: $fontSubtitle;
+        font-weight: 700;
+        margin-top: 16px;
+        padding: 10px 40px;
 
-    &:nth-child(odd) {
-      background-color: $elementColor;
-      color: #fff;
+        &:nth-child(even) {
+          border: 1px solid #000;
+        }
 
-      .price {
-        color: $backgroundLight;
-
-        .name {
+        &:nth-child(odd) {
           background-color: $backgroundLight;
           color: $elementColor;
         }
       }
-    }
 
-    &:nth-child(even) {
-      background-color: $backgroundLight;
-      color: $elementColor;
+      .extrasDiv {
+        padding: 30px 0;
+        p {
+          padding-bottom: 20px;
+          .image {
+            padding-right: 10px;
+            vertical-align: sub;
+          }
+        }
+      }
+
+      p {
+        font-family: $fontSubtitle;
+      }
 
       .price {
-        color: $elementColor;
+        display: flex;
+        flex-direction: column;
+        place-items: center;
+        justify-content: center;
+        margin-top: 20px;
+        height: 300px;
 
         .freq {
-          color: $backgroundDarker;
+          font-size: 18px;
+          font-weight: 600;
+        }
+
+        .cost {
+          font-size: 40px;
+          font-weight: 800;
+
+          span {
+            font-size: 30px;
+          }
         }
 
         .name {
-          background-color: $elementColor;
+          font-family: $fontSubtitle;
+          padding: 0 14px;
+          width: max-content;
+          font-size: 1em;
+          height: 28px;
+          text-align: center;
+          font-weight: 600;
+        }
+      }
+
+      &:nth-child(odd) {
+        background-color: $backgroundLight;
+        color: $elementColor;
+
+        .price {
+          color: $elementColor;
+
+          .name {
+            background-color: $elementColor;
+            color: $backgroundLight;
+          }
+        }
+      }
+
+      &:nth-child(even) {
+        background-color: $elementColor;
+        color: $backgroundLight;
+
+        .price {
           color: $backgroundLight;
+
+          .freq {
+            color: $backgroundLight;
+          }
+
+          .name {
+            background-color: $backgroundLight;
+            color: $elementColor;
+          }
         }
       }
     }
   }
-
 }
 
-@media screen and (min-width: $breakpoint-wide) {
-  
+@media screen and (min-width: $breakpoint-tablet) {
+  .Pricing {
+    max-width: 80vw;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: $breakpoint-desktop) {
+  .Pricing {
+    max-width: $breakpoint-desktop;
+    padding-bottom: 200px;
+    .cards {
+      flex-direction: row;
+
+      .plan {
+        height: 500px;
+        flex-direction: column;
+
+        .joinBtn {
+          text-align: center;
+          padding-top: 30px;
+          width: max-content;
+          margin: 8px auto;
+          padding: 10px 40px;
+        }
+
+        &:nth-child(even) {
+          height: 555px;
+          margin: 0 20px -10px 20px;
+        }
+      }
+    }
+  }
 }
