@@ -62,10 +62,6 @@ const PricingPage = ({ id, refer, className, title, photos }) => {
         }}
         centeredSlides={true}
       >
-        {/* <div className={styles.nav}>
-          <Image ref={nextRef} className={styles.next} src='Icons/ArrowLeft.png' />
-          <Image ref={prevRef} className={styles.prev} src='Icons/ArrowRight.png' />
-        </div> */}
       {photos.map((photo) => {
         return <SwiperSlide className={styles.card}>
             <Image
