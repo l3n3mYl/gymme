@@ -43,10 +43,10 @@ const PricingPage = ({ id, refer, className, title, pricings }) => {
 }
 
 PricingPage.propTypes = {
-  photos: array.isRequired,
+  pricings: array.isRequired,
   refer: object.isRequired,
   id: string.isRequired,
-  subtitle: string,
+  title: string.isRequired,
   className: string
 }
 
