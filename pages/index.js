@@ -7,7 +7,7 @@ import {
   getAboutPageData,
   usePreviewSubscription,
   getWorkoutsPageData,
-  getGalleryPageData,
+  getPricingPageData,
   getContactPageData
  } from '../lib/sanity'
 
@@ -15,11 +15,11 @@ import { useRef } from 'react'
 import HomePage from '../components/Layouts/HomePage'
 import AboutPage from '../components/Layouts/AboutPage'
 import Workouts from '../components/Layouts/Workouts'
-import Gallery from '../components/Gallery'
+import PricingPage from '../components/Layouts/PricingPage'
 import Contact from '../components/Contact'
 import Wrapper from '../components/WideScreenWrapper'
 
-const Index = ({ homePageData, aboutPageData, workoutsPageData, galleryPageData, contactPageData }) => {
+const Index = ({ homePageData, aboutPageData, workoutsPageData, pricingPageData, contactPageData }) => {
 
   const router = useRouter()
   const { data: pageData } = usePreviewSubscription(getHomeDataQuery, {
@@ -33,10 +33,10 @@ const Index = ({ homePageData, aboutPageData, workoutsPageData, galleryPageData,
   const homeRef = useRef(null)
   const about = useRef(null)
   const workouts = useRef(null)
-  const gallery = useRef(null)
+  const pricing = useRef(null)
   const contact = useRef(null)
 
-  const allRefs = [homeRef, about, workouts, gallery, contact]
+  const allRefs = [homeRef, about, workouts, pricing, contact]
 
   return (
     <Wrapper>
@@ -63,11 +63,11 @@ const Index = ({ homePageData, aboutPageData, workoutsPageData, galleryPageData,
         title={workoutsPageData.title}
         offerings={workoutsPageData.offerings}
       />
-      <Gallery
-      refer={gallery}
-      id='Gallery'
-      subtitle={galleryPageData.subtitle}
-      photos={galleryPageData.photos}
+      <PricingPage
+      refer={pricing}
+      id='Pricing'
+      title={pricingPageData.title}
+      pricings={pricingPageData.pricings}
       />
       <Contact
       refer={contact}
@@ -87,7 +87,7 @@ export const getStaticProps = async () => {
   const homePageData = await getHomeData()
   const aboutPageData = await getAboutPageData()
   const workoutsPageData = await getWorkoutsPageData()
-  const galleryPageData = await getGalleryPageData()
+  const pricingPageData = await getPricingPageData()
   const contactPageData = await getContactPageData()
 
   return {
@@ -95,7 +95,7 @@ export const getStaticProps = async () => {
       homePageData: homePageData,
       aboutPageData: aboutPageData,
       workoutsPageData: workoutsPageData,
-      galleryPageData: galleryPageData,
+      pricingPageData: pricingPageData,
       contactPageData: contactPageData
      },
     revalidate: 60
