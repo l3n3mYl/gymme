@@ -1,11 +1,9 @@
 import React, { useRef } from 'react'
 import classNames from 'classnames'
-import { string, object, array } from 'prop-types'
+import { string, array } from 'prop-types'
 import styles from './Workouts.module.scss'
-import BlockContent from '../../Handlers/BlockContentHandler'
 import AnyImage from '../../Handlers/ImageHandler'
 import 'swiper/css'
-import Parallax from '../../Animations/Parallax'
 import IconHeading from '../../IconHeading'
 
 import { Swiper, SwiperSlide } from 'swiper/react'

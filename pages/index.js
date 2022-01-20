@@ -8,7 +8,7 @@ import {
   usePreviewSubscription,
   getWorkoutsPageData,
   getPricingPageData,
-  getContactPageData
+  getCommunityPageData
  } from '../lib/sanity'
 
 import { useRef } from 'react'
@@ -16,11 +16,11 @@ import HomePage from '../components/Layouts/HomePage'
 import AboutPage from '../components/Layouts/AboutPage'
 import Workouts from '../components/Layouts/Workouts'
 import PricingPage from '../components/Layouts/PricingPage'
-import Contact from '../components/Contact'
+import Community from '../components/Layouts/Community'
 import Wrapper from '../components/WideScreenWrapper'
 
-const Index = ({ homePageData, aboutPageData, workoutsPageData, pricingPageData, contactPageData }) => {
-
+const Index = ({ homePageData, aboutPageData, workoutsPageData, pricingPageData, communityPageData }) => {
+  
   const router = useRouter()
   const { data: pageData } = usePreviewSubscription(getHomeDataQuery, {
     initialData: homePageData,
@@ -34,9 +34,9 @@ const Index = ({ homePageData, aboutPageData, workoutsPageData, pricingPageData,
   const about = useRef(null)
   const workouts = useRef(null)
   const pricing = useRef(null)
-  const contact = useRef(null)
+  const community = useRef(null)
 
-  const allRefs = [homeRef, about, workouts, pricing, contact]
+  const allRefs = [homeRef, about, workouts, pricing, community]
 
   return (
     <Wrapper>
@@ -69,14 +69,11 @@ const Index = ({ homePageData, aboutPageData, workoutsPageData, pricingPageData,
       title={pricingPageData.title}
       pricings={pricingPageData.pricings}
       />
-      <Contact
-      refer={contact}
-      id='Contact'
-      mainImage={contactPageData.mainImage}
-      subtitle={contactPageData.subtitle}
-      phone={contactPageData.phone}
-      facebook={contactPageData.facebook}
-      instagram={contactPageData.instagram}
+      <Community
+      refer={community}
+      id='Community'
+      title={communityPageData.title}
+      photos={communityPageData.photos}
       />
       </Layout>
     </Wrapper>
@@ -88,7 +85,7 @@ export const getStaticProps = async () => {
   const aboutPageData = await getAboutPageData()
   const workoutsPageData = await getWorkoutsPageData()
   const pricingPageData = await getPricingPageData()
-  const contactPageData = await getContactPageData()
+  const communityPageData = await getCommunityPageData()
 
   return {
     props: { 
@@ -96,7 +93,7 @@ export const getStaticProps = async () => {
       aboutPageData: aboutPageData,
       workoutsPageData: workoutsPageData,
       pricingPageData: pricingPageData,
-      contactPageData: contactPageData
+      communityPageData: communityPageData
      },
     revalidate: 60
   }
