@@ -11,12 +11,11 @@ import {
   getCommunityPageData
  } from '../lib/sanity'
 
-import { useRef } from 'react'
-import HomePage from '../components/Layouts/HomePage'
-import AboutPage from '../components/Layouts/AboutPage'
+import HomeSection from '../components/Layouts/HomeSection'
+import AboutSection from '../components/Layouts/AboutSection'
 import Workouts from '../components/Layouts/Workouts'
-import PricingPage from '../components/Layouts/PricingPage'
-import Community from '../components/Layouts/Community'
+import PricingSection from '../components/Layouts/PricingSection'
+import CommunitySection from '../components/Layouts/CommunitySection'
 import Wrapper from '../components/WideScreenWrapper'
 
 const Index = ({ homePageData, aboutPageData, workoutsPageData, pricingPageData, communityPageData }) => {
@@ -34,14 +33,14 @@ const Index = ({ homePageData, aboutPageData, workoutsPageData, pricingPageData,
     <Wrapper>
       <Layout title={siteSettings.openGraph.title}>
       <Meta {...openGraph} />
-      <HomePage 
+      <HomeSection 
         id='Home'
         image={home.image}
         title={home.title}
         coloredTitle={home.coloredTitle}
         subtitle={home.subtitle}
       />
-      <AboutPage 
+      <AboutSection 
       id='About' 
       title={aboutPageData.title}
       description={aboutPageData.description}
@@ -52,12 +51,12 @@ const Index = ({ homePageData, aboutPageData, workoutsPageData, pricingPageData,
         title={workoutsPageData.title}
         offerings={workoutsPageData.offerings}
       />
-      <PricingPage
+      <PricingSection
       id='Pricing'
       title={pricingPageData.title}
       pricings={pricingPageData.pricings}
       />
-      <Community
+      <CommunitySection
       id='Community'
       title={communityPageData.title}
       photos={communityPageData.photos}

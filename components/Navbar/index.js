@@ -57,7 +57,6 @@ const Navbar = ({ title }) => {
 }
 
 Navbar.propTypes = {
-  refs: array.isRequired,
   title: string.isRequired
 }
 

@@ -1,4 +1,4 @@
-.AboutPage {
+.AboutSection {
   width: 100vw;
   margin: auto;
   padding: 23% 0;
@@ -40,7 +40,7 @@
 }
 
 @media screen and (min-width: $breakpoint-tablet) {
-  .AboutPage {
+  .AboutSection {
     max-width: 70vw;
     padding: 10% 0;
 
@@ -51,7 +51,7 @@
 }
 
 @media screen and (min-width: $breakpoint-desktop) {
-  .AboutPage {
+  .AboutSection {
     max-width: 50vw;
   }
 }

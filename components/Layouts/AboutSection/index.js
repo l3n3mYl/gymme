@@ -6,9 +6,9 @@ import classNames from 'classnames'
 import BlockContent from '../../Handlers/BlockContentHandler'
 import { string, object, array } from 'prop-types'
 
-const AboutPage = ({ className, title, description, refer, id }) => {
+const AboutSection = ({ className, title, description, id }) => {
   return (
-    <div ref={refer} id={id} className={classNames(styles.AboutPage, className)}>
+    <div id={id} className={classNames(styles.AboutSection, className)}>
       <IconHeading
         icon='./Icons/PPL.png'
         text={title}
@@ -23,12 +23,11 @@ const AboutPage = ({ className, title, description, refer, id }) => {
   )
 }
 
-AboutPage.propTypes = {
-  refer: object.isRequired,
+AboutSection.propTypes = {
   id: string.isRequired,
   title: string.isRequired,
   description: array,
   className: string,
 }
 
-export default AboutPage
+export default AboutSection

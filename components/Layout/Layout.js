@@ -15,7 +15,6 @@ const Layout = ({ children, title }) => {
 
 Layout.propTypes = {
   children: node,
-  refs: array.isRequired,
   title: string.isRequired
 }
 

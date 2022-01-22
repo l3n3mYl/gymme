@@ -11,9 +11,9 @@ import IconHeading from '../../IconHeading';
 
 SwiperCore.use([Pagination]);
 
-const PricingPage = ({ id, refer, className, title, pricings }) => {
+const PricingSection = ({ id, className, title, pricings }) => {
   return (
-    <div id={id} ref={refer} className={classNames(styles.Pricing, className)}>
+    <div id={id} className={classNames(styles.PricingSection, className)}>
       <IconHeading
         icon='./Icons/PriceTag.png'
         text={title}
@@ -43,12 +43,11 @@ const PricingPage = ({ id, refer, className, title, pricings }) => {
   )
 }
 
-PricingPage.propTypes = {
+PricingSection.propTypes = {
   pricings: array.isRequired,
-  refer: object.isRequired,
   id: string.isRequired,
   title: string.isRequired,
   className: string
 }
 
-export default PricingPage
+export default PricingSection

@@ -11,14 +11,14 @@ import "swiper/css/pagination"
 import styles from './Community.module.scss'
 import IconHeading from '../../IconHeading';
 
-const PricingPage = ({ id, refer, className, title, photos }) => {
+const CommunitySection = ({ id, className, title, photos }) => {
 
   const prevRef = useRef(null)
   const nextRef = useRef(null);
   SwiperCore.use([Pagination]);
 
   return (
-    <div id={id} ref={refer} className={classNames(styles.Community, className)}>
+    <div id={id} className={classNames(styles.CommunitySection, className)}>
       <IconHeading
         icon='./Icons/SpeechIcon.png'
         text={title}
@@ -74,12 +74,11 @@ const PricingPage = ({ id, refer, className, title, photos }) => {
   )
 }
 
-PricingPage.propTypes = {
+CommunitySection.propTypes = {
   photos: array.isRequired,
-  refer: object.isRequired,
   id: string.isRequired,
   title: string.isRequired,
   className: string
 }
 
-export default PricingPage
+export default CommunitySection
