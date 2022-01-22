@@ -8,12 +8,9 @@
 
   .SectionName {
     text-shadow: none;
-    width: 100vw;
-    padding: 0 10px;
-    margin: auto;
 
     .SectionImg {
-      left: 27%;
+      left: -27%;
     }
   }
 
@@ -105,6 +102,9 @@
 
 @media screen and (min-width: 1156px) {
   .Workouts {
+    .SectionName .SectionImg {
+      left: -9em;
+    }
     .Carousel {
       .Offer .Title {
         bottom: 3%;

@@ -5,13 +5,18 @@
   font-size: calc(3vmin + 0.5em);
 
   .Image {
-    position: absolute;
+    position: relative;
     opacity: 0.5;
     width: 24vmin;
     height: 16vmin;
     opacity: 0.5;
-    margin-top: -20px;
-    margin-left: -40px;
+    left: -30px;
+    bottom: -70px;
+    right: 0;
+
+    @media screen and (min-width: $breakpoint-mobileLandscape) {
+      bottom: -3em;
+    }
   }
 
   span {
