@@ -1,7 +1,7 @@
 .menuToggle:checked ~ nav{
   transform: scale(1, 1);
 
-  p {
+  a {
       opacity: 1;
       transition: opacity 250ms ease-in-out 250ms;
   }
@@ -82,9 +82,8 @@
 
         li {
           margin: 1em 0;
-          
 
-          p {
+          a {
             color: #000;
             font-weight: bold;
             font-size: 1.2rem;
@@ -92,6 +91,16 @@
             opacity: 0;
             transition: opacity 150ms ease-in-out;
             text-decoration: none;
+
+            .underline {
+              height: 2px;
+              width: 100%;
+              background-color: $accentColor;
+              position: relative;
+              bottom: -0.2em;
+              transform: scale(0, 1);
+              transition: transform ease-in 250ms;
+            }
           }
 
           .highlight {
@@ -99,6 +108,10 @@
             text-shadow: none;
             font-weight: 500;
             pointer-events: none;
+            
+            .underline {
+              transform: scale(1, 1);
+            }
           }
         }
       }
@@ -162,28 +175,10 @@
           
         li {
           padding: 0 30px;
-          p {
+          a {
             color: #000;
             font-size: 1.2em;
             opacity: 1;
-            &::after {
-              content: '';
-              display: block;
-              height: 2px;
-              width: 100%;
-              background-color: $accentColor;
-              position: relative;
-              bottom: -0.2em;
-              transform: scale(0, 1);
-              transition: transform ease-in-out 250ms;
-            }
-            &:hover {
-              color: $accentColor;
-              text-shadow: none;
-              &::after {
-                transform: scale(1, 1);
-              }
-            }
           }
         }
       }

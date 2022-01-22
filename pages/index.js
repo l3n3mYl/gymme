@@ -29,21 +29,12 @@ const Index = ({ homePageData, aboutPageData, workoutsPageData, pricingPageData,
 
   const { home, siteSettings } = pageData
   const { openGraph } = siteSettings
-  
-  const homeRef = useRef(null)
-  const about = useRef(null)
-  const workouts = useRef(null)
-  const pricing = useRef(null)
-  const community = useRef(null)
-
-  const allRefs = [homeRef, about, workouts, pricing, community]
 
   return (
     <Wrapper>
-      <Layout refs={allRefs} title={siteSettings.openGraph.title}>
+      <Layout title={siteSettings.openGraph.title}>
       <Meta {...openGraph} />
       <HomePage 
-        refer={homeRef}
         id='Home'
         image={home.image}
         title={home.title}
@@ -51,26 +42,22 @@ const Index = ({ homePageData, aboutPageData, workoutsPageData, pricingPageData,
         subtitle={home.subtitle}
       />
       <AboutPage 
-      refer={about} 
       id='About' 
       title={aboutPageData.title}
       description={aboutPageData.description}
       offerings={aboutPageData.offerings}
       />
       <Workouts
-        refer={workouts}
         id='Workouts'
         title={workoutsPageData.title}
         offerings={workoutsPageData.offerings}
       />
       <PricingPage
-      refer={pricing}
       id='Pricing'
       title={pricingPageData.title}
       pricings={pricingPageData.pricings}
       />
       <Community
-      refer={community}
       id='Community'
       title={communityPageData.title}
       photos={communityPageData.photos}
