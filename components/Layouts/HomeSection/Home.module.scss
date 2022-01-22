@@ -1,5 +1,6 @@
 .HomeSection {
   background-color: $elementColor;
+  display: flex;
 
   .Image {
     object-fit: cover;
@@ -14,6 +15,8 @@
     position: absolute;
     padding: 0 20px;
     top: 15em;
+    justify-content: center;
+
 
     span {
       font-family: $fontHeading;
@@ -99,7 +102,7 @@
   .HomeSection {
     max-height: 1500px;
     .Image {
-      max-height: 1500px;
+      max-height: 1200px;
     }
 
     .Quote  {

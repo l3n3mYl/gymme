@@ -52,6 +52,11 @@
   width: 100%;
   z-index: 999;
 
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
+
   .bigLogo {
     display: none;
   }
@@ -76,15 +81,19 @@
       transition: transform 400ms ease-in-out;
 
       ul {
+        height: 100vh;
         margin: 0;
         padding: 0;
         list-style: none;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
 
         li {
-          margin: 1em 0;
+          margin: 1.5em auto;
 
           a {
-            color: #000;
+            color: #fff;
             font-weight: bold;
             font-size: 1.2rem;
             text-transform: uppercase;

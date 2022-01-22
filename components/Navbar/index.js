@@ -39,10 +39,10 @@ const Navbar = ({ title }) => {
 
   return (
     <header className={styles.Header}>
-      <p className={styles.smallLogo}>{title}</p>
+      <a href='#Home' className={styles.smallLogo}>{title}</a>
       <input type="checkbox" id={styles.menuToggle} className={styles.menuToggle} />
       <nav className={scrollState === "highlight" ? styles.highlightScrollbar : ''}>
-        <p className={styles.bigLogo}>{title}</p>
+        <a href='#Home' className={styles.bigLogo}>{title}</a>
         <ul>
           {ids.map((id, i) => {
             return <li key={`${id}_${i}`} ><a className={position == id ? styles.highlight : ''} href={`#${id}`}>{id} <div className={styles.underline}></div> </a></li>
