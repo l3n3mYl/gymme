@@ -26,20 +26,10 @@ const PricingPage = ({ id, refer, className, title, photos }) => {
       />
       <Swiper 
         className={styles.cards}
-        onInit={(swiper) => {
-          swiper.params.navigation.prevEl = prevRef.current
-          swiper.params.navigation.nextEl = nextRef.current
-          swiper.navigation.init()
-          swiper.navigation.update()
-        }}
         navigation={{
           prevEl: prevRef.current,
           nextEl: nextRef.current,
           hideOnClick: true
-        }}
-        onBeforeInit={(swiper) => {
-          swiper.params.navigation.prevEl = prevRef.current
-          swiper.params.navigation.nextEl = nextRef.current
         }}
         loop={true}
         spaceBetween={0}
@@ -63,7 +53,7 @@ const PricingPage = ({ id, refer, className, title, photos }) => {
         centeredSlides={true}
       >
       {photos.map((photo) => {
-        return <SwiperSlide className={styles.card}>
+        return <SwiperSlide key={photo._key} className={styles.card}>
             <Image
               className={styles.image}
               src={photo.image}

@@ -28,20 +28,10 @@ const Workouts = ({ title, offerings, id, refer, className }) => {
       />
       <Swiper 
         className={styles.carousel}
-        onInit={(swiper) => {
-          swiper.params.navigation.prevEl = prevRef.current
-          swiper.params.navigation.nextEl = nextRef.current
-          swiper.navigation.init()
-          swiper.navigation.update()
-        }}
         navigation={{
           prevEl: prevRef.current,
           nextEl: nextRef.current,
           hideOnClick: true
-        }}
-        onBeforeInit={(swiper) => {
-          swiper.params.navigation.prevEl = prevRef.current
-          swiper.params.navigation.nextEl = nextRef.current
         }}
         loop={true}
         breakpoints={{
@@ -65,7 +55,7 @@ const Workouts = ({ title, offerings, id, refer, className }) => {
           <AnyImage ref={prevRef} className={styles.prev} src='Icons/ArrowRight.png' />
         </div>
         {offerings.map(offer => {
-          return <SwiperSlide className={styles.card}>
+          return <SwiperSlide key={offer._key} className={styles.card}>
           {({ isActive }) => {
             return <div className={classNames(styles.offer, isActive && styles.active)}>
                       <AnyImage className={styles.image} src={offer.image} />

@@ -21,15 +21,16 @@ const PricingPage = ({ id, refer, className, title, pricings }) => {
       />
       <div className={styles.cards}>
       {pricings.map((plan, i) => {
-        return <div className={styles.plan}>
+        return <div key={plan._key} className={styles.plan}>
           <div className={styles.price}>
             <h3 className={styles.name}>{plan.plan}</h3>
             <p className={styles.cost}>{plan.price}<span>$</span></p>
             <p className={styles.freq}>/{plan.freq}</p>
           </div>
           <div className={styles.extrasDiv}>
-            {plan.extras.map((ex) => (
-              <p><Image className={styles.image} 
+            {plan.extras.map((ex, i) => (
+              <p key={`${plan._key}_${i}`} >
+                <Image className={styles.image} 
                         src={i % 2 == 1 ? './Icons/CheckmarkW.png' 
                                         : './Icons/CheckmarkB.png'}/> {ex}</p>
             ))}
