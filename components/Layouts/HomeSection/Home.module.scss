@@ -1,7 +1,7 @@
 .HomeSection {
   background-color: $elementColor;
 
-  .image {
+  .Image {
     object-fit: cover;
     object-position: right center;
     height: 100vh;
@@ -10,7 +10,7 @@
     width: 72vw;
   }
 
-  .quote {
+  .Quote {
     position: absolute;
     padding: 0 20px;
     top: 15em;
@@ -24,7 +24,7 @@
       margin-bottom: 30px;
     }
 
-    .title {
+    .Title {
       font-family: $fontHeading;
       font-weight: 800;
       font-size: 2.3em;
@@ -33,13 +33,13 @@
       color: #fff;
     }
   
-    .subtitle {
+    .Subtitle {
       font-family: $fontSubtitle;
       color: $backgroundLight;
       max-width: 70vw;
     }
 
-    .button {
+    .Button {
       background-color: #fff;
       border: 2px solid #fff;
       border-radius: 1px;
@@ -57,13 +57,13 @@
 
 @media screen and (min-width: $breakpoint-mobileLandscape) {
   .HomeSection {
-    .quote {
-      .title {
+    .Quote {
+      .Title {
         max-width: 60vw;
         font-size: calc(5vmin + 1em);
         word-spacing: 3px;
       }
-      .subtitle {
+      .Subtitle {
         max-width: 50vw;
         font-size: 3vmin;
         line-height: 34px;
@@ -74,20 +74,20 @@
 
 @media screen and (min-width: $breakpoint-tabletLandscape) {
   .HomeSection {
-    .image {
+    .Image {
       width: 46%;
       margin-right: 14%;
     }
 
-    .quote {
+    .Quote {
       padding-left: 14%;
 
-      .title {
+      .Title {
         max-width: 9em;
         font-size: calc(4.2vmin + 1em);
       }
 
-      .subtitle {
+      .Subtitle {
         max-width: 18em;
         font-size: 2.5vmin;
       }
@@ -98,16 +98,16 @@
 @media screen and (min-width: $breakpoint-wide) {
   .HomeSection {
     max-height: 1500px;
-    .image {
+    .Image {
       max-height: 1500px;
     }
 
-    .quote  {
-      .title {
+    .Quote  {
+      .Title {
       font-size: 50px;
     }
 
-      .subtitle {
+      .Subtitle {
         font-size: 50px;
       }
     }

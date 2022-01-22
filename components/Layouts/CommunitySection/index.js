@@ -22,10 +22,10 @@ const CommunitySection = ({ id, className, title, photos }) => {
       <IconHeading
         icon='./Icons/SpeechIcon.png'
         text={title}
-        className={styles.sectionName}
+        className={styles.SectionName}
       />
       <Swiper 
-        className={styles.cards}
+        className={styles.Cards}
         navigation={{
           prevEl: prevRef.current,
           nextEl: nextRef.current,
@@ -53,22 +53,22 @@ const CommunitySection = ({ id, className, title, photos }) => {
         centeredSlides={true}
       >
       {photos.map((photo) => {
-        return <SwiperSlide key={photo._key} className={styles.card}>
+        return <SwiperSlide key={photo._key} className={styles.Card}>
             <Image
-              className={styles.image}
+              className={styles.Image}
               src={photo.image}
               alt={photo.alt}
             />
-            <div className={styles.testimonials}>
-              <BlockContent className={styles.description} blocks={photo.description} />
-              <p className={styles.name}><span>~</span>{photo.name}</p>
+            <div className={styles.Testimonials}>
+              <BlockContent className={styles.Description} blocks={photo.description} />
+              <p className={styles.Name}><span>~</span>{photo.name}</p>
             </div>
         </SwiperSlide>
       })}
       </Swiper>
-      <div className={styles.nav}>
-          <Image ref={nextRef} className={styles.next} src='Icons/ArrowLeft.png' />
-          <Image ref={prevRef} className={styles.prev} src='Icons/ArrowRight.png' />
+      <div className={styles.Nav}>
+          <Image ref={nextRef} className={styles.Next} src='Icons/ArrowLeft.png' />
+          <Image ref={prevRef} className={styles.Prev} src='Icons/ArrowRight.png' />
         </div>
     </div>
   )

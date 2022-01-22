@@ -1,6 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
-import { object, string, array } from 'prop-types'
+import { string, array } from 'prop-types'
 import Image from '../../Handlers/ImageHandler'
 import SwiperCore, { Pagination } from 'swiper';
 import 'swiper/css'
@@ -17,24 +17,24 @@ const PricingSection = ({ id, className, title, pricings }) => {
       <IconHeading
         icon='./Icons/PriceTag.png'
         text={title}
-        className={styles.sectionName}
+        className={styles.SectionName}
       />
-      <div className={styles.cards}>
+      <div className={styles.Cards}>
       {pricings.map((plan, i) => {
-        return <div key={plan._key} className={styles.plan}>
-          <div className={styles.price}>
-            <h3 className={styles.name}>{plan.plan}</h3>
-            <p className={styles.cost}>{plan.price}<span>$</span></p>
-            <p className={styles.freq}>/{plan.freq}</p>
+        return <div key={plan._key} className={styles.Plan}>
+          <div className={styles.Price}>
+            <h3 className={styles.Name}>{plan.plan}</h3>
+            <p className={styles.Cost}>{plan.price}<span>$</span></p>
+            <p className={styles.Freq}>/{plan.freq}</p>
           </div>
-          <div className={styles.extrasDiv}>
-            {plan.extras.map((ex, i) => (
-              <p key={`${plan._key}_${i}`} >
-                <Image className={styles.image} 
+          <div className={styles.ExtrasDiv}>
+            {plan.extras.map((ex, index) => (
+              <p key={`${plan._key}_${index}`} >
+                <Image className={styles.Image} 
                         src={i % 2 == 1 ? './Icons/CheckmarkW.png' 
                                         : './Icons/CheckmarkB.png'}/> {ex}</p>
             ))}
-          <div className={styles.joinBtn}>Join Now</div>
+          <button className={styles.JoinBtn}>Join Now</button>
           </div>
         </div>
       })}

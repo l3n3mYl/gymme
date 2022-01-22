@@ -3,7 +3,7 @@
   margin: auto;
   padding: 23% 0;
 
-  .description {
+  .Description {
     text-align: left;
     font-family: $fontHeading;
     font-size: 18px;
@@ -11,7 +11,7 @@
     color: $backgroundDarker;
   }
 
-  .button {
+  .Button {
     display: flex;
     margin-left: calc(16% - 40px);
     margin-top: 49px;
@@ -27,13 +27,13 @@
       text-transform: uppercase;
     }
 
-    .image {
+    .Image {
       width: 25px;
       height: 25px;
     }
   }
 
-  .sectionName {
+  .SectionName {
     padding-bottom: 67px;
     padding: 35px 16%;
   }
@@ -44,7 +44,7 @@
     max-width: 70vw;
     padding: 10% 0;
 
-    .description {
+    .Description {
       width: fit-content;
     }
   }

@@ -12,7 +12,6 @@ const Parallax = ({ image, children, strength, blur, alt, opacity }) => {
   const el = imgUrlBuilder.image(image)
   return (
     <ReactParallax
-      // bgImage={imgUrlBuilder.image(image)}
       bgImage={el}
       bgImageAlt={alt}
       strength={strength ? strength : 400}

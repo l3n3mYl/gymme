@@ -7,11 +7,11 @@ import AnyImage from '../../Handlers/ImageHandler'
 const HomeSection = ({ image, title, subtitle, coloredTitle, id, className }) => {
   return (
     <div id={id} className={classNames(styles.HomeSection, className)}>
-      <AnyImage src={image} className={styles.image} />
-      <div className={styles.quote}>
-        <h1 className={styles.title}>{title}<br/><span>{coloredTitle}</span></h1>
-        <p className={styles.subtitle}>{subtitle}</p>
-        <button className={styles.button}>Join Now</button>
+      <AnyImage src={image} className={styles.Image} />
+      <div className={styles.Quote}>
+        <h1 className={styles.Title}>{title}<br/><span>{coloredTitle}</span></h1>
+        <p className={styles.Subtitle}>{subtitle}</p>
+        <button className={styles.Button}>Join Now</button>
       </div>
     </div>
   )

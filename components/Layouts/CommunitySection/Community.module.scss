@@ -2,26 +2,26 @@
   max-width: 100vw;
   min-height: 100vh;
 
-  .sectionName {
+  .SectionName {
     margin-left: 50px;
     margin-bottom: 70px;
   }
 
-  .nav {
+  .Nav {
     margin: auto;
     width: max-content;
     
-    .next {
+    .Next {
       padding-right: 35px;
     }
   }
 
-  .cards {
+  .Cards {
     width: 100vw;
-    .card {
+    .Card {
 
-      .testimonials {
-        .name {
+      .Testimonials {
+        .Name {
           font-family: $fontSubtitle;
           margin-top: -70px;
           margin-bottom: 70px;
@@ -36,7 +36,7 @@
             color: $accentColor;
           }
         }
-        .description {
+        .Description {
           width: 70%;
           margin-left: auto;
           margin-right: auto;
@@ -51,7 +51,7 @@
         right: 0;
       }
     
-      .image {
+      .Image {
         padding-left: 20px;
         margin: 40px 0;
         object-fit: cover;
@@ -64,17 +64,17 @@
 
 @media screen and (min-width: $breakpoint-tablet) {
   .CommunitySection {
-    .nav {
+    .Nav {
       margin-left: auto;
       margin-right: 30px;
     }
-    .cards {
-      .card {
-        .testimonials .name {
+    .Cards {
+      .Card {
+        .Testimonials .Name {
           margin-top: -20px;
           margin-bottom: 70px;
         }
-        .image {
+        .Image {
           width: 330px;
           max-height: 480px;
         }
@@ -89,13 +89,13 @@
     margin: auto;
     position: relative;
 
-    .nav {
+    .Nav {
       position: absolute;
       top: 69%;
       left: 80px;
     }
 
-    .cards {
+    .Cards {
       max-width: 800px;
       margin-right: -10px;
     }
@@ -105,10 +105,10 @@
 @media screen and (min-width: $breakpoint-desktop) {
   .CommunitySection {
     max-height: fit-content;
-    .nav {
+    .Nav {
       top: 350px;
     }
-    .cards {
+    .Cards {
       margin-right: -10px;
       margin-top: -200px;
     }

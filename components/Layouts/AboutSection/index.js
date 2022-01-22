@@ -12,12 +12,12 @@ const AboutSection = ({ className, title, description, id }) => {
       <IconHeading
         icon='./Icons/PPL.png'
         text={title}
-        className={styles.sectionName}
+        className={styles.SectionName}
       />
-      {description && <BlockContent className={styles.description} blocks={description} />}
-      <div className={styles.button}>
+      {description && <BlockContent className={styles.Description} blocks={description} />}
+      <div className={styles.Button}>
         <p>Join Now</p>
-        <AnyImage src={'./Icons/ArrowRight.png'} className={styles.image} />
+        <AnyImage src={'./Icons/ArrowRight.png'} className={styles.Image} />
       </div>
     </div>
   )

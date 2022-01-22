@@ -6,45 +6,45 @@
   overflow: hidden;
   margin: 100px 0 100px 0;
 
-  .sectionName {
+  .SectionName {
     text-shadow: none;
     width: 100vw;
     padding: 0 10px;
     margin: auto;
 
-    .sectionImg {
+    .SectionImg {
       left: 27%;
     }
   }
 
-  .carousel {
-    .nav {
+  .Carousel {
+    .Nav {
       margin-left: auto;
       margin-right: auto;
       margin-top: 100px;
 
-      .next {
+      .Next {
         width: 40px;
         margin-right: 15px;
       }
   
-      .prev {
+      .Prev {
         width: 40px;
         margin-left: 15px;
       }
     }
 
-    .offer {
+    .Offer {
       padding-top: 70px;
 
-      .image {
+      .Image {
         margin-top: 40px;
         object-fit: cover;
         width: 30vmin;
         height: 30vmin;
       }
 
-      .title {
+      .Title {
         position: absolute;
         bottom: 7%;
         left: 15%;
@@ -59,15 +59,15 @@
       }
     }
 
-    .active {
-      .image {
+    .Active {
+      .Image {
         margin-top: 20px;
         width: 30vmin;
         height: 40vmin;
         transform: scale(1.2);
       }
 
-      .title {
+      .Title {
         bottom: 0.5%;
         left: 5%;
       }
@@ -77,12 +77,12 @@
 
 @media screen and (min-width: $breakpoint-mobileLandscape) {
   .Workouts {
-    .carousel {
-      .nav {
+    .Carousel {
+      .Nav {
         margin-left: 70vw;
       }
-      .active {
-        .title {
+      .Active {
+        .Title {
           left: 10%;
         }
       }
@@ -92,11 +92,11 @@
 
 @media screen and (min-width: $breakpoint-tablet) {
   .Workouts {
-    .carousel {
-      .offer .title {
+    .Carousel {
+      .Offer .Title {
         bottom: 3%;
       }
-      .active .title {
+      .Active .Title {
         bottom: -1%;
       }
     }
@@ -105,12 +105,12 @@
 
 @media screen and (min-width: 1156px) {
   .Workouts {
-    .carousel {
-      .offer .title {
+    .Carousel {
+      .Offer .Title {
         bottom: 3%;
         left: 28%;
       }
-      .active .title {
+      .Active .Title {
         left: 25%;
         bottom: -4%;
       }
@@ -120,11 +120,11 @@
 
 @media screen and (min-width: 1272px) {
   .Workouts {
-    .carousel {
-      .offer .title {
+    .Carousel {
+      .Offer .Title {
         left: 30%;
       }
-      .active .title {
+      .Active .Title {
         left: 25%;
       }
     }
@@ -133,14 +133,14 @@
 
 @media screen and (min-width: 1500px) {
   .Workouts {
-    .carousel {
-      .offer {
+    .Carousel {
+      .Offer {
         padding-top: 115px;
       }
-      .offer .title {
+      .Offer .Title {
         left: 33%;
       }
-      .active .title {
+      .Active .Title {
         left: 30%;
       }
     }
@@ -149,24 +149,17 @@
 
 @media screen and (min-width: $breakpoint-wide) {
   .Workouts {
-    .sectionName {
+    .SectionName {
       max-width: 2000px;
-  
-      .sectionImg {
-        // border: 2px solid green;
-        // max-width: 300px;
-        // max-height: 200px;
-        // margin-top: -20px;
-      }
     }
 
-    .carousel {
-      .offer .image {
+    .Carousel {
+      .Offer .Image {
         max-width: 480px;
         max-height: 480px;
       }
 
-      .offer .image {
+      .Offer .Image {
         max-width: 480px;
         max-height: 768px;
       }

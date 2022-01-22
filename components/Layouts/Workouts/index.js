@@ -22,12 +22,12 @@ const Workouts = ({ title, offerings, id, refer, className }) => {
     <div id={id} ref={refer} className={classNames(styles.Workouts, className)}>
       <IconHeading
         icon={'./Icons/Callendar.png'}
-        className={styles.sectionName}
-        imageClass={styles.sectionImg}
+        className={styles.SectionName}
+        imageClass={styles.SectionImg}
         text={title}
       />
       <Swiper 
-        className={styles.carousel}
+        className={styles.Carousel}
         navigation={{
           prevEl: prevRef.current,
           nextEl: nextRef.current,
@@ -50,16 +50,16 @@ const Workouts = ({ title, offerings, id, refer, className }) => {
         }}
         centeredSlides={true}
       >
-        <div className={styles.nav}>
-          <AnyImage ref={nextRef} className={styles.next} src='Icons/ArrowLeft.png' />
-          <AnyImage ref={prevRef} className={styles.prev} src='Icons/ArrowRight.png' />
+        <div className={styles.Nav}>
+          <AnyImage ref={nextRef} className={styles.Next} src='Icons/ArrowLeft.png' />
+          <AnyImage ref={prevRef} className={styles.Prev} src='Icons/ArrowRight.png' />
         </div>
         {offerings.map(offer => {
-          return <SwiperSlide key={offer._key} className={styles.card}>
+          return <SwiperSlide key={offer._key} className={styles.Card}>
           {({ isActive }) => {
-            return <div className={classNames(styles.offer, isActive && styles.active)}>
-                      <AnyImage className={styles.image} src={offer.image} />
-                      <p className={styles.title}>{offer.title}</p>
+            return <div className={classNames(styles.Offer, isActive && styles.Active)}>
+                      <AnyImage className={styles.Image} src={offer.image} />
+                      <p className={styles.Title}>{offer.title}</p>
             </div>
           }}
         </SwiperSlide>
