@@ -11,7 +11,7 @@ import SwiperCore, { Navigation } from 'swiper';
 import 'swiper/css'
 import "swiper/css/navigation"
 
-const Workouts = ({ title, offerings, id, refer, className }) => {
+const Workouts = ({ title, offerings, id, className }) => {
 
   SwiperCore.use([Navigation])
 
@@ -19,12 +19,12 @@ const Workouts = ({ title, offerings, id, refer, className }) => {
   const nextRef = useRef(null);
 
   return (
-    <div id={id} ref={refer} className={classNames(styles.Workouts, className)}>
+    <div id={id} className={classNames(styles.Workouts, className)}>
       <IconHeading
         icon={'./Icons/Callendar.png'}
         className={styles.SectionName}
         imageClass={styles.SectionImg}
-        text={title}
+        text={title && title}
       />
       <Swiper 
         className={styles.Carousel}
@@ -44,8 +44,7 @@ const Workouts = ({ title, offerings, id, refer, className }) => {
             slidesPerView: 3.5
           },
           1156: {
-            spaceBetween: -200,
-            slidesPerView: 3.5
+            slidesPerView: 4.5
           }
         }}
         centeredSlides={true}
@@ -54,7 +53,7 @@ const Workouts = ({ title, offerings, id, refer, className }) => {
           <AnyImage ref={nextRef} className={styles.Next} src='Icons/ArrowLeft.png' />
           <AnyImage ref={prevRef} className={styles.Prev} src='Icons/ArrowRight.png' />
         </div>
-        {offerings.map(offer => {
+        {offerings && offerings.map(offer => {
           return <SwiperSlide key={offer._key} className={styles.Card}>
           {({ isActive }) => {
             return <div className={classNames(styles.Offer, isActive && styles.Active)}>

@@ -21,7 +21,7 @@ const CommunitySection = ({ id, className, title, photos }) => {
     <div id={id} className={classNames(styles.CommunitySection, className)}>
       <IconHeading
         icon='./Icons/SpeechIcon.png'
-        text={title}
+        text={title && title}
         className={styles.SectionName}
       />
       <Swiper 
@@ -52,7 +52,7 @@ const CommunitySection = ({ id, className, title, photos }) => {
         }}
         centeredSlides={true}
       >
-      {photos.map((photo) => {
+      {photos && photos.map((photo) => {
         return <SwiperSlide key={photo._key} className={styles.Card}>
             <Image
               className={styles.Image}

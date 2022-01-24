@@ -16,11 +16,11 @@ const PricingSection = ({ id, className, title, pricings }) => {
     <div id={id} className={classNames(styles.PricingSection, className)}>
       <IconHeading
         icon='./Icons/PriceTag.png'
-        text={title}
+        text={title && title}
         className={styles.SectionName}
       />
       <div className={styles.Cards}>
-      {pricings.map((plan, i) => {
+      {pricings && pricings.map((plan, i) => {
         return <div key={plan._key} className={styles.Plan}>
           <div className={styles.Price}>
             <h3 className={styles.Name}>{plan.plan}</h3>

@@ -11,7 +11,7 @@ const AboutSection = ({ className, title, description, id }) => {
     <div id={id} className={classNames(styles.AboutSection, className)}>
       <IconHeading
         icon='./Icons/PPL.png'
-        text={title}
+        text={title && title}
         className={styles.SectionName}
       />
       {description && <BlockContent className={styles.Description} blocks={description} />}

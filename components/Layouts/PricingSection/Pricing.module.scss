@@ -82,7 +82,7 @@
 
         .Name {
           font-family: $fontSubtitle;
-          padding: 0 14px;
+          padding: 5px 14px;
           width: max-content;
           font-size: 1em;
           height: 28px;
@@ -137,14 +137,14 @@
   .PricingSection {
     max-width: $breakpoint-desktop;
     padding-bottom: 200px;
-    .cards {
+    .Cards {
       flex-direction: row;
 
-      .plan {
+      .Plan {
         height: 500px;
         flex-direction: column;
 
-        .joinBtn {
+        .JoinBtn {
           text-align: center;
           padding-top: 30px;
           width: max-content;
