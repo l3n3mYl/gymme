@@ -36,20 +36,3 @@
     padding: 35px 16%;
   }
 }
-
-@media screen and (min-width: $breakpoint-tablet) {
-  .AboutSection {
-    // max-width: 70vw;
-    // padding: 10% 0;
-
-    .Description {
-      // width: fit-content;
-    }
-  }
-}
-
-@media screen and (min-width: $breakpoint-desktop) {
-  .AboutSection {
-    // max-width: 50vw;
-  }
-}

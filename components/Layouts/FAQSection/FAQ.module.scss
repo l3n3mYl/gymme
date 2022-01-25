@@ -1,0 +1,20 @@
+.FAQ {
+
+  .SectionImage {
+    width: 60px;
+    margin: 0 0 20px 20px;
+
+    @include mq($breakpoint-tablet) {
+      border: 2px solid red;
+      width: 100%;
+      top: 80vh;
+    }
+  }
+
+  .Section {
+    // height: 500px;
+    border: 2px solid red;
+    margin: 50px 10px;
+    z-index: -1;
+  }
+}

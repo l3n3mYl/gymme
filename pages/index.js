@@ -8,7 +8,8 @@ import {
   usePreviewSubscription,
   getWorkoutsPageData,
   getPricingPageData,
-  getCommunityPageData
+  getCommunityPageData,
+  getFAQSectionData
  } from '../lib/sanity'
 
 import HomeSection from '../components/Layouts/HomeSection'
@@ -16,9 +17,10 @@ import AboutSection from '../components/Layouts/AboutSection'
 import Workouts from '../components/Layouts/Workouts'
 import PricingSection from '../components/Layouts/PricingSection'
 import CommunitySection from '../components/Layouts/CommunitySection'
+import FAQSection from '../components/Layouts/FAQSection'
 import Wrapper from '../components/WideScreenWrapper'
 
-const Index = ({ homePageData, aboutPageData, workoutsPageData, pricingPageData, communityPageData }) => {
+const Index = ({ homePageData, aboutPageData, workoutsPageData, pricingPageData, communityPageData, FAQSectionData }) => {
   
   const router = useRouter()
   const { data: pageData } = usePreviewSubscription(getHomeDataQuery, {
@@ -41,10 +43,10 @@ const Index = ({ homePageData, aboutPageData, workoutsPageData, pricingPageData,
           subtitle={home.subtitle}
         />
         <AboutSection 
-        id='About' 
-        title={aboutPageData.title}
-        description={aboutPageData.description}
-        offerings={aboutPageData.offerings}
+          id='About' 
+          title={aboutPageData.title}
+          description={aboutPageData.description}
+          offerings={aboutPageData.offerings}
         />
         <Workouts
           id='Workouts'
@@ -52,14 +54,18 @@ const Index = ({ homePageData, aboutPageData, workoutsPageData, pricingPageData,
           offerings={workoutsPageData.offerings}
         />
         <PricingSection
-        id='Pricing'
-        title={pricingPageData.title}
-        pricings={pricingPageData.pricings}
+          id='Pricing'
+          title={pricingPageData.title}
+          pricings={pricingPageData.pricings}
         />
         <CommunitySection
-        id='Community'
-        title={communityPageData.title}
-        photos={communityPageData.photos}
+          id='Community'
+          title={communityPageData.title}
+          photos={communityPageData.photos}
+        />
+        <FAQSection
+          id='FAQ'
+          faq={FAQSectionData.faq}
         />
       </Layout>
     </Wrapper>
@@ -72,6 +78,7 @@ export const getStaticProps = async () => {
   const workoutsPageData = await getWorkoutsPageData()
   const pricingPageData = await getPricingPageData()
   const communityPageData = await getCommunityPageData()
+  const FAQSectionData = await getFAQSectionData()
 
   return {
     props: { 
@@ -79,7 +86,8 @@ export const getStaticProps = async () => {
       aboutPageData: aboutPageData,
       workoutsPageData: workoutsPageData,
       pricingPageData: pricingPageData,
-      communityPageData: communityPageData
+      communityPageData: communityPageData,
+      FAQSectionData: FAQSectionData
      },
     revalidate: 60
   }
