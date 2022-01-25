@@ -1,0 +1,22 @@
+.FAQ {
+  .SectionImage {
+    width: 60px;
+    margin: 0 0 20px 20px;
+
+    @include mq($breakpoint-tablet) {
+      display: none;
+    }
+  }
+
+  .Section {
+    margin: 50px 10px;
+    padding-top: 80px;
+  }
+
+  @include mq($breakpoint-tablet) {
+    background-image: url('../../../public/Icons/Vector.svg');
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-position: center;
+  }
+}

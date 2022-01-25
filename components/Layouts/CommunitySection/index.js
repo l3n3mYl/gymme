@@ -22,7 +22,7 @@ const CommunitySection = ({ id, className, title, photos }) => {
     <div id={id} className={classNames(styles.CommunitySection, className)}>
       <Container size='full' className={styles.Container}>
         <IconHeading
-          icon='./Icons/SpeechIcon.png'
+          icon='./Icons/Speech Icon.svg'
           text={title && title}
           className={styles.SectionName}
         />
@@ -69,8 +69,8 @@ const CommunitySection = ({ id, className, title, photos }) => {
         })}
         </Swiper>
         <div className={styles.Nav}>
-            <Image ref={nextRef} className={styles.Next} src='Icons/ArrowLeft.png' />
-            <Image ref={prevRef} className={styles.Prev} src='Icons/ArrowRight.png' />
+            <Image ref={nextRef} className={styles.Next} src='Icons/Vector-7.svg' />
+            <Image ref={prevRef} className={styles.Prev} src='Icons/Vector-8.svg' />
         </div>
       </Container>
     </div>

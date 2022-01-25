@@ -1,8 +1,7 @@
 .IconHeading {
   color: $elementColor;
-  font-family: $fontHeading;
   font-weight: 800;
-  font-size: 16px;
+  font-size: 30px;
 
   @include mq($breakpoint-tablet) {
     font-size: 20px;

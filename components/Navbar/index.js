@@ -8,7 +8,7 @@ const Navbar = ({ title }) => {
   const [scrollState, setScrollState] = useState("top")
   const [position, setPosition] = useState('Home')
 
-  const ids = ['Home', 'About', 'Workouts', 'Pricing', 'Community']
+  const ids = ['Home', 'About', 'Workouts', 'Pricing', 'Community', 'FAQ']
 
   const handleScroll = debounce(() => {
     var scrolled = document.scrollingElement.scrollTop

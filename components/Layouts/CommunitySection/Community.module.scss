@@ -82,12 +82,11 @@
 
 @media screen and (min-width: $breakpoint-tabletLandscape) {
   .CommunitySection {
-    max-width: $breakpoint-desktop;
-
     .Nav {
-      position: absolute;
-      top: 69%;
-      left: 80px;
+      margin-right: auto;
+      margin-left: 80px;
+      margin-top: -90px;
+      margin-bottom: 100px;
     }
 
     .Cards {
@@ -100,7 +99,6 @@
 @media screen and (min-width: $breakpoint-desktop) {
   .CommunitySection {
     .Container {
-      position: absolute;
 
       @include mq($breakpoint-wide) {
         width: $breakpoint-wide;
