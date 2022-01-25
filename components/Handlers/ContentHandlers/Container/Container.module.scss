@@ -1,0 +1,89 @@
+.Container {
+  width: 100%;
+  clear: both;
+}
+
+.noClearfix {
+  clear: none;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gutter {
+  padding-left: 16px;
+  padding-right: 16px;
+
+  @include mq($breakpoint-tablet) {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  @include mq($breakpoint-desktopLarge) {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+// SIZES
+.spacious {
+  margin-top: spacing(8);
+  margin-bottom: spacing(2);
+  @include mq($breakpoint-tablet) {
+    margin-top: spacing(12.5);
+    margin-bottom: spacing(2);
+  }
+}
+
+.full {
+  width: 100%;
+}
+
+.wide {
+  max-width: 1500px;
+}
+
+.large {
+  max-width: spacing(150);
+}
+
+.mediumLarge {
+  max-width: calc(100vw - 40px);
+
+  @include mq($breakpoint-tablet) {
+    max-width: calc(100vw - 214px);
+  }
+
+  @include mq($breakpoint-desktop) {
+    max-width: calc(100vw - 40px);
+  }
+
+  @include mq($breakpoint-desktopLarge) {
+    max-width: $breakpoint-desktop;
+  }
+}
+
+.medium {
+  max-width: spacing(120);
+}
+
+.small {
+  max-width: 388px; 
+  @include mq($breakpoint-tablet) {
+    max-width: 620px;
+  }
+
+  @include mq($breakpoint-desktop) {
+    max-width: 778px;
+  }
+
+  @include mq($breakpoint-wide) {
+    max-width: 778px;
+  }
+}
+
+.hideOverflow {
+  overflow: hidden;
+}

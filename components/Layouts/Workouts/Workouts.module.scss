@@ -1,6 +1,5 @@
 .Workouts {
   text-align: center;
-  width: 100%;
   color: #fff;
   text-shadow: 0 0 3px #000;
   overflow: hidden;
@@ -39,6 +38,11 @@
         object-fit: cover;
         width: 30vmin;
         height: 30vmin;
+
+        @include mq($breakpoint-full) {
+          width: 380px;
+          height: 480px;
+        }
       }
 
       .Title {
@@ -62,6 +66,11 @@
         width: 30vmin;
         height: 40vmin;
         transform: scale(1.2);
+
+        @include mq($breakpoint-full) {
+          width: 380px;
+          height: 568px;
+        }
       }
 
       .Title {
@@ -111,8 +120,8 @@
         left: 28%;
       }
       .Active .Title {
-        left: 25%;
-        bottom: -4%;
+        left: 0%;
+        bottom: -2%;
       }
     }
   }
@@ -125,7 +134,8 @@
         left: 30%;
       }
       .Active .Title {
-        left: 25%;
+        left: 6%;
+        bottom: 0px;
       }
     }
   }
@@ -138,10 +148,10 @@
         padding-top: 115px;
       }
       .Offer .Title {
-        left: 33%;
+        left: 20%;
       }
       .Active .Title {
-        left: 30%;
+        left: 15%;
       }
     }
   }
@@ -154,14 +164,14 @@
     }
 
     .Carousel {
-      .Offer .Image {
-        max-width: 480px;
-        max-height: 480px;
+      .Active .Title {
+        bottom: 20px;
       }
-
-      .Offer .Image {
-        max-width: 480px;
-        max-height: 768px;
+      .Nav {
+        width: 200px;
+        position: absolute;
+        right: 20px;
+        bottom: 0px;
       }
     }
   }

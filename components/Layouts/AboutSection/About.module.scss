@@ -1,12 +1,11 @@
 .AboutSection {
-  width: 100vw;
-  margin: auto;
-  padding: 23% 0;
+  // margin: auto;
 
   .Description {
     text-align: left;
+    width: inherit;
     font-family: $fontHeading;
-    font-size: 18px;
+    font-size: 20px;
     margin: 0 calc(16% - 40px);
     color: $backgroundDarker;
   }
@@ -34,24 +33,23 @@
   }
 
   .SectionName {
-    padding-bottom: 67px;
     padding: 35px 16%;
   }
 }
 
 @media screen and (min-width: $breakpoint-tablet) {
   .AboutSection {
-    max-width: 70vw;
-    padding: 10% 0;
+    // max-width: 70vw;
+    // padding: 10% 0;
 
     .Description {
-      width: fit-content;
+      // width: fit-content;
     }
   }
 }
 
 @media screen and (min-width: $breakpoint-desktop) {
   .AboutSection {
-    max-width: 50vw;
+    // max-width: 50vw;
   }
 }

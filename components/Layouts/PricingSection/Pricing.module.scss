@@ -5,12 +5,18 @@
 
   .SectionName {
     padding-bottom: 70px;
-    margin-left: auto;
-    margin-right: auto;
+
+    @include mq($breakpoint-tablet) {
+      text-align: center;
+    }
+  }
+
+  .SectionImage {
+    left: -150px;
+    bottom: -80px;
   }
 
   .Cards {
-    padding: 0 20px;
     display: flex;
     flex-direction: column;
 
@@ -126,16 +132,8 @@
   }
 }
 
-@media screen and (min-width: $breakpoint-tablet) {
-  .PricingSection {
-    max-width: 80vw;
-    margin: auto;
-  }
-}
-
 @media screen and (min-width: $breakpoint-desktop) {
   .PricingSection {
-    max-width: $breakpoint-desktop;
     padding-bottom: 200px;
     .Cards {
       flex-direction: row;

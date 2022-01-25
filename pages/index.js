@@ -32,35 +32,35 @@ const Index = ({ homePageData, aboutPageData, workoutsPageData, pricingPageData,
   return (
     <Wrapper>
       <Layout title={siteSettings.openGraph.title}>
-      <Meta {...openGraph} />
-      <HomeSection 
-        id='Home'
-        image={home.image}
-        title={home.title}
-        coloredTitle={home.coloredTitle}
-        subtitle={home.subtitle}
-      />
-      <AboutSection 
-      id='About' 
-      title={aboutPageData.title}
-      description={aboutPageData.description}
-      offerings={aboutPageData.offerings}
-      />
-      <Workouts
-        id='Workouts'
-        title={workoutsPageData.title}
-        offerings={workoutsPageData.offerings}
-      />
-      <PricingSection
-      id='Pricing'
-      title={pricingPageData.title}
-      pricings={pricingPageData.pricings}
-      />
-      <CommunitySection
-      id='Community'
-      title={communityPageData.title}
-      photos={communityPageData.photos}
-      />
+        <Meta {...openGraph} />
+        <HomeSection 
+          id='Home'
+          image={home.image}
+          title={home.title}
+          coloredTitle={home.coloredTitle}
+          subtitle={home.subtitle}
+        />
+        <AboutSection 
+        id='About' 
+        title={aboutPageData.title}
+        description={aboutPageData.description}
+        offerings={aboutPageData.offerings}
+        />
+        <Workouts
+          id='Workouts'
+          title={workoutsPageData.title}
+          offerings={workoutsPageData.offerings}
+        />
+        <PricingSection
+        id='Pricing'
+        title={pricingPageData.title}
+        pricings={pricingPageData.pricings}
+        />
+        <CommunitySection
+        id='Community'
+        title={communityPageData.title}
+        photos={communityPageData.photos}
+        />
       </Layout>
     </Wrapper>
   )
