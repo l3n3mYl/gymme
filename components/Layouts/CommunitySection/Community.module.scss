@@ -83,9 +83,10 @@
 @media screen and (min-width: $breakpoint-tabletLandscape) {
   .CommunitySection {
     .Nav {
-      position: absolute;
-      top: 69%;
-      left: 80px;
+      margin-right: auto;
+      margin-left: 80px;
+      margin-top: -90px;
+      margin-bottom: 100px;
     }
 
     .Cards {

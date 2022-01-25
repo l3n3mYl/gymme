@@ -20,6 +20,7 @@ const FAQSection = ({ faq, id, className }) => {
         const { question, answer } = card
 
         return <QuestionCard
+          key={card._key}
           className={styles.Card}
           question={question}
           answer={answer}

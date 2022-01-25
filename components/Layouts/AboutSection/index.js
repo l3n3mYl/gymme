@@ -12,14 +12,14 @@ const AboutSection = ({ className, title, description, id }) => {
     <div id={id} className={classNames(styles.AboutSection, className)}>
       <Container center gutter size='small'>
         <IconHeading
-          icon='./Icons/PPL.png'
+          icon='./Icons/Vector-10.svg'
           text={title && title}
           className={styles.SectionName}
         />
         {description && <BlockContent className={styles.Description} blocks={description} />}
         <div className={styles.Button}>
           <p>Join Now</p>
-          <AnyImage src={'./Icons/ArrowRight.png'} className={styles.Image} />
+          <AnyImage src={'./Icons/Vector-8.svg'} className={styles.Image} />
         </div>
       </Container>
     </div>
