@@ -1,27 +1,24 @@
-.Community {
-  max-width: 100vw;
-  min-height: 100vh;
-
-  .sectionName {
-    margin-left: 50px;
+.CommunitySection {
+  .SectionName {
+    width: 20vw;
+    margin-left: 100px;
     margin-bottom: 70px;
   }
 
-  .nav {
+  .Nav {
     margin: auto;
     width: max-content;
     
-    .next {
+    .Next {
       padding-right: 35px;
     }
   }
 
-  .cards {
-    width: 100vw;
-    .card {
+  .Cards {
+    .Card {
 
-      .testimonials {
-        .name {
+      .Testimonials {
+        .Name {
           font-family: $fontSubtitle;
           margin-top: -70px;
           margin-bottom: 70px;
@@ -36,7 +33,7 @@
             color: $accentColor;
           }
         }
-        .description {
+        .Description {
           width: 70%;
           margin-left: auto;
           margin-right: auto;
@@ -51,7 +48,7 @@
         right: 0;
       }
     
-      .image {
+      .Image {
         padding-left: 20px;
         margin: 40px 0;
         object-fit: cover;
@@ -63,18 +60,18 @@
 }
 
 @media screen and (min-width: $breakpoint-tablet) {
-  .Community {
-    .nav {
+  .CommunitySection {
+    .Nav {
       margin-left: auto;
       margin-right: 30px;
     }
-    .cards {
-      .card {
-        .testimonials .name {
+    .Cards {
+      .Card {
+        .Testimonials .Name {
           margin-top: -20px;
           margin-bottom: 70px;
         }
-        .image {
+        .Image {
           width: 330px;
           max-height: 480px;
         }
@@ -84,32 +81,33 @@
 }
 
 @media screen and (min-width: $breakpoint-tabletLandscape) {
-  .Community {
+  .CommunitySection {
     max-width: $breakpoint-desktop;
-    margin: auto;
-    position: relative;
 
-    .nav {
+    .Nav {
       position: absolute;
       top: 69%;
       left: 80px;
     }
 
-    .cards {
-      max-width: 800px;
-      margin-right: -10px;
+    .Cards {
+      max-width: 900px;
+      margin-right: 0;
     }
   }
 }
 
 @media screen and (min-width: $breakpoint-desktop) {
-  .Community {
-    max-height: fit-content;
-    .nav {
-      top: 350px;
+  .CommunitySection {
+    .Container {
+      position: absolute;
+
+      @include mq($breakpoint-wide) {
+        width: $breakpoint-wide;
+      }
     }
-    .cards {
-      margin-right: -10px;
+
+    .Cards {
       margin-top: -200px;
     }
   }

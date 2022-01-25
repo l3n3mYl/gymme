@@ -1,7 +1,7 @@
 .menuToggle:checked ~ nav{
   transform: scale(1, 1);
 
-  p {
+  a {
       opacity: 1;
       transition: opacity 250ms ease-in-out 250ms;
   }
@@ -52,6 +52,11 @@
   width: 100%;
   z-index: 999;
 
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
+
   .bigLogo {
     display: none;
   }
@@ -76,22 +81,35 @@
       transition: transform 400ms ease-in-out;
 
       ul {
+        height: 100vh;
         margin: 0;
         padding: 0;
         list-style: none;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
 
         li {
-          margin: 1em 0;
-          
+          margin: 1.5em auto;
 
-          p {
-            color: #000;
+          a {
+            color: #fff;
             font-weight: bold;
             font-size: 1.2rem;
             text-transform: uppercase;
             opacity: 0;
             transition: opacity 150ms ease-in-out;
             text-decoration: none;
+
+            .underline {
+              height: 2px;
+              width: 100%;
+              background-color: $accentColor;
+              position: relative;
+              bottom: -0.2em;
+              transform: scale(0, 1);
+              transition: transform ease-in 250ms;
+            }
           }
 
           .highlight {
@@ -99,6 +117,10 @@
             text-shadow: none;
             font-weight: 500;
             pointer-events: none;
+            
+            .underline {
+              transform: scale(1, 1);
+            }
           }
         }
       }
@@ -132,6 +154,7 @@
       transition: all 400ms ease-in-out;
 
       .bigLogo {
+        margin-top: 10px;
         color: $accentColor;
         transition: all 400ms ease-in-out;
       }
@@ -156,34 +179,17 @@
 
       ul {
         padding: 10px 15px 0 0;
+        height: 80px;
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
           
         li {
           padding: 0 30px;
-          p {
+          a {
             color: #000;
             font-size: 1.2em;
             opacity: 1;
-            &::after {
-              content: '';
-              display: block;
-              height: 2px;
-              width: 100%;
-              background-color: $accentColor;
-              position: relative;
-              bottom: -0.2em;
-              transform: scale(0, 1);
-              transition: transform ease-in-out 250ms;
-            }
-            &:hover {
-              color: $accentColor;
-              text-shadow: none;
-              &::after {
-                transform: scale(1, 1);
-              }
-            }
           }
         }
       }

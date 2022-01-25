@@ -10,8 +10,9 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Navigation } from 'swiper';
 import 'swiper/css'
 import "swiper/css/navigation"
+import Container from '../../Handlers/ContentHandlers/Container'
 
-const Workouts = ({ title, offerings, id, refer, className }) => {
+const Workouts = ({ title, offerings, id, className }) => {
 
   SwiperCore.use([Navigation])
 
@@ -19,62 +20,53 @@ const Workouts = ({ title, offerings, id, refer, className }) => {
   const nextRef = useRef(null);
 
   return (
-    <div id={id} ref={refer} className={classNames(styles.Workouts, className)}>
-      <IconHeading
-        icon={'./Icons/Callendar.png'}
-        className={styles.sectionName}
-        imageClass={styles.sectionImg}
-        text={title}
-      />
-      <Swiper 
-        className={styles.carousel}
-        onInit={(swiper) => {
-          swiper.params.navigation.prevEl = prevRef.current
-          swiper.params.navigation.nextEl = nextRef.current
-          swiper.navigation.init()
-          swiper.navigation.update()
-        }}
-        navigation={{
-          prevEl: prevRef.current,
-          nextEl: nextRef.current,
-          hideOnClick: true
-        }}
-        onBeforeInit={(swiper) => {
-          swiper.params.navigation.prevEl = prevRef.current
-          swiper.params.navigation.nextEl = nextRef.current
-        }}
-        loop={true}
-        breakpoints={{
-          10: {
-            spaceBetween: 40,
-            slidesPerView: 2.5
-          },
-          850: {
-            spaceBetween: 20,
-            slidesPerView: 3.5
-          },
-          1156: {
-            spaceBetween: -200,
-            slidesPerView: 3.5
-          }
-        }}
-        centeredSlides={true}
-      >
-        <div className={styles.nav}>
-          <AnyImage ref={nextRef} className={styles.next} src='Icons/ArrowLeft.png' />
-          <AnyImage ref={prevRef} className={styles.prev} src='Icons/ArrowRight.png' />
-        </div>
-        {offerings.map(offer => {
-          return <SwiperSlide className={styles.card}>
-          {({ isActive }) => {
-            return <div className={classNames(styles.offer, isActive && styles.active)}>
-                      <AnyImage className={styles.image} src={offer.image} />
-                      <p className={styles.title}>{offer.title}</p>
-            </div>
+    <div id={id} className={classNames(styles.Workouts, className)}>
+      <Container center gutter size='full'>
+        <IconHeading
+          icon={'./Icons/Callendar.png'}
+          className={styles.SectionName}
+          imageClass={styles.SectionImg}
+          text={title && title}
+        />
+        <Swiper 
+          className={styles.Carousel}
+          navigation={{
+            prevEl: prevRef.current,
+            nextEl: nextRef.current,
+            hideOnClick: true
           }}
-        </SwiperSlide>
-        })}
-      </Swiper>
+          loop={true}
+          breakpoints={{
+            10: {
+              spaceBetween: 40,
+              slidesPerView: 2.5
+            },
+            850: {
+              spaceBetween: 20,
+              slidesPerView: 3.5
+            },
+            1156: {
+              slidesPerView: 4.5
+            }
+          }}
+          centeredSlides={true}
+        >
+          <div className={styles.Nav}>
+            <AnyImage ref={nextRef} className={styles.Next} src='Icons/ArrowLeft.png' />
+            <AnyImage ref={prevRef} className={styles.Prev} src='Icons/ArrowRight.png' />
+          </div>
+          {offerings && offerings.map(offer => {
+            return <SwiperSlide key={offer._key} className={styles.Card}>
+            {({ isActive }) => {
+              return <div className={classNames(styles.Offer, isActive && styles.Active)}>
+                        <AnyImage className={styles.Image} src={offer.image} />
+                        <p className={styles.Title}>{offer.title}</p>
+              </div>
+            }}
+          </SwiperSlide>
+          })}
+        </Swiper>
+      </Container>
     </div> 
       
   )

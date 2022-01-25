@@ -1,17 +1,16 @@
-.AboutPage {
-  width: 100vw;
-  margin: auto;
-  padding: 23% 0;
+.AboutSection {
+  // margin: auto;
 
-  .description {
+  .Description {
     text-align: left;
+    width: inherit;
     font-family: $fontHeading;
-    font-size: 18px;
+    font-size: 20px;
     margin: 0 calc(16% - 40px);
     color: $backgroundDarker;
   }
 
-  .button {
+  .Button {
     display: flex;
     margin-left: calc(16% - 40px);
     margin-top: 49px;
@@ -27,31 +26,30 @@
       text-transform: uppercase;
     }
 
-    .image {
+    .Image {
       width: 25px;
       height: 25px;
     }
   }
 
-  .sectionName {
-    padding-bottom: 67px;
+  .SectionName {
     padding: 35px 16%;
   }
 }
 
 @media screen and (min-width: $breakpoint-tablet) {
-  .AboutPage {
-    max-width: 70vw;
-    padding: 10% 0;
+  .AboutSection {
+    // max-width: 70vw;
+    // padding: 10% 0;
 
-    .description {
-      width: fit-content;
+    .Description {
+      // width: fit-content;
     }
   }
 }
 
 @media screen and (min-width: $breakpoint-desktop) {
-  .AboutPage {
-    max-width: 50vw;
+  .AboutSection {
+    // max-width: 50vw;
   }
 }

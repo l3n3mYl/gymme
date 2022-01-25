@@ -1,20 +1,26 @@
-.Pricing {
+.PricingSection {
   display: flex;
   flex-direction: column;
   padding-bottom: 100px;
 
-  .sectionName {
+  .SectionName {
     padding-bottom: 70px;
-    margin-left: auto;
-    margin-right: auto;
+
+    @include mq($breakpoint-tablet) {
+      text-align: center;
+    }
   }
 
-  .cards {
-    padding: 0 20px;
+  .SectionImage {
+    left: -150px;
+    bottom: -80px;
+  }
+
+  .Cards {
     display: flex;
     flex-direction: column;
 
-    .plan {
+    .Plan {
       height: max-content;
       margin: auto;
       width: 100%;
@@ -23,7 +29,7 @@
       justify-content: space-evenly;
       margin-bottom: 20px;
 
-      .joinBtn {
+      .JoinBtn {
         text-align: center;
         padding-top: 30px;
         border: 1px #fff solid;
@@ -43,11 +49,11 @@
         }
       }
 
-      .extrasDiv {
+      .ExtrasDiv {
         padding: 30px 0;
         p {
           padding-bottom: 20px;
-          .image {
+          .Image {
             padding-right: 10px;
             vertical-align: sub;
           }
@@ -58,7 +64,7 @@
         font-family: $fontSubtitle;
       }
 
-      .price {
+      .Price {
         display: flex;
         flex-direction: column;
         place-items: center;
@@ -66,12 +72,12 @@
         margin-top: 20px;
         height: 300px;
 
-        .freq {
+        .Freq {
           font-size: 18px;
           font-weight: 600;
         }
 
-        .cost {
+        .Cost {
           font-size: 40px;
           font-weight: 800;
 
@@ -80,9 +86,9 @@
           }
         }
 
-        .name {
+        .Name {
           font-family: $fontSubtitle;
-          padding: 0 14px;
+          padding: 5px 14px;
           width: max-content;
           font-size: 1em;
           height: 28px;
@@ -95,10 +101,10 @@
         background-color: $backgroundLight;
         color: $elementColor;
 
-        .price {
+        .Price {
           color: $elementColor;
 
-          .name {
+          .Name {
             background-color: $elementColor;
             color: $backgroundLight;
           }
@@ -109,14 +115,14 @@
         background-color: $elementColor;
         color: $backgroundLight;
 
-        .price {
+        .Price {
           color: $backgroundLight;
 
-          .freq {
+          .Freq {
             color: $backgroundLight;
           }
 
-          .name {
+          .Name {
             background-color: $backgroundLight;
             color: $elementColor;
           }
@@ -126,25 +132,17 @@
   }
 }
 
-@media screen and (min-width: $breakpoint-tablet) {
-  .Pricing {
-    max-width: 80vw;
-    margin: auto;
-  }
-}
-
 @media screen and (min-width: $breakpoint-desktop) {
-  .Pricing {
-    max-width: $breakpoint-desktop;
+  .PricingSection {
     padding-bottom: 200px;
-    .cards {
+    .Cards {
       flex-direction: row;
 
-      .plan {
+      .Plan {
         height: 500px;
         flex-direction: column;
 
-        .joinBtn {
+        .JoinBtn {
           text-align: center;
           padding-top: 30px;
           width: max-content;

@@ -11,12 +11,11 @@ import {
   getCommunityPageData
  } from '../lib/sanity'
 
-import { useRef } from 'react'
-import HomePage from '../components/Layouts/HomePage'
-import AboutPage from '../components/Layouts/AboutPage'
+import HomeSection from '../components/Layouts/HomeSection'
+import AboutSection from '../components/Layouts/AboutSection'
 import Workouts from '../components/Layouts/Workouts'
-import PricingPage from '../components/Layouts/PricingPage'
-import Community from '../components/Layouts/Community'
+import PricingSection from '../components/Layouts/PricingSection'
+import CommunitySection from '../components/Layouts/CommunitySection'
 import Wrapper from '../components/WideScreenWrapper'
 
 const Index = ({ homePageData, aboutPageData, workoutsPageData, pricingPageData, communityPageData }) => {
@@ -29,52 +28,39 @@ const Index = ({ homePageData, aboutPageData, workoutsPageData, pricingPageData,
 
   const { home, siteSettings } = pageData
   const { openGraph } = siteSettings
-  
-  const homeRef = useRef(null)
-  const about = useRef(null)
-  const workouts = useRef(null)
-  const pricing = useRef(null)
-  const community = useRef(null)
-
-  const allRefs = [homeRef, about, workouts, pricing, community]
 
   return (
     <Wrapper>
-      <Layout refs={allRefs} title={siteSettings.openGraph.title}>
-      <Meta {...openGraph} />
-      <HomePage 
-        refer={homeRef}
-        id='Home'
-        image={home.image}
-        title={home.title}
-        coloredTitle={home.coloredTitle}
-        subtitle={home.subtitle}
-      />
-      <AboutPage 
-      refer={about} 
-      id='About' 
-      title={aboutPageData.title}
-      description={aboutPageData.description}
-      offerings={aboutPageData.offerings}
-      />
-      <Workouts
-        refer={workouts}
-        id='Workouts'
-        title={workoutsPageData.title}
-        offerings={workoutsPageData.offerings}
-      />
-      <PricingPage
-      refer={pricing}
-      id='Pricing'
-      title={pricingPageData.title}
-      pricings={pricingPageData.pricings}
-      />
-      <Community
-      refer={community}
-      id='Community'
-      title={communityPageData.title}
-      photos={communityPageData.photos}
-      />
+      <Layout title={siteSettings.openGraph.title}>
+        <Meta {...openGraph} />
+        <HomeSection 
+          id='Home'
+          image={home.image}
+          title={home.title}
+          coloredTitle={home.coloredTitle}
+          subtitle={home.subtitle}
+        />
+        <AboutSection 
+        id='About' 
+        title={aboutPageData.title}
+        description={aboutPageData.description}
+        offerings={aboutPageData.offerings}
+        />
+        <Workouts
+          id='Workouts'
+          title={workoutsPageData.title}
+          offerings={workoutsPageData.offerings}
+        />
+        <PricingSection
+        id='Pricing'
+        title={pricingPageData.title}
+        pricings={pricingPageData.pricings}
+        />
+        <CommunitySection
+        id='Community'
+        title={communityPageData.title}
+        photos={communityPageData.photos}
+        />
       </Layout>
     </Wrapper>
   )

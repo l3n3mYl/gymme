@@ -1,50 +1,51 @@
 .Workouts {
   text-align: center;
-  width: 100%;
   color: #fff;
   text-shadow: 0 0 3px #000;
   overflow: hidden;
   margin: 100px 0 100px 0;
 
-  .sectionName {
+  .SectionName {
     text-shadow: none;
-    width: 100vw;
-    padding: 0 10px;
-    margin: auto;
 
-    .sectionImg {
-      left: 27%;
+    .SectionImg {
+      left: -27%;
     }
   }
 
-  .carousel {
-    .nav {
+  .Carousel {
+    .Nav {
       margin-left: auto;
       margin-right: auto;
       margin-top: 100px;
 
-      .next {
+      .Next {
         width: 40px;
         margin-right: 15px;
       }
   
-      .prev {
+      .Prev {
         width: 40px;
         margin-left: 15px;
       }
     }
 
-    .offer {
-      padding-top: 70px;
+    .Offer {
+      margin-top: 70px;
 
-      .image {
+      .Image {
         margin-top: 40px;
         object-fit: cover;
         width: 30vmin;
         height: 30vmin;
+
+        @include mq($breakpoint-full) {
+          width: 380px;
+          height: 480px;
+        }
       }
 
-      .title {
+      .Title {
         position: absolute;
         bottom: 7%;
         left: 15%;
@@ -59,15 +60,20 @@
       }
     }
 
-    .active {
-      .image {
+    .Active {
+      .Image {
         margin-top: 20px;
         width: 30vmin;
         height: 40vmin;
         transform: scale(1.2);
+
+        @include mq($breakpoint-full) {
+          width: 380px;
+          height: 568px;
+        }
       }
 
-      .title {
+      .Title {
         bottom: 0.5%;
         left: 5%;
       }
@@ -77,12 +83,12 @@
 
 @media screen and (min-width: $breakpoint-mobileLandscape) {
   .Workouts {
-    .carousel {
-      .nav {
+    .Carousel {
+      .Nav {
         margin-left: 70vw;
       }
-      .active {
-        .title {
+      .Active {
+        .Title {
           left: 10%;
         }
       }
@@ -92,11 +98,11 @@
 
 @media screen and (min-width: $breakpoint-tablet) {
   .Workouts {
-    .carousel {
-      .offer .title {
+    .Carousel {
+      .Offer .Title {
         bottom: 3%;
       }
-      .active .title {
+      .Active .Title {
         bottom: -1%;
       }
     }
@@ -105,14 +111,17 @@
 
 @media screen and (min-width: 1156px) {
   .Workouts {
-    .carousel {
-      .offer .title {
+    .SectionName .SectionImg {
+      left: -9em;
+    }
+    .Carousel {
+      .Offer .Title {
         bottom: 3%;
         left: 28%;
       }
-      .active .title {
-        left: 25%;
-        bottom: -4%;
+      .Active .Title {
+        left: 0%;
+        bottom: -2%;
       }
     }
   }
@@ -120,12 +129,13 @@
 
 @media screen and (min-width: 1272px) {
   .Workouts {
-    .carousel {
-      .offer .title {
+    .Carousel {
+      .Offer .Title {
         left: 30%;
       }
-      .active .title {
-        left: 25%;
+      .Active .Title {
+        left: 6%;
+        bottom: 0px;
       }
     }
   }
@@ -133,15 +143,15 @@
 
 @media screen and (min-width: 1500px) {
   .Workouts {
-    .carousel {
-      .offer {
+    .Carousel {
+      .Offer {
         padding-top: 115px;
       }
-      .offer .title {
-        left: 33%;
+      .Offer .Title {
+        left: 20%;
       }
-      .active .title {
-        left: 30%;
+      .Active .Title {
+        left: 15%;
       }
     }
   }
@@ -149,26 +159,19 @@
 
 @media screen and (min-width: $breakpoint-wide) {
   .Workouts {
-    .sectionName {
+    .SectionName {
       max-width: 2000px;
-  
-      .sectionImg {
-        // border: 2px solid green;
-        // max-width: 300px;
-        // max-height: 200px;
-        // margin-top: -20px;
-      }
     }
 
-    .carousel {
-      .offer .image {
-        max-width: 480px;
-        max-height: 480px;
+    .Carousel {
+      .Active .Title {
+        bottom: 20px;
       }
-
-      .offer .image {
-        max-width: 480px;
-        max-height: 768px;
+      .Nav {
+        width: 200px;
+        position: absolute;
+        right: 20px;
+        bottom: 0px;
       }
     }
   }

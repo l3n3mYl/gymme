@@ -3,11 +3,11 @@ import styles from './Layout.module.scss'
 import Navbar from '../Navbar'
 import { node, array, string } from 'prop-types'
 
-const Layout = ({ children, refs, title }) => {
+const Layout = ({ children, title }) => {
   
   return (
     <div className={styles.Content}>
-      <Navbar refs={refs} title={title} />
+      <Navbar title={title} />
       {children}
     </div>
   )
@@ -15,7 +15,6 @@ const Layout = ({ children, refs, title }) => {
 
 Layout.propTypes = {
   children: node,
-  refs: array.isRequired,
   title: string.isRequired
 }
 
