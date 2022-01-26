@@ -19,8 +19,8 @@ const CommunitySection = ({ id, className, title, photos }) => {
   SwiperCore.use([Pagination]);
 
   return (
-    <div id={id} className={classNames(styles.CommunitySection, className)}>
-      <Container size='full' className={styles.Container}>
+    <Container className={styles.Container}>
+      <div id={id} className={classNames(styles.CommunitySection, className)}>
         <IconHeading
           icon='./Icons/Speech Icon.svg'
           text={title && title}
@@ -72,8 +72,8 @@ const CommunitySection = ({ id, className, title, photos }) => {
             <Image ref={nextRef} className={styles.Next} src='Icons/Vector-7.svg' />
             <Image ref={prevRef} className={styles.Prev} src='Icons/Vector-8.svg' />
         </div>
-      </Container>
-    </div>
+      </div>
+    </Container>
   )
 }
 

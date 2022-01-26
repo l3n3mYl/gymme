@@ -18,7 +18,6 @@ import Workouts from '../components/Layouts/Workouts'
 import PricingSection from '../components/Layouts/PricingSection'
 import CommunitySection from '../components/Layouts/CommunitySection'
 import FAQSection from '../components/Layouts/FAQSection'
-import Wrapper from '../components/WideScreenWrapper'
 
 const Index = ({ homePageData, aboutPageData, workoutsPageData, pricingPageData, communityPageData, FAQSectionData }) => {
   
@@ -32,43 +31,41 @@ const Index = ({ homePageData, aboutPageData, workoutsPageData, pricingPageData,
   const { openGraph } = siteSettings
 
   return (
-    <Wrapper>
-      <Layout title={siteSettings.openGraph.title}>
-        <Meta {...openGraph} />
-        <HomeSection 
-          id='Home'
-          image={home.image}
-          title={home.title}
-          coloredTitle={home.coloredTitle}
-          subtitle={home.subtitle}
-        />
-        <AboutSection 
-          id='About' 
-          title={aboutPageData.title}
-          description={aboutPageData.description}
-          offerings={aboutPageData.offerings}
-        />
-        <Workouts
-          id='Workouts'
-          title={workoutsPageData.title}
-          offerings={workoutsPageData.offerings}
-        />
-        <PricingSection
-          id='Pricing'
-          title={pricingPageData.title}
-          pricings={pricingPageData.pricings}
-        />
-        <CommunitySection
-          id='Community'
-          title={communityPageData.title}
-          photos={communityPageData.photos}
-        />
-        <FAQSection
-          id='FAQ'
-          faq={FAQSectionData.faq}
-        />
-      </Layout>
-    </Wrapper>
+    <Layout title={siteSettings.openGraph.title}>
+      <Meta {...openGraph} />
+      <HomeSection 
+        id='Home'
+        image={home.image}
+        title={home.title}
+        coloredTitle={home.coloredTitle}
+        subtitle={home.subtitle}
+      />
+      <AboutSection 
+        id='About' 
+        title={aboutPageData.title}
+        description={aboutPageData.description}
+        offerings={aboutPageData.offerings}
+      />
+      <Workouts
+        id='Workouts'
+        title={workoutsPageData.title}
+        offerings={workoutsPageData.offerings}
+      />
+      <PricingSection
+        id='Pricing'
+        title={pricingPageData.title}
+        pricings={pricingPageData.pricings}
+      />
+      <CommunitySection
+        id='Community'
+        title={communityPageData.title}
+        photos={communityPageData.photos}
+      />
+      <FAQSection
+        id='FAQ'
+        faq={FAQSectionData.faq}
+      />
+    </Layout>
   )
 }
 

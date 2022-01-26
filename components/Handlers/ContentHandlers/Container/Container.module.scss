@@ -1,6 +1,16 @@
 .Container {
-  width: 100%;
   clear: both;
+  
+  width: 130vw;
+
+  @include mq($breakpoint-mobileLandscape) {
+    width: 100vw;
+  }
+
+  
+  @media screen and (min-width: $breakpoint-full) {
+    max-width: $breakpoint-full;
+  }
 }
 
 .noClearfix {
@@ -50,13 +60,13 @@
 }
 
 .mediumLarge {
-
-  max-width: 120vw;
+  margin: 0;
+  width: 130vw;
 
   @include mq($breakpoint-mobileLandscape) {
+    margin: auto;
     max-width: calc(100vw - 40px);
   }
-
 
   @include mq($breakpoint-tablet) {
     max-width: calc(100vw - 214px);
@@ -76,9 +86,10 @@
 }
 
 .small {
-  max-width: 388px; 
+  margin: 0;
   @include mq($breakpoint-mobileLandscape) {
     max-width: 620px;
+    margin: auto;
   }
 
   @include mq($breakpoint-desktop) {
