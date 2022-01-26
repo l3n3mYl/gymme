@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import styles from './Navbar.module.scss'
 import { array, string } from 'prop-types'
 import debounce from '../../lib/helpers/debounce'
+import CompanyIcon from '../Handlers/Elements/CompanyIcon'
+import classNames from 'classnames'
 
 const Navbar = ({ title }) => {
   
@@ -38,16 +40,20 @@ const Navbar = ({ title }) => {
   }, [handleScroll])
 
   return (
-    <header className={styles.Header}>
+    <header className={classNames(styles.Header, scrollState === 'highlight' ? styles.headerHighlight : '')}>
       <a href='#Home' className={styles.smallLogo}>{title}</a>
       <input type="checkbox" id={styles.menuToggle} className={styles.menuToggle} />
       <nav className={scrollState === "highlight" ? styles.highlightScrollbar : ''}>
-        <a href='#Home' className={styles.bigLogo}>{title}</a>
+        <a href='#Home' className={styles.bigLogo}><CompanyIcon /></a>
         <ul>
           {ids.map((id, i) => {
-            return <li key={`${id}_${i}`} ><a className={position == id ? styles.highlight : ''} href={`#${id}`}>{id} <div className={styles.underline}></div> </a></li>
+            return <li key={`${id}_${i}`} ><a className={position == id ? styles.highlight : ''} href={`#${id}`}>{id}</a></li>
           })}
         </ul>
+        <div className={styles.Buttons}>
+          <button>Log In</button>
+          <button>Sign Up</button>
+        </div>
       </nav>
       <label htmlFor={styles.menuToggle} className={styles.label}>
         <span />
