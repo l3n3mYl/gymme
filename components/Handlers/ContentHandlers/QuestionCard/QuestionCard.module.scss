@@ -19,6 +19,9 @@
   }
 
   .Answer {
+
+    display: none;
+
     width: inherit;
     padding: 20px;
     p{
@@ -31,6 +34,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    width: 100%;
+    border: none;
 
     h2 {
       font-style: normal;

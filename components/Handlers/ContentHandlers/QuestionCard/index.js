@@ -1,22 +1,40 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import { string, number, array } from 'prop-types';
 import classNames from 'classnames';
 import BlockContent from '../../BlockContentHandler'
-import Image from '../../ImageHandler'
 
 import styles from './QuestionCard.module.scss'
 
 const QuestionCard = ({ question, index, answer, className }) => {
+
+  const [cardState, setCardState] = useState(true);
+
+  const toggle = (_ => {
+    if(cardState) {
+      document.getElementById(`Answer_${index}`).style.display = 'block';
+      document.getElementById(`Button_${index}`).style.backgroundImage = "url('./Icons/Vector-2.svg')"
+      setCardState(false)
+    } else {
+      document.getElementById(`Answer_${index}`).style.display = 'none';
+      document.getElementById(`Button_${index}`).style.backgroundImage = "url('./Icons/Vector-3.svg')"
+      setCardState(true)
+    }
+  })
+
   return <div className={classNames(styles.QuestionCard, className)} >
-    <label htmlFor={index} className={styles.Question}>
+    <button onClick={toggle} className={styles.Question}>
       <h2>{question}</h2>
-      <div className={styles.Image} />
-    </label>
-    <input type="checkbox" name="checkbox" id={index} />
-    <BlockContent className={styles.Answer} blocks={answer} />
+      <div id={`Button_${index}`} className={styles.Image} />
+    </button>
+    <BlockContent id={`Answer_${index}`} className={styles.Answer} blocks={answer} />
   </div>;
 };
 
-QuestionCard.propTypes = {};
+QuestionCard.propTypes = {
+  question: string.isRequired,
+  index: number.isRequired,
+  answer: array.isRequired,
+  className: string
+};
 
 export default QuestionCard;
