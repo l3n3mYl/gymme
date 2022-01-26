@@ -1,22 +1,28 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import { string, number, array } from 'prop-types';
 import classNames from 'classnames';
 import BlockContent from '../../BlockContentHandler'
-import Image from '../../ImageHandler'
 
 import styles from './QuestionCard.module.scss'
 
 const QuestionCard = ({ question, index, answer, className }) => {
+
+  const [isToggled, setIsToggled] = useState(false);
+
   return <div className={classNames(styles.QuestionCard, className)} >
-    <label htmlFor={index} className={styles.Question}>
+    <button onClick={() => setIsToggled(!isToggled)} className={styles.Question}>
       <h2>{question}</h2>
-      <div className={styles.Image} />
-    </label>
-    <input type="checkbox" name="checkbox" id={index} />
-    <BlockContent className={styles.Answer} blocks={answer} />
+      <div className={classNames(styles.Image, isToggled && styles.imageOpen)} />
+    </button>
+    <BlockContent className={classNames(styles.Answer, isToggled && styles.answerOpen)} blocks={answer} />
   </div>;
 };
 
-QuestionCard.propTypes = {};
+QuestionCard.propTypes = {
+  question: string.isRequired,
+  index: number.isRequired,
+  answer: array.isRequired,
+  className: string
+};
 
 export default QuestionCard;

@@ -17,7 +17,7 @@ const PricingSection = ({ id, className, title, pricings }) => {
     <div id={id} className={classNames(styles.PricingSection, className)}>
       <Container center size='mediumLarge'>
         <IconHeading
-          icon='./Icons/PriceTag.png'
+          icon='./Icons/Vector-4.svg'
           text={title && title}
           className={styles.SectionName}
           imageClass={styles.SectionImage}
@@ -34,8 +34,8 @@ const PricingSection = ({ id, className, title, pricings }) => {
               {plan.extras.map((ex, index) => (
                 <p key={`${plan._key}_${index}`} >
                   <Image className={styles.Image} 
-                          src={i % 2 == 1 ? './Icons/CheckmarkW.png' 
-                                          : './Icons/CheckmarkB.png'}/> {ex}</p>
+                          src={i % 2 == 1 ? './Icons/Vector-5.svg' 
+                                          : './Icons/Vector-6.svg'}/> {ex}</p>
               ))}
             <button className={styles.JoinBtn}>Join Now</button>
             </div>

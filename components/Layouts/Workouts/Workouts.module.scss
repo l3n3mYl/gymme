@@ -10,6 +10,10 @@
 
     .SectionImg {
       left: -27%;
+
+      @include mq($breakpoint-tablet) {
+        left: -15%;
+      }
     }
   }
 
@@ -112,7 +116,7 @@
 @media screen and (min-width: 1156px) {
   .Workouts {
     .SectionName .SectionImg {
-      left: -9em;
+      left: -8em;
     }
     .Carousel {
       .Offer .Title {

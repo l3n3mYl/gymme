@@ -2,35 +2,27 @@
   margin: 20px 0;
   border: 1px solid $elementColor;
 
-  input {
+  .Answer {
     display: none;
+    width: inherit;
+    padding: 0 20px;
 
-    &:checked ~ .Answer {
-      visibility: visible;
-      opacity: 1;
-      transition: all ease-out 0.3s;
-    }
-
-    &:not(:checked) ~ .Answer {
-      visibility: hidden;
-      position: absolute;
-      opacity: 0;
+    p{
+      color: $backgroundDarker;
     }
   }
 
-  .Answer {
-    width: inherit;
-    padding: 20px;
-    p{
-      pointer-events: none;
-      color: $backgroundDarker;
-    }
+  .answerOpen {
+    display: block;
   }
 
   .Question {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: 18px;
+    width: 100%;
+    border: none;
 
     h2 {
       font-style: normal;
@@ -48,6 +40,10 @@
       vertical-align: middle;
       padding: 13px;
       margin-right: 20px;
+
+    }
+    .imageOpen {
+      background-image: url('../../../../public/Icons/Vector-2.svg');
     }
   }
 }

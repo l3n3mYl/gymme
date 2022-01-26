@@ -23,7 +23,7 @@ const Workouts = ({ title, offerings, id, className }) => {
     <div id={id} className={classNames(styles.Workouts, className)}>
       <Container center gutter size='full'>
         <IconHeading
-          icon={'./Icons/Callendar.png'}
+          icon={'./Icons/Vector-9.svg'}
           className={styles.SectionName}
           imageClass={styles.SectionImg}
           text={title && title}
@@ -52,8 +52,8 @@ const Workouts = ({ title, offerings, id, className }) => {
           centeredSlides={true}
         >
           <div className={styles.Nav}>
-            <AnyImage ref={nextRef} className={styles.Next} src='Icons/ArrowLeft.png' />
-            <AnyImage ref={prevRef} className={styles.Prev} src='Icons/ArrowRight.png' />
+            <AnyImage ref={prevRef} className={styles.Next} src='Icons/Vector-7.svg' />
+            <AnyImage ref={nextRef} className={styles.Prev} src='Icons/Vector-8.svg' />
           </div>
           {offerings && offerings.map(offer => {
             return <SwiperSlide key={offer._key} className={styles.Card}>
