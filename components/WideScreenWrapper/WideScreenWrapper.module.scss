@@ -1,5 +1,9 @@
 .Wrapper {
   width: 130vw;
+
+  @include mq($breakpoint-mobileLandscape) {
+    width: 100vw;
+  }
 }
 
 @media screen and (min-width: $breakpoint-full) {

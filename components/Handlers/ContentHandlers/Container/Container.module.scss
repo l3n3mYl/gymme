@@ -76,7 +76,7 @@
 }
 
 .small {
-  max-width: 388px; 
+  max-width: 388px;
   @include mq($breakpoint-mobileLandscape) {
     max-width: 620px;
   }
