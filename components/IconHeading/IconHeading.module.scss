@@ -1,14 +1,10 @@
 .IconHeading {
   color: $elementColor;
   font-weight: 800;
-  font-size: 30px;
+  font-size: 32px;
 
   @include mq($breakpoint-tablet) {
-    font-size: 20px;
-  }
-
-  @include mq($breakpoint-full) {
-    font-size: 25px;
+    font-size: 50px;
   }
 
   .Image {

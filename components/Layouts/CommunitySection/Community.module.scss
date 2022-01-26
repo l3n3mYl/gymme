@@ -1,6 +1,6 @@
 .CommunitySection {
   .SectionName {
-    width: 20vw;
+    // width: 20vw;
     margin-left: 100px;
     margin-bottom: 70px;
   }
@@ -16,7 +16,6 @@
 
   .Cards {
     .Card {
-
       .Testimonials {
         .Name {
           font-family: $fontSubtitle;
@@ -84,7 +83,7 @@
   .CommunitySection {
     .Nav {
       margin-right: auto;
-      margin-left: 80px;
+      margin-left: 50px;
       margin-top: -90px;
       margin-bottom: 100px;
     }
@@ -96,10 +95,12 @@
   }
 }
 
-@media screen and (min-width: $breakpoint-desktop) {
+@media screen and (min-width: $breakpoint-desktopLarge) {
   .CommunitySection {
+    .SectionName {
+      margin-left: 50px;
+    }
     .Container {
-
       @include mq($breakpoint-wide) {
         width: $breakpoint-wide;
       }

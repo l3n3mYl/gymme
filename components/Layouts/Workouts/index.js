@@ -38,6 +38,9 @@ const Workouts = ({ title, offerings, id, className }) => {
           loop={true}
           breakpoints={{
             10: {
+              slidesPerView: 1
+            },
+            400: {
               spaceBetween: 40,
               slidesPerView: 2.5
             },
@@ -45,7 +48,7 @@ const Workouts = ({ title, offerings, id, className }) => {
               spaceBetween: 20,
               slidesPerView: 3.5
             },
-            1156: {
+            1268: {
               slidesPerView: 4.5
             }
           }}
@@ -60,7 +63,7 @@ const Workouts = ({ title, offerings, id, className }) => {
             {({ isActive }) => {
               return <div className={classNames(styles.Offer, isActive && styles.Active)}>
                         <AnyImage className={styles.Image} src={offer.image} />
-                        <p className={styles.Title}>{offer.title}</p>
+                        <p className={classNames(styles.Title, isActive && styles.activeTitle)}>{offer.title}</p>
               </div>
             }}
           </SwiperSlide>

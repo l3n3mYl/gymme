@@ -6,7 +6,7 @@ import Footer from '../Layouts/Footer'
 const Layout = ({ children, title }) => {
   
   return (
-    <div className={styles.Content}>
+    <div>
       <Navbar title={title} />
       {children}
       <Footer />
