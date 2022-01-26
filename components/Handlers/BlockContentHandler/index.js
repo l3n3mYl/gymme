@@ -5,7 +5,7 @@ import client from "../../../lib/sanity";
 import styles from './styles/BlockContent.module.scss'
 import SanityBlockContent from '@sanity/block-content-to-react'
 
-const BlockContent = ({ blocks, id, className, ...others }) => {
+const BlockContent = ({ blocks, className, ...others }) => {
 
   const serializers = (baseFontSize) => ({
     marks: {
@@ -111,7 +111,7 @@ const BlockContent = ({ blocks, id, className, ...others }) => {
     }
   })
 
-  return  <div id={id} className={classNames(styles.Content, className)}>
+  return  <div className={classNames(styles.Content, className)}>
     <SanityBlockContent
       blocks={blocks}
       serializers={serializers()}

@@ -7,26 +7,14 @@ import styles from './QuestionCard.module.scss'
 
 const QuestionCard = ({ question, index, answer, className }) => {
 
-  const [cardState, setCardState] = useState(true);
-
-  const toggle = (_ => {
-    if(cardState) {
-      document.getElementById(`Answer_${index}`).style.display = 'block';
-      document.getElementById(`Button_${index}`).style.backgroundImage = "url('./Icons/Vector-2.svg')"
-      setCardState(false)
-    } else {
-      document.getElementById(`Answer_${index}`).style.display = 'none';
-      document.getElementById(`Button_${index}`).style.backgroundImage = "url('./Icons/Vector-3.svg')"
-      setCardState(true)
-    }
-  })
+  const [isToggled, setIsToggled] = useState(false);
 
   return <div className={classNames(styles.QuestionCard, className)} >
-    <button onClick={toggle} className={styles.Question}>
+    <button onClick={() => setIsToggled(!isToggled)} className={styles.Question}>
       <h2>{question}</h2>
-      <div id={`Button_${index}`} className={styles.Image} />
+      <div className={classNames(styles.Image, isToggled && styles.imageOpen)} />
     </button>
-    <BlockContent id={`Answer_${index}`} className={styles.Answer} blocks={answer} />
+    <BlockContent className={classNames(styles.Answer, isToggled && styles.answerOpen)} blocks={answer} />
   </div>;
 };
 
