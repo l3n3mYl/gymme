@@ -1,12 +1,9 @@
 .AboutSection {
-  // margin: auto;
-
   .Description {
     text-align: left;
     width: inherit;
     font-family: $fontHeading;
     font-size: 20px;
-    margin: 0 calc(16% - 40px);
     color: $backgroundDarker;
   }
 

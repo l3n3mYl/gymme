@@ -9,7 +9,7 @@ import styles from './FAQ.module.scss'
 
 const FAQSection = ({ faq, id, className }) => {
   return <div id={id} className={classNames(styles.FAQ, className)} >
-    <Container center size='small' >
+    <Container center gutter size='small' >
       <IconHeading
         icon='./Icons/Vector.svg'
         text='FAQ'

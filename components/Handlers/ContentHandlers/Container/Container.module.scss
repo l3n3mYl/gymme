@@ -50,7 +50,13 @@
 }
 
 .mediumLarge {
-  max-width: calc(100vw - 40px);
+
+  max-width: 120vw;
+
+  @include mq($breakpoint-mobileLandscape) {
+    max-width: calc(100vw - 40px);
+  }
+
 
   @include mq($breakpoint-tablet) {
     max-width: calc(100vw - 214px);
@@ -71,7 +77,7 @@
 
 .small {
   max-width: 388px; 
-  @include mq($breakpoint-tablet) {
+  @include mq($breakpoint-mobileLandscape) {
     max-width: 620px;
   }
 
