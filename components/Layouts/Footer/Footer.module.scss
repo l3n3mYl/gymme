@@ -1,0 +1,80 @@
+.Footer {
+  background-color: $elementColor;
+  margin-top: 200px;
+  max-width: $breakpoint-full;
+
+  .Container {
+    max-width: 1440px;
+    margin: auto;
+  }
+
+  .Image {
+    width: 280px;
+    height: 386px;
+    position: relative;
+    top: -80px;
+
+    @include mq($breakpoint-tablet) {
+      width: 450px;
+      height: 618px;
+    }
+
+    @include mq($breakpoint-desktop) {
+      width: 500px;
+      margin-left: 259px;
+    }
+  }
+
+  .InviteText {
+    color: white;
+    padding-left: 30px;
+    position: relative;
+    top: -190px;
+
+    @include mq($breakpoint-tablet) {
+      margin-left: auto;
+      width: 500px;
+      top: -500px;
+      padding-right: 10px;
+    }
+
+    @include mq($breakpoint-desktop) {
+      margin-right: 267px;
+    }
+
+    p {
+      color: $backgroundLight;
+      padding-bottom: 16px;
+    }
+
+    button {
+      border: 1px solid transparent;
+      width: 143px;
+      height: 46px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    h2 {
+      font-size: 40px;
+      width: 10ch;
+      padding-bottom: 16px;
+
+      span {
+        color: $accentColor;
+      }
+    }
+  }
+
+  .BottomText {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px 20px 50px;
+
+    p {
+      color: $backgroundLight;
+      font-size: 12px;
+    }
+  }
+}

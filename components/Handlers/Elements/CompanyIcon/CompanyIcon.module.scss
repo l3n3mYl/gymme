@@ -1,0 +1,31 @@
+.CompanyIcon {
+  background-color: $elementColor;
+  width: 300px;
+  padding-top: 10px;
+  display: flex;
+
+  .Name {
+    font-family: $fontHeading;
+    color: $backgroundColor;
+    font-size: 25px;
+    font-weight: 600;
+
+    span {
+      font-size: 14px;
+      color: $accentColor;
+    }
+  }
+
+  .Icon {
+    display: flex;
+    width: 45px;
+    flex-direction: column;
+    padding-right: 16px;
+
+    & > :nth-child(2) {
+      position: relative;
+      left: 4px;
+      bottom: 8px;
+    }
+  }
+}
