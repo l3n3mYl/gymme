@@ -16,7 +16,8 @@
   @include mq($breakpoint-tablet) {
     background-image: url('../../../public/Icons/Vector.svg');
     background-repeat: no-repeat;
-    height: 100vh;
+    height: 100%;
+    padding-bottom: 200px;
     background-position: center;
   }
 }
