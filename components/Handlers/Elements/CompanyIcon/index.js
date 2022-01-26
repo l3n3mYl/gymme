@@ -1,10 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Image from '../../ImageHandler'
 
 import styles from './CompanyIcon.module.scss'
 
-const CompanyIcon = (props) => {
+const CompanyIcon = () => {
   return <div className={styles.CompanyIcon}>
     <div className={styles.Icon}>
       <Image src='./Icons/Path.svg' />
