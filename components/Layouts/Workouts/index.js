@@ -20,8 +20,8 @@ const Workouts = ({ title, offerings, id, className }) => {
   const nextRef = useRef(null);
 
   return (
-    <div id={id} className={classNames(styles.Workouts, className)}>
-      <Container center size='full'>
+    <Container center>
+      <div id={id} className={classNames(styles.Workouts, className)}>
         <IconHeading
           icon={'./Icons/Vector-9.svg'}
           className={styles.SectionName}
@@ -66,8 +66,8 @@ const Workouts = ({ title, offerings, id, className }) => {
           </SwiperSlide>
           })}
         </Swiper>
-      </Container>
-    </div> 
+      </div> 
+    </Container>
       
   )
 }

@@ -6,6 +6,7 @@
     object-fit: cover;
     object-position: right center;
     height: 100vh;
+    max-height: 1200px;
     display: block;
     margin-left: auto;
     width: 72vw;
@@ -101,9 +102,6 @@
 @media screen and (min-width: $breakpoint-wide) {
   .HomeSection {
     max-height: 1500px;
-    .Image {
-      max-height: 1200px;
-    }
 
     .Quote  {
       .Title {

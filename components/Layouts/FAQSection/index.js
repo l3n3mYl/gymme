@@ -8,8 +8,8 @@ import QuestionCard from '../../Handlers/ContentHandlers/QuestionCard';
 import styles from './FAQ.module.scss'
 
 const FAQSection = ({ faq, id, className }) => {
-  return <div id={id} className={classNames(styles.FAQ, className)} >
-    <Container center gutter size='small' >
+  return <Container center gutter size='small' >
+    <div id={id} className={classNames(styles.FAQ, className)} >
       <IconHeading
         icon='./Icons/Vector.svg'
         text='FAQ'
@@ -27,8 +27,8 @@ const FAQSection = ({ faq, id, className }) => {
           index={i}
         />
       })}
-    </Container>
-  </div>;
+    </div>;
+  </Container>
 };
 
 FAQSection.propTypes = {

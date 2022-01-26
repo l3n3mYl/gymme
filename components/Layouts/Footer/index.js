@@ -5,8 +5,8 @@ import CompanyIcon from '../../Handlers/Elements/CompanyIcon';
 import Container from '../../Handlers/ContentHandlers/Container'
 
 const Footer = () => {
-  return <div className={styles.Footer}>
-    <Container className={styles.Container}>
+  return <Container className={styles.Container}>
+    <div className={styles.Footer}>
       <Image className={styles.Image} src='./FooterImg.png' />
       <div className={styles.InviteText}>
         <h2>Wanna Join <span>&</span> have fun?</h2>
@@ -17,8 +17,8 @@ const Footer = () => {
         <CompanyIcon />
         <p>All rights reserved. Gymme 2021.</p>
       </div>
-    </Container>
-  </div>;
+   </div>
+  </Container>
 };
 
 Footer.propTypes = {};

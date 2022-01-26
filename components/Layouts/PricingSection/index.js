@@ -14,8 +14,8 @@ SwiperCore.use([Pagination]);
 
 const PricingSection = ({ id, className, title, pricings }) => {
   return (
-    <div id={id} className={classNames(styles.PricingSection, className)}>
-      <Container center size='mediumLarge'>
+    <Container center size='mediumLarge'>
+      <div id={id} className={classNames(styles.PricingSection, className)}>
         <IconHeading
           icon='./Icons/Vector-4.svg'
           text={title && title}
@@ -42,8 +42,8 @@ const PricingSection = ({ id, className, title, pricings }) => {
           </div>
         })}
         </div>
-      </Container>
-    </div>
+     </div>
+    </Container>
   )
 }
 
