@@ -1,11 +1,6 @@
 .Container {
   clear: both;
   width: 100%;
-
-  @include mq($breakpoint-mobileLandscape) {
-    width: 100vw;
-  }
-
   
   @media screen and (min-width: $breakpoint-full) {
     max-width: $breakpoint-full;
