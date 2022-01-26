@@ -40,8 +40,13 @@
       .Image {
         margin-top: 40px;
         object-fit: cover;
-        width: 30vmin;
-        height: 30vmin;
+        width: 30vw;
+        height: 30vh;
+
+        @include mq($breakpoint-mobileLandscape) {
+          width: 30vmin;
+          height: 30vmin;
+        }
 
         @include mq($breakpoint-full) {
           width: 380px;
@@ -67,9 +72,14 @@
     .Active {
       .Image {
         margin-top: 20px;
-        width: 30vmin;
-        height: 40vmin;
+        width: 40vw;
+        height: 35vh;
         transform: scale(1.2);
+
+        @include mq($breakpoint-mobileLandscape) {
+          width: 30vmin;
+          height: 40vmin;
+        }
 
         @include mq($breakpoint-full) {
           width: 380px;

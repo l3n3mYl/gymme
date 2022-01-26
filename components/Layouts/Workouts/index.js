@@ -21,7 +21,7 @@ const Workouts = ({ title, offerings, id, className }) => {
 
   return (
     <div id={id} className={classNames(styles.Workouts, className)}>
-      <Container center gutter size='full'>
+      <Container center size='full'>
         <IconHeading
           icon={'./Icons/Vector-9.svg'}
           className={styles.SectionName}
@@ -41,7 +41,7 @@ const Workouts = ({ title, offerings, id, className }) => {
               spaceBetween: 40,
               slidesPerView: 2.5
             },
-            850: {
+            960: {
               spaceBetween: 20,
               slidesPerView: 3.5
             },

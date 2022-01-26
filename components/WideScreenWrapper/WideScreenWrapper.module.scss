@@ -1,3 +1,7 @@
+.Wrapper {
+  width: 130vw;
+}
+
 @media screen and (min-width: $breakpoint-full) {
   .Wrapper {
     max-width: $breakpoint-full;

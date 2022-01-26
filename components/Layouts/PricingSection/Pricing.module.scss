@@ -12,8 +12,12 @@
   }
 
   .SectionImage {
-    left: -150px;
+    left: -50px;
     bottom: -80px;
+
+    @include mq($breakpoint-tablet) {
+      left: -100px;
+    }
   }
 
   .Cards {
