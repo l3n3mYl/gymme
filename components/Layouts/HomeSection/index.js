@@ -7,7 +7,7 @@ import AnyImage from '../../Handlers/ImageHandler'
 
 const HomeSection = ({ image, title, subtitle, coloredTitle, id, className }) => {
   return (
-    <Container center>
+    <Container center size='full'>
       <div id={id} className={classNames(styles.HomeSection, className)}>
           <AnyImage src={image} className={styles.Image} />
           <div className={styles.Quote}>

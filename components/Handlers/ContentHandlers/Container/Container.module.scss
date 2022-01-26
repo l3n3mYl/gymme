@@ -1,7 +1,6 @@
 .Container {
   clear: both;
-  
-  width: 130vw;
+  width: 100%;
 
   @include mq($breakpoint-mobileLandscape) {
     width: 100vw;
@@ -52,7 +51,12 @@
 }
 
 .wide {
-  max-width: 1500px;
+  width: 100%;
+
+  @include mq($breakpoint-mobileLandscape) {
+    margin: auto;
+    max-width: 1500px;
+  }
 }
 
 .large {
@@ -60,8 +64,8 @@
 }
 
 .mediumLarge {
-  margin: 0;
-  width: 130vw;
+
+  max-width: 368px;
 
   @include mq($breakpoint-mobileLandscape) {
     margin: auto;
