@@ -2,7 +2,7 @@ import Layout from '../components/Layout/Layout'
 import { useRouter } from 'next/router'
 import { getHomeDataQuery } from '../lib/queries'
 import Meta from '../components/Meta/Meta'
-import { 
+import {
   getHomeData,
   getAboutPageData,
   usePreviewSubscription,
@@ -10,7 +10,7 @@ import {
   getPricingPageData,
   getCommunityPageData,
   getFAQSectionData
- } from '../lib/sanity'
+} from '../lib/sanity'
 
 import HomeSection from '../components/Layouts/HomeSection'
 import AboutSection from '../components/Layouts/AboutSection'
@@ -19,8 +19,14 @@ import PricingSection from '../components/Layouts/PricingSection'
 import CommunitySection from '../components/Layouts/CommunitySection'
 import FAQSection from '../components/Layouts/FAQSection'
 
-const Index = ({ homePageData, aboutPageData, workoutsPageData, pricingPageData, communityPageData, FAQSectionData }) => {
-  
+const Index = ({
+  homePageData,
+  aboutPageData,
+  workoutsPageData,
+  pricingPageData,
+  communityPageData,
+  FAQSectionData
+}) => {
   const router = useRouter()
   const { data: pageData } = usePreviewSubscription(getHomeDataQuery, {
     initialData: homePageData,
@@ -33,38 +39,35 @@ const Index = ({ homePageData, aboutPageData, workoutsPageData, pricingPageData,
   return (
     <Layout title={siteSettings.openGraph.title}>
       <Meta {...openGraph} />
-      <HomeSection 
-        id='Home'
+      <HomeSection
+        id="Home"
         image={home.image}
         title={home.title}
         coloredTitle={home.coloredTitle}
         subtitle={home.subtitle}
       />
-      <AboutSection 
-        id='About' 
+      <AboutSection
+        id="About"
         title={aboutPageData.title}
         description={aboutPageData.description}
         offerings={aboutPageData.offerings}
       />
       <Workouts
-        id='Workouts'
+        id="Workouts"
         title={workoutsPageData.title}
         offerings={workoutsPageData.offerings}
       />
       <PricingSection
-        id='Pricing'
+        id="Pricing"
         title={pricingPageData.title}
         pricings={pricingPageData.pricings}
       />
       <CommunitySection
-        id='Community'
+        id="Community"
         title={communityPageData.title}
         photos={communityPageData.photos}
       />
-      <FAQSection
-        id='FAQ'
-        faq={FAQSectionData.faq}
-      />
+      <FAQSection id="FAQ" faq={FAQSectionData.faq} />
     </Layout>
   )
 }
@@ -78,14 +81,14 @@ export const getStaticProps = async () => {
   const FAQSectionData = await getFAQSectionData()
 
   return {
-    props: { 
+    props: {
       homePageData: homePageData,
       aboutPageData: aboutPageData,
       workoutsPageData: workoutsPageData,
       pricingPageData: pricingPageData,
       communityPageData: communityPageData,
       FAQSectionData: FAQSectionData
-     },
+    },
     revalidate: 60
   }
 }

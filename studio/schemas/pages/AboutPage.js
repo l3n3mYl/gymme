@@ -1,7 +1,7 @@
 export default {
-  name: "about",
-  title: "About",
-  type: "document",
+  name: 'about',
+  title: 'About',
+  type: 'document',
   fields: [
     {
       name: 'title',
@@ -12,13 +12,13 @@ export default {
       name: 'description',
       title: 'Description',
       type: 'blockContent'
-    },
+    }
   ],
   preview: {
     prepare() {
       return {
-        title: "About Us",
-      };
-    },
-  },
-};
+        title: 'About Us'
+      }
+    }
+  }
+}

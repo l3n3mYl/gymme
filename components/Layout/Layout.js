@@ -4,7 +4,6 @@ import { node, string } from 'prop-types'
 import Footer from '../Layouts/Footer'
 
 const Layout = ({ children, title }) => {
-  
   return (
     <div>
       <Navbar title={title} />

@@ -26,11 +26,21 @@
       .Next {
         width: 40px;
         margin-right: 15px;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 0.9;
+        }
       }
   
       .Prev {
         width: 40px;
         margin-left: 15px;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 0.9;
+        }
       }
     }
 
@@ -101,7 +111,9 @@
   .Workouts {
     .Carousel {
       .Nav {
-        margin-left: 70vw;
+        width: 150px;
+        margin-right: 0;
+        margin-left: auto;
       }
       .Active {
         .Title {

@@ -1,9 +1,9 @@
 import { BsQuestionLg } from 'react-icons/bs'
 
 export default {
-  name: "faqTemp",
-  title: "FAQ Template",
-  type: "document",
+  name: 'faqTemp',
+  title: 'FAQ Template',
+  type: 'document',
   icon: BsQuestionLg,
   fields: [
     {
@@ -12,15 +12,15 @@ export default {
       type: 'string'
     },
     {
-      name: "answer",
-      title: "Answer",
-      type: "blockContent",
+      name: 'answer',
+      title: 'Answer',
+      type: 'blockContent'
     }
   ],
-  prepare({ title = "FAQ Temp" }) {
+  prepare({ title = 'FAQ Temp' }) {
     return {
       title,
       media: BsQuestionLg
     }
   }
-};
+}

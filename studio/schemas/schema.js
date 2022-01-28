@@ -31,7 +31,6 @@ import siteSettings from './siteSettings'
 import category from './category'
 import companyInfo from './companyInfo'
 
-
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
   name: 'default',
@@ -62,6 +61,6 @@ export default createSchema({
     author,
     siteSettings,
     category,
-    companyInfo  
+    companyInfo
   ])
 })

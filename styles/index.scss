@@ -18,6 +18,10 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
 
+  button {
+    cursor: pointer;
+  }
+
   h2 {
     font-family: $fontHeading;
   }

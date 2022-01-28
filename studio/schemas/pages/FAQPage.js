@@ -1,20 +1,20 @@
 export default {
-  name: "faqPage",
-  title: "FAQ Page",
-  type: "document",
+  name: 'faqPage',
+  title: 'FAQ Page',
+  type: 'document',
   fields: [
     {
       name: 'faq',
       title: 'FAQ',
       type: 'array',
-      of: [{type: "faqTemp"}]
-    },
+      of: [{ type: 'faqTemp' }]
+    }
   ],
   preview: {
     prepare() {
       return {
-        title: "FAQ",
-      };
-    },
-  },
-};
+        title: 'FAQ'
+      }
+    }
+  }
+}

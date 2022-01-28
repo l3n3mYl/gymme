@@ -7,17 +7,16 @@ import 'swiper/css'
 import IconHeading from '../../IconHeading'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
-import SwiperCore, { Navigation } from 'swiper';
+import SwiperCore, { Navigation } from 'swiper'
 import 'swiper/css'
-import "swiper/css/navigation"
+import 'swiper/css/navigation'
 import Container from '../../Handlers/ContentHandlers/Container'
 
 const Workouts = ({ title, offerings, id, className }) => {
-
   SwiperCore.use([Navigation])
 
   const prevRef = useRef(null)
-  const nextRef = useRef(null);
+  const nextRef = useRef(null)
 
   return (
     <Container center>
@@ -28,7 +27,7 @@ const Workouts = ({ title, offerings, id, className }) => {
           imageClass={styles.SectionImg}
           text={title && title}
         />
-        <Swiper 
+        <Swiper
           className={styles.Carousel}
           navigation={{
             prevEl: prevRef.current,
@@ -55,23 +54,47 @@ const Workouts = ({ title, offerings, id, className }) => {
           centeredSlides={true}
         >
           <div className={styles.Nav}>
-            <AnyImage ref={prevRef} className={styles.Next} src='Icons/Vector-7.svg' />
-            <AnyImage ref={nextRef} className={styles.Prev} src='Icons/Vector-8.svg' />
+            <AnyImage
+              ref={prevRef}
+              className={styles.Next}
+              src="Icons/Vector-7.svg"
+            />
+            <AnyImage
+              ref={nextRef}
+              className={styles.Prev}
+              src="Icons/Vector-8.svg"
+            />
           </div>
-          {offerings && offerings.map(offer => {
-            return <SwiperSlide key={offer._key} className={styles.Card}>
-            {({ isActive }) => {
-              return <div className={classNames(styles.Offer, isActive && styles.Active)}>
+          {offerings &&
+            offerings.map((offer) => {
+              return (
+                <SwiperSlide key={offer._key} className={styles.Card}>
+                  {({ isActive }) => {
+                    return (
+                      <div
+                        className={classNames(
+                          styles.Offer,
+                          isActive && styles.Active
+                        )}
+                      >
                         <AnyImage className={styles.Image} src={offer.image} />
-                        <p className={classNames(styles.Title, isActive && styles.activeTitle)}>{offer.title}</p>
-              </div>
-            }}
-          </SwiperSlide>
-          })}
+                        <p
+                          className={classNames(
+                            styles.Title,
+                            isActive && styles.activeTitle
+                          )}
+                        >
+                          {offer.title}
+                        </p>
+                      </div>
+                    )
+                  }}
+                </SwiperSlide>
+              )
+            })}
         </Swiper>
-      </div> 
+      </div>
     </Container>
-      
   )
 }
 

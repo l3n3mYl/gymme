@@ -1,7 +1,7 @@
 export default {
-  name: "workouts",
-  title: "Workouts",
-  type: "document",
+  name: 'workouts',
+  title: 'Workouts',
+  type: 'document',
   fields: [
     {
       name: 'title',
@@ -12,14 +12,14 @@ export default {
       name: 'offerings',
       title: 'Offerings',
       type: 'array',
-      of: [{ type: "imageTitle" }],
-    },
+      of: [{ type: 'imageTitle' }]
+    }
   ],
   preview: {
     prepare() {
       return {
-        title: "Workouts Page",
-      };
-    },
-  },
-};
+        title: 'Workouts Page'
+      }
+    }
+  }
+}

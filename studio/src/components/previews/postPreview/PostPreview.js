@@ -8,7 +8,7 @@ export default function PostPreview(props) {
   const { displayed } = props.document
   const slug = displayed?.slug?.current
 
-  if(!slug) {
+  if (!slug) {
     return <div>The post needs a slug before it can be previewed.</div>
   }
 
@@ -20,7 +20,7 @@ export default function PostPreview(props) {
   return (
     <div className={styles.componentWrapper}>
       <div className={styles.iframeContainer}>
-        <iframe src={url} frameborder={"0"} />
+        <iframe title={slug} src={url} frameBorder={'0'} />
       </div>
     </div>
   )
