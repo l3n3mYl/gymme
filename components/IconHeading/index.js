@@ -8,8 +8,15 @@ import styles from './IconHeading.module.scss'
 const IconHeading = ({ icon, className, imageClass, text }) => {
   return (
     <div className={classNames(styles.IconHeading, className)}>
-      <Image className={classNames(styles.Image, imageClass)} src={icon} />
-      <h2>{text}<span>.</span></h2>
+      <Image
+        alt="Heading Icon"
+        className={classNames(styles.Image, imageClass)}
+        src={icon}
+      />
+      <h2>
+        {text}
+        <span>.</span>
+      </h2>
     </div>
   )
 }

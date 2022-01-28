@@ -1,51 +1,51 @@
-import { FaPhotoVideo } from "react-icons/fa";
+import { FaPhotoVideo } from 'react-icons/fa'
 
 export default {
-  name: "imageTitle",
-  title: "Image Title",
-  type: "object",
+  name: 'imageTitle',
+  title: 'Image Title',
+  type: 'object',
   options: {
-    hotspot: true,
+    hotspot: true
   },
   fields: [
     {
-      name: "image",
-      title: "Image",
-      type: "image",
+      name: 'image',
+      title: 'Image',
+      type: 'image',
       preview: {
         select: {
-          image: "image",
+          image: 'image'
         },
         prepare({ image }) {
           return {
-            media: image,
-          };
-        },
-      },
+            media: image
+          }
+        }
+      }
     },
     {
-      title: "Alternative text for image (for screen readers)",
-      name: "alt",
-      type: "string",
+      title: 'Alternative text for image (for screen readers)',
+      name: 'alt',
+      type: 'string',
       options: {
         isHighlighted: true
       }
     },
     {
-      name: "title",
-      title: "Title",
-      type: "string",
-    },
+      name: 'title',
+      title: 'Title',
+      type: 'string'
+    }
   ],
   preview: {
     select: {
-      description: "descripion",
+      description: 'descripion'
     },
-    prepare({ description = ""}) {
+    prepare({ description = '' }) {
       return {
-        title: "Image Card" + description ,
-        media: FaPhotoVideo,
-      };
-    },
-  },
-};
+        title: 'Image Card' + description,
+        media: FaPhotoVideo
+      }
+    }
+  }
+}

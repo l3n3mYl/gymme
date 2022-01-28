@@ -1,11 +1,19 @@
-import React from 'react';
-import { bool, node, oneOf, string } from 'prop-types';
+import React from 'react'
+import { bool, node, oneOf, string } from 'prop-types'
 import classNames from 'classnames'
 import Element from '../../Element'
 
 import styles from './Container.module.scss'
 
-export const sizes = ['small', 'medium', 'mediumLarge', 'large', 'wide', 'spacious', 'full']
+export const sizes = [
+  'small',
+  'medium',
+  'mediumLarge',
+  'large',
+  'wide',
+  'spacious',
+  'full'
+]
 
 const Container = ({
   as,
@@ -31,10 +39,11 @@ const Container = ({
       hideOverFlow && styles.hideOverflow,
       className
     )}
+    {...other}
   >
     {children}
   </Element>
-);
+)
 
 Container.propTypes = {
   as: string,
@@ -46,6 +55,6 @@ Container.propTypes = {
   size: oneOf(sizes),
   spacious: bool,
   hideOverFlow: bool
-};
+}
 
-export default Container;
+export default Container

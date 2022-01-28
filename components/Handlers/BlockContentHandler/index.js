@@ -1,37 +1,12 @@
 import React from 'react'
 import classNames from 'classnames'
 import Type from '../Type'
-import client from "../../../lib/sanity";
+import client from '../../../lib/sanity'
 import styles from './styles/BlockContent.module.scss'
 import SanityBlockContent from '@sanity/block-content-to-react'
 
 const BlockContent = ({ blocks, className, ...others }) => {
-
   const serializers = (baseFontSize) => ({
-    marks: {
-      button: ({ mark, children }) => {
-        return (
-          children[0] && (
-            <ButtonStandard
-              override
-              target={mark.blank && '_blank'}
-              href={mark.href}
-            >
-              {children}
-            </ButtonStandard>
-          )
-        )
-      },
-      link: ({ mark, children }) => {
-        return (
-          children[0] && (
-            <SmartLink target={mark.blank && '_blank'} href={mark.href}>
-              {children}
-            </SmartLink>
-          )
-        )
-      }
-    },
     types: {
       block(props) {
         switch (props.node.style) {
@@ -53,14 +28,14 @@ const BlockContent = ({ blocks, className, ...others }) => {
                 {props.children}
               </Type>
             )
-  
+
           case 'h4':
             return (
               <Type as="h4" size="title" padded>
                 {props.children}
               </Type>
             )
-  
+
           case 'baseLarge':
             return (
               <Type as="p" size="baseLarge">
@@ -79,10 +54,7 @@ const BlockContent = ({ blocks, className, ...others }) => {
                 {props.children}
               </Type>
             )
-  
-          case 'blockquote':
-            return <Blockquote quoteMarks>{props.children}</Blockquote>
-  
+
           default:
             if (props.children.length > 1 || props.children[0] !== '') {
               return (
@@ -111,14 +83,16 @@ const BlockContent = ({ blocks, className, ...others }) => {
     }
   })
 
-  return  <div className={classNames(styles.Content, className)}>
-    <SanityBlockContent
-      blocks={blocks}
-      serializers={serializers()}
-      {...client.config()}
-      {...others}
-    />
-  </div>
+  return (
+    <div className={classNames(styles.Content, className)}>
+      <SanityBlockContent
+        blocks={blocks}
+        serializers={serializers()}
+        {...client.config()}
+        {...others}
+      />
+    </div>
+  )
 }
 
 export default BlockContent

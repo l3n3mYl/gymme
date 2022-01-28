@@ -13,7 +13,7 @@ const Meta = ({ title, description, canonical, image }) => {
   const config = {
     title: title,
     description: description,
-    ...(canonical && { canonical: canonicalUrl}),
+    ...(canonical && { canonical: canonicalUrl }),
     openGraph: {
       title: title,
       description: description,

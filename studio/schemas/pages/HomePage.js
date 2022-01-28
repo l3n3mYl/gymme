@@ -1,40 +1,40 @@
 import { MdMenu } from 'react-icons/md'
 
 export default {
-  name: "homePage",
-  title: "Home Page",
-  type: "document",
+  name: 'homePage',
+  title: 'Home Page',
+  type: 'document',
   icon: MdMenu,
   options: {
     hotspot: true
   },
   fields: [
     {
-      title: "Title",
-      name: "title",
-      type: "string"
+      title: 'Title',
+      name: 'title',
+      type: 'string'
     },
     {
-      title: "Colored Title",
-      name: "coloredTitle",
-      type: "string"
+      title: 'Colored Title',
+      name: 'coloredTitle',
+      type: 'string'
     },
     {
-      title: "Subtitle",
-      name: "subtitle",
-      type: "string"
+      title: 'Subtitle',
+      name: 'subtitle',
+      type: 'string'
     },
     {
-      title: "Image",
-      name: "image",
-      type: "mainImage"
+      title: 'Image',
+      name: 'image',
+      type: 'mainImage'
     }
   ],
   preview: {
     select: {
-      title: "title"
+      title: 'title'
     },
-    prepare({ title = "Home Page" }) {
+    prepare({ title = 'Home Page' }) {
       return {
         title: title
       }

@@ -6,7 +6,6 @@ import NextImage from 'next/image'
 import React from 'react'
 import imageUrlBuilder from '@sanity/image-url'
 import ResponsiveMedia from '../ResponsiveMediaHandler/index'
-import { PROJECT_ID, PROJECT_DATASET } from '../../../lib/constants'
 
 import styles from './styles/ImageHandler.module.scss'
 
@@ -27,36 +26,47 @@ const StaticImage = ({ image, alt, ...other }) => {
 /**
  * Component to handle all types images with ratio support
  */
-const Image = React.forwardRef(({ image, ratio, alt, className, width, height, src, ...other }, ref) => {
-  if (!image && !src) return null
-  let imageEl
+const Image = React.forwardRef(
+  ({ image, ratio, alt, className, src, ...other }, ref) => {
+    if (!image && !src) return null
+    let imageEl
 
-  if (src) {
-    if(typeof src == 'object') src = imgUrlBuilder.image(src)
-      
-    imageEl = <img ref={ref} src={src} alt={alt} layout='fill' className={classNames(styles.Image, className)} {...other} loading="lazy" />
-  } else if (typeof image === 'string') {
-    imageEl = <StaticImage image={image} alt={alt} {...other}  />
-  } else if (image.asset) {
-    imageEl = <SanityImage image={image} alt={alt} {...other}  />
-  } else {
-    imageEl = <StaticImage image={image} alt={alt} {...other}  />
+    if (src) {
+      if (typeof src == 'object') src = imgUrlBuilder.image(src)
+
+      imageEl = (
+        <img
+          ref={ref}
+          src={src}
+          alt={alt}
+          layout="fill"
+          className={classNames(styles.Image, className)}
+          {...other}
+          loading="lazy"
+        />
+      )
+    } else if (typeof image === 'string') {
+      imageEl = <StaticImage image={image} alt={alt} {...other} />
+    } else if (image.asset) {
+      imageEl = <SanityImage image={image} alt={alt} {...other} />
+    } else {
+      imageEl = <StaticImage image={image} alt={alt} {...other} />
+    }
+
+    if (ratio) {
+      return (
+        <ResponsiveMedia
+          className={classNames(styles.Image, className)}
+          ratio={ratio}
+        >
+          {imageEl}
+        </ResponsiveMedia>
+      )
+    }
+
+    return imageEl
   }
-
-  if (ratio) {
-    return (
-      <ResponsiveMedia
-        className={classNames(styles.Image, className)}
-        ratio={ratio}
-      >
-        {imageEl}
-      </ResponsiveMedia>
-    )
-  }
-
-  // return <div className={className}>{imageEl}</div>
-  return imageEl
-})
+)
 
 Image.propTypes = {
   image: oneOfType([string, object]),
