@@ -17,10 +17,10 @@ const AboutSection = ({ className, title, description, id }) => {
             className={styles.SectionName}
           />
           {description && <BlockContent className={styles.Description} blocks={description} />}
-          <div className={styles.Button}>
+          <button className={styles.Button}>
             <p>Join Now</p>
             <AnyImage src={'./Icons/Vector-8.svg'} className={styles.Image} />
-          </div>
+          </button>
       </div>
     </Container>
   )

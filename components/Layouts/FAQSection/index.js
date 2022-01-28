@@ -27,7 +27,7 @@ const FAQSection = ({ faq, id, className }) => {
           index={i}
         />
       })}
-    </div>;
+    </div>
   </Container>
 };
 

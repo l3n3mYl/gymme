@@ -1,6 +1,5 @@
 .CommunitySection {
   .SectionName {
-    // width: 20vw;
     margin-left: 100px;
     margin-bottom: 70px;
   }
@@ -10,7 +9,20 @@
     width: max-content;
     
     .Next {
-      padding-right: 35px;
+      margin-right: 35px;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+
+    .Prev {
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.9;
+      }
     }
   }
 
@@ -58,7 +70,7 @@
   }
 }
 
-@media screen and (min-width: $breakpoint-tablet) {
+@media screen and (min-width: calc($breakpoint-tablet + 20px)) {
   .CommunitySection {
     .Nav {
       margin-left: auto;

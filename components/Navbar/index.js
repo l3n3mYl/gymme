@@ -41,7 +41,7 @@ const Navbar = ({ title }) => {
 
   return (
     <header className={classNames(styles.Header, scrollState === 'highlight' ? styles.headerHighlight : '')}>
-      <a href='#Home' className={styles.smallLogo}>{title}</a>
+      <a href='#Home' className={styles.smallLogo}><CompanyIcon /></a>
       <input type="checkbox" id={styles.menuToggle} className={styles.menuToggle} />
       <nav className={scrollState === "highlight" ? styles.highlightScrollbar : ''}>
         <a href='#Home' className={styles.bigLogo}><CompanyIcon /></a>
