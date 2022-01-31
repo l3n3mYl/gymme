@@ -4,6 +4,7 @@ import { string } from 'prop-types'
 import debounce from '../../lib/helpers/debounce'
 import CompanyIcon from '../Handlers/Elements/CompanyIcon'
 import classNames from 'classnames'
+import Link from 'next/link'
 
 const Navbar = () => {
   const [scrollState, setScrollState] = useState('top')
@@ -73,8 +74,12 @@ const Navbar = () => {
           })}
         </ul>
         <div className={styles.Buttons}>
-          <button>Log In</button>
-          <button>Sign Up</button>
+          <button>
+            <Link href="/login">Log In</Link>
+          </button>
+          <button>
+            <Link href="/signUp">Sign Up</Link>
+          </button>
         </div>
       </nav>
       <label htmlFor={styles.menuToggle} className={styles.label}>
