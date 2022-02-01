@@ -32,9 +32,12 @@ const Login = () => {
   return (
     <Container center gutter size="small">
       <form
+        action={`${process.env.NEXT_PUBLIC_SERVER}/api/login`}
+        method="POST"
+        // onSubmit={(e)=>handle(e)}
         onSubmit={(e) => validateForm(e, formValues)}
-        action="/api/login"
-        method="post"
+        // action="/api/login"
+        // method="post"
       >
         <input
           onChange={handleChange}

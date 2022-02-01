@@ -45,7 +45,7 @@ const SignUp = () => {
     <Container center gutter size="small">
       <form
         onSubmit={(e) => validateForm(e, formValues)}
-        action="/api/sign_up"
+        action={`${process.env.NEXT_PUBLIC_SERVER}/api/sign_up`}
         method="POST"
       >
         <input
