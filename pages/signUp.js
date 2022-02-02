@@ -38,11 +38,11 @@ const SignUp = () => {
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors)
     } else {
-      sendMessage()
+      register()
     }
   }
 
-  async function sendMessage() {
+  async function register() {
     setFormErrors({})
     await fetch(`${process.env.NEXT_PUBLIC_SERVER}/api/sign_up`, {
       method: 'post',
