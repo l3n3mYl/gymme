@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Container from '../components/Handlers/ContentHandlers/Container'
 import styles from '../styles/SignUp.module.scss'
+import Router from 'next/router'
 
 const SignUp = () => {
   const emptyForm = {
@@ -13,8 +14,12 @@ const SignUp = () => {
 
   const [formValues, setFormValues] = useState(emptyForm)
   const [formErrors, setFormErrors] = useState({})
+  const [registerErrors, setRegisterErrors] = useState('')
 
   function validateForm(e, values) {
+    e.preventDefault()
+    setRegisterErrors('')
+
     const errors = {}
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i
 
@@ -31,9 +36,28 @@ const SignUp = () => {
       errors.email = 'Sorry we do not accept this form of email just yet'
 
     if (Object.keys(errors).length > 0) {
-      e.preventDefault()
       setFormErrors(errors)
+    } else {
+      sendMessage()
     }
+  }
+
+  async function sendMessage() {
+    setFormErrors({})
+    await fetch(`${process.env.NEXT_PUBLIC_SERVER}/api/sign_up`, {
+      method: 'post',
+      redirect: 'follow',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formValues)
+    })
+      .then((e) => {
+        if (e.status === 400) setRegisterErrors('Something Went Wrong :(')
+        else if (e.status === 401) setRegisterErrors('This user already exists')
+        else Router.push('/')
+      })
+      .catch((err) => console.log('ERR 💥:', err))
   }
 
   function handleChange(e) {
@@ -43,11 +67,7 @@ const SignUp = () => {
 
   return (
     <Container center gutter size="small">
-      <form
-        onSubmit={(e) => validateForm(e, formValues)}
-        action={`${process.env.NEXT_PUBLIC_SERVER}/api/sign_up`}
-        method="POST"
-      >
+      <form onSubmit={(e) => validateForm(e, formValues)}>
         <input
           onChange={handleChange}
           value={formValues.name}
@@ -106,6 +126,8 @@ const SignUp = () => {
         />
         <label htmlFor="phone">Phone</label>
         <p className={styles.error}>{formErrors.phone && formErrors.phone}</p>
+
+        <p className={styles.error}>{registerErrors && registerErrors}</p>
 
         <input type="submit" name="submit" id="submit" placeholder="Submit" />
       </form>
