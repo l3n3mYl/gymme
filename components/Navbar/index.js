@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import styles from './Navbar.module.scss'
-import { string } from 'prop-types'
+import { string, bool } from 'prop-types'
 import debounce from '../../lib/helpers/debounce'
 import CompanyIcon from '../Handlers/Elements/CompanyIcon'
 import classNames from 'classnames'
 import Link from 'next/link'
 
-const Navbar = () => {
+const Navbar = ({ userLogged }) => {
   const [scrollState, setScrollState] = useState('top')
   const [position, setPosition] = useState('Home')
 
@@ -90,7 +90,8 @@ const Navbar = () => {
 }
 
 Navbar.propTypes = {
-  title: string.isRequired
+  title: string.isRequired,
+  userLogged: bool
 }
 
 export default Navbar

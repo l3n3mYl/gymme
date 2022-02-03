@@ -9,6 +9,22 @@ async function del(req, res) {
   })
 }
 
+async function verifyJWT(req, res) {
+  const token = req.body.token
+
+  try {
+    const verification = jwt.verify(token, 'yourSecretKey')
+    res.status(200).json({
+      verification
+    })
+  } catch (e) {
+    res.status(201).json({
+      status: 'failed',
+      message: 'err'
+    })
+  }
+}
+
 async function create(req, res) {
   var { name, email, phone, password } = req.body
 
@@ -22,19 +38,34 @@ async function create(req, res) {
   if (!phone) phone = queryPhone
   if (!password) password = queryPassword
 
-  await User.create({
-    name,
-    email,
-    phone,
-    password
-  })
-    .then((rez) => {
-      res.json({
-        rez,
-        message: 'Create user success'
-      })
+  const user = await User.findOne({ email })
+
+  if (!user) {
+    await User.create({
+      name,
+      email,
+      phone,
+      password
     })
-    .catch((err) => console.log('ERR 💥:', err))
+      .then((rez) => {
+        res.json({
+          rez,
+          message: 'Create user success'
+        })
+      })
+      .catch((err) => {
+        console.log('ERR 💥:', err)
+        res.status(400).json({
+          status: 'failed',
+          message: 'Something went wrong'
+        })
+      })
+  } else {
+    res.status(401).json({
+      status: 'failed',
+      message: 'User already exists'
+    })
+  }
 }
 
 async function login(req, res) {
@@ -67,4 +98,4 @@ async function login(req, res) {
   }
 }
 
-module.exports = { login, create, del }
+module.exports = { login, create, del, verifyJWT }

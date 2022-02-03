@@ -32,7 +32,7 @@ const Login = () => {
 
   async function logIn() {
     setFormErrors({})
-    await fetch(`${process.env.NEXT_PUBLIC_SERVER}/api/login`, {
+    await fetch(`${process.env.NEXT_PUBLIC_SERVER}/users/login`, {
       method: 'post',
       redirect: 'follow',
       headers: {

@@ -1,4 +1,5 @@
 import Layout from '../components/Layout/Layout'
+import { useLayoutEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { getHomeDataQuery } from '../lib/queries'
 import Meta from '../components/Meta/Meta'
@@ -33,11 +34,29 @@ const Index = ({
     enabled: router.query.preview !== null
   })
 
+  const [userLogged, setUserLogged] = useState(false)
+
+  useLayoutEffect(() => {
+    const token = window.sessionStorage.getItem('token')
+    fetch(`${process.env.NEXT_PUBLIC_SERVER}/users/verifyJWT`, {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        token: token
+      })
+    })
+      .then((e) => {
+        if (e.status === 201) setUserLogged(false)
+        else setUserLogged(true)
+      })
+      .catch((err) => console.log(err))
+  })
+
   const { home, siteSettings } = pageData
   const { openGraph } = siteSettings
 
   return (
-    <Layout title={siteSettings.openGraph.title}>
+    <Layout userLogged={userLogged} title={siteSettings.openGraph.title}>
       <Meta {...openGraph} />
       <HomeSection
         id="Home"

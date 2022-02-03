@@ -44,20 +44,41 @@ const SignUp = () => {
 
   async function register() {
     setFormErrors({})
-    await fetch(`${process.env.NEXT_PUBLIC_SERVER}/api/sign_up`, {
+
+    await fetch(`${process.env.NEXT_PUBLIC_SERVER}/users`, {
       method: 'post',
-      redirect: 'follow',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formValues)
     })
-      .then((e) => {
-        if (e.status === 400) setRegisterErrors('Something Went Wrong :(')
-        else if (e.status === 401) setRegisterErrors('This user already exists')
-        else Router.push('/')
+      .then((response) => {
+        if (response.status === 400)
+          setRegisterErrors('Something Went Wrong :(')
+        else if (response.status === 401)
+          setRegisterErrors('This user already exists')
+        else {
+          fetch(`${process.env.NEXT_PUBLIC_SERVER}/users/login`, {
+            method: 'post',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              email: formValues.email,
+              password: formValues.password
+            })
+          }).then((res) => {
+            if (res.status === 400) setLoginErrors('Incorrect login details')
+            else if (res.status === 401)
+              setLoginErrors('This User does not exist')
+            else {
+              if (res.ok) {
+                res.json().then((json) => {
+                  window.sessionStorage.setItem('token', json.token)
+                  Router.push('/')
+                })
+              }
+            }
+          })
+        }
       })
-      .catch((err) => console.log('ERR 💥:', err))
+      .catch((err) => console.log(err))
   }
 
   function handleChange(e) {
