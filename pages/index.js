@@ -1,5 +1,5 @@
 import Layout from '../components/Layout/Layout'
-import { useLayoutEffect, useState } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { getHomeDataQuery } from '../lib/queries'
 import Meta from '../components/Meta/Meta'
@@ -35,21 +35,25 @@ const Index = ({
   })
 
   const [userLogged, setUserLogged] = useState(false)
+  var token
 
-  useLayoutEffect(() => {
-    const token = window.sessionStorage.getItem('token')
-    fetch(`${process.env.NEXT_PUBLIC_SERVER}/users/verifyJWT`, {
-      method: 'post',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        token: token
+  useState(() => {
+    if (typeof window !== 'undefined') {
+      token = window.sessionStorage.getItem('token')
+      fetch(`${process.env.NEXT_PUBLIC_SERVER}/users/verifyJWT`, {
+        method: 'post',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          token: token
+        })
       })
-    })
-      .then((e) => {
-        if (e.status === 201) setUserLogged(false)
-        else setUserLogged(true)
-      })
-      .catch((err) => console.log(err))
+        .then((e) => {
+          console.log(token)
+          if (e.status === 201) setUserLogged(false)
+          else setUserLogged(true)
+        })
+        .catch((err) => console.log(err))
+    }
   })
 
   const { home, siteSettings } = pageData

@@ -73,14 +73,18 @@ const Navbar = ({ userLogged }) => {
             )
           })}
         </ul>
-        <div className={styles.Buttons}>
-          <button>
-            <Link href="/login">Log In</Link>
-          </button>
-          <button>
-            <Link href="/signUp">Sign Up</Link>
-          </button>
-        </div>
+        {!userLogged ? (
+          <div className={styles.Buttons}>
+            <button>
+              <Link href="/login">Log In</Link>
+            </button>
+            <button>
+              <Link href="/signUp">Sign Up</Link>
+            </button>
+          </div>
+        ) : (
+          <button className={styles.UserButton}>My Info</button>
+        )}
       </nav>
       <label htmlFor={styles.menuToggle} className={styles.label}>
         <span />

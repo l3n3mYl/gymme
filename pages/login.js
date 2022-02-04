@@ -43,7 +43,14 @@ const Login = () => {
       .then((e) => {
         if (e.status === 400) setLoginErrors('Incorrect login details')
         else if (e.status === 401) setLoginErrors('This User does not exist')
-        else Router.push('/')
+        else {
+          if (e.ok) {
+            e.json().then((json) => {
+              window.sessionStorage.setItem('token', json.token)
+              Router.push('/')
+            })
+          }
+        }
       })
       .catch((err) => console.log('ERR 💥:', err))
   }

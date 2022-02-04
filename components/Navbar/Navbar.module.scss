@@ -85,18 +85,19 @@
     transform-origin: top;
     transition: transform 400ms ease-in-out;
 
+    button {
+      width: 115px;
+      height: 42px;
+      color: $backgroundColor;
+      border: none;
+      font-size: 12px;
+      font-weight: 700;
+      background-color: $accentColor;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
     .Buttons {
-      button {
-        width: 115px;
-        height: 42px;
-        color: $backgroundColor;
-        border: none;
-        font-size: 12px;
-        font-weight: 700;
-        background-color: $accentColor;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-      }
       & > :nth-child(1) {
         background-color: transparent;
       }
