@@ -83,7 +83,9 @@ const Navbar = ({ userLogged }) => {
             </button>
           </div>
         ) : (
-          <button className={styles.UserButton}>My Info</button>
+          <button className={styles.UserButton}>
+            <Link href="/user/userInfo">My Info</Link>
+          </button>
         )}
       </nav>
       <label htmlFor={styles.menuToggle} className={styles.label}>
