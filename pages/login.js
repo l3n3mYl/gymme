@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import Container from '../components/Handlers/ContentHandlers/Container'
-import { FetchJSON } from '../functions/fetch'
 import Router from 'next/router'
 import styles from '../styles/Login.module.scss'
 
@@ -33,12 +32,13 @@ const Login = () => {
 
   async function logIn() {
     setFormErrors({})
-    await FetchJSON(
-      `${process.env.NEXT_PUBLIC_SERVER}/users/login`,
-      undefined,
-      'post',
-      formValues
-    )
+    await fetch(`${process.env.NEXT_PUBLIC_SERVER}/users/login`, {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formValues)
+    })
       .then((e) => {
         if (e.status === 400) setLoginErrors('Incorrect login details')
         else if (e.status === 401) setLoginErrors('This User does not exist')

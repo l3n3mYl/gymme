@@ -16,8 +16,8 @@ async function changeInfo(req, res) {
   const query = req.query
 
   if (body) {
-    Object.keys(query).forEach((key) => {
-      user[key] = query[key]
+    Object.keys(body).forEach((key) => {
+      user[key] = body[key]
     })
   } else {
     Object.keys(query).forEach((key) => {
@@ -37,16 +37,25 @@ async function changeInfo(req, res) {
     })
   }
 
-  await user
-    .save()
-    .then((rez) => {
-      console.log(rez)
-      res.json({
-        rez,
-        message: 'Update user info success'
+  var email = body.email
+  if (!email) email = query.email
+  const dupEmail = await User.findOne({ email })
+  if (!dupEmail) {
+    await user
+      .save()
+      .then((rez) => {
+        res.status(200).json({
+          rez,
+          message: 'Update user info success'
+        })
       })
+      .catch((err) => console.log('ERR 💥:', err))
+  } else {
+    res.status(401).json({
+      status: 'fail',
+      message: 'Email already in use'
     })
-    .catch((err) => console.log('ERR 💥:', err))
+  }
 }
 
 async function changePlan(req, res) {

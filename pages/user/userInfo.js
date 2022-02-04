@@ -1,14 +1,12 @@
+import Link from 'next/link'
 import React, { useState } from 'react'
-import { useRouter } from 'next/router'
-import Container from '../../components/Handlers/ContentHandlers/Container'
 import { FetchJSON } from '../../functions/fetch'
+import Container from '../../components/Handlers/ContentHandlers/Container'
 
 import styles from '../../styles/UserInfo.module.scss'
 
 const UserInfo = () => {
   const [user, setUser] = useState({})
-
-  const router = useRouter()
 
   useState(() => {
     if (typeof window !== 'undefined') {
@@ -35,18 +33,8 @@ const UserInfo = () => {
           <p>{user.phone}</p>
         </div>
         <div className={styles.UserPlan}>{user.plan && user.plan}</div>
-        <button
-          onClick={() => {
-            router.push(
-              {
-                pathname: '/user/changeUserInfo',
-                query: user
-              },
-              '/user/changeUserInfo'
-            )
-          }}
-        >
-          Change My Info
+        <button>
+          <Link href="/user/changeUserInfo">Change My Info</Link>
         </button>
       </div>
     </Container>

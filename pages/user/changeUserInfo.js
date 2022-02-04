@@ -1,21 +1,48 @@
 import React from 'react'
 import { useState } from 'react'
-import { useRouter } from 'next/router'
+import Router from 'next/router'
+import { FetchJSON } from '../../functions/fetch'
 import Container from '../../components/Handlers/ContentHandlers/Container'
 
 import styles from '../../styles/ChangeUserInfo.module.scss'
 
 const ChangeUserInfo = () => {
-  const [userInfo, setUserInfo] = useState({})
   const [formValues, setFormValues] = useState({})
   const [formErrors, setFormErrors] = useState({})
   const [registerErrors, setRegisterErrors] = useState('')
-  const router = useRouter()
 
-  function handleChange() {}
-  function validateForm(e, formValues) {}
+  function handleChange(e) {
+    const { name, value } = e.target
+    setFormValues({ ...formValues, [name]: value })
+  }
 
-  console.log(router.query)
+  function validateForm(e, values) {
+    e.preventDefault()
+    const errors = {}
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i
+
+    if (!regex.test(values.email) && values.email)
+      errors.email = 'Sorry we do not accept this form of email just yet'
+
+    if (Object.keys(errors).length > 0) setFormErrors(errors)
+    else changeDetails()
+  }
+
+  async function changeDetails() {
+    if (typeof window !== 'undefined') {
+      FetchJSON(
+        `${process.env.NEXT_PUBLIC_SERVER}/users/changeInfo`,
+        window.sessionStorage,
+        'post',
+        formValues
+      ).then((rez) => {
+        if (rez.status === 401) setRegisterErrors('Email already in use')
+        else {
+          Router.push('/')
+        }
+      })
+    }
+  }
 
   return (
     <Container center gutter size="small">
