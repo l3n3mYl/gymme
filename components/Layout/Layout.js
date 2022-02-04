@@ -1,12 +1,12 @@
 import React from 'react'
 import Navbar from '../Navbar'
-import { node, string } from 'prop-types'
+import { node, string, bool } from 'prop-types'
 import Footer from '../Layouts/Footer'
 
-const Layout = ({ children, title }) => {
+const Layout = ({ children, title, userLogged }) => {
   return (
     <div>
-      <Navbar title={title} />
+      <Navbar userLogged={userLogged} title={title} />
       {children}
       <Footer />
     </div>
@@ -15,6 +15,7 @@ const Layout = ({ children, title }) => {
 
 Layout.propTypes = {
   children: node,
+  userLogged: bool,
   title: string.isRequired
 }
 

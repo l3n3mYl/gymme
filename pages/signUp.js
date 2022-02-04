@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Container from '../components/Handlers/ContentHandlers/Container'
 import styles from '../styles/SignUp.module.scss'
+import Router from 'next/router'
 
 const SignUp = () => {
   const emptyForm = {
@@ -13,8 +14,12 @@ const SignUp = () => {
 
   const [formValues, setFormValues] = useState(emptyForm)
   const [formErrors, setFormErrors] = useState({})
+  const [registerErrors, setRegisterErrors] = useState('')
 
   function validateForm(e, values) {
+    e.preventDefault()
+    setRegisterErrors('')
+
     const errors = {}
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i
 
@@ -31,9 +36,49 @@ const SignUp = () => {
       errors.email = 'Sorry we do not accept this form of email just yet'
 
     if (Object.keys(errors).length > 0) {
-      e.preventDefault()
       setFormErrors(errors)
+    } else {
+      register()
     }
+  }
+
+  async function register() {
+    setFormErrors({})
+
+    await fetch(`${process.env.NEXT_PUBLIC_SERVER}/users`, {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formValues)
+    })
+      .then((response) => {
+        if (response.status === 400)
+          setRegisterErrors('Something Went Wrong :(')
+        else if (response.status === 401)
+          setRegisterErrors('This user already exists')
+        else {
+          fetch(`${process.env.NEXT_PUBLIC_SERVER}/users/login`, {
+            method: 'post',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              email: formValues.email,
+              password: formValues.password
+            })
+          }).then((res) => {
+            if (res.status === 400) setLoginErrors('Incorrect login details')
+            else if (res.status === 401)
+              setLoginErrors('This User does not exist')
+            else {
+              if (res.ok) {
+                res.json().then((json) => {
+                  window.sessionStorage.setItem('token', json.token)
+                  Router.push('/')
+                })
+              }
+            }
+          })
+        }
+      })
+      .catch((err) => console.log(err))
   }
 
   function handleChange(e) {
@@ -43,11 +88,7 @@ const SignUp = () => {
 
   return (
     <Container center gutter size="small">
-      <form
-        onSubmit={(e) => validateForm(e, formValues)}
-        action={`${process.env.NEXT_PUBLIC_SERVER}/api/sign_up`}
-        method="POST"
-      >
+      <form onSubmit={(e) => validateForm(e, formValues)}>
         <input
           onChange={handleChange}
           value={formValues.name}
@@ -106,6 +147,8 @@ const SignUp = () => {
         />
         <label htmlFor="phone">Phone</label>
         <p className={styles.error}>{formErrors.phone && formErrors.phone}</p>
+
+        <p className={styles.error}>{registerErrors && registerErrors}</p>
 
         <input type="submit" name="submit" id="submit" placeholder="Submit" />
       </form>

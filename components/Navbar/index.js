@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import styles from './Navbar.module.scss'
-import { string } from 'prop-types'
+import { string, bool } from 'prop-types'
 import debounce from '../../lib/helpers/debounce'
 import CompanyIcon from '../Handlers/Elements/CompanyIcon'
 import classNames from 'classnames'
 import Link from 'next/link'
 
-const Navbar = () => {
+const Navbar = ({ userLogged }) => {
   const [scrollState, setScrollState] = useState('top')
   const [position, setPosition] = useState('Home')
 
@@ -73,14 +73,20 @@ const Navbar = () => {
             )
           })}
         </ul>
-        <div className={styles.Buttons}>
-          <button>
-            <Link href="/login">Log In</Link>
+        {!userLogged ? (
+          <div className={styles.Buttons}>
+            <button>
+              <Link href="/login">Log In</Link>
+            </button>
+            <button>
+              <Link href="/signUp">Sign Up</Link>
+            </button>
+          </div>
+        ) : (
+          <button className={styles.UserButton}>
+            <Link href="/user/userInfo">My Info</Link>
           </button>
-          <button>
-            <Link href="/signUp">Sign Up</Link>
-          </button>
-        </div>
+        )}
       </nav>
       <label htmlFor={styles.menuToggle} className={styles.label}>
         <span />
@@ -90,7 +96,8 @@ const Navbar = () => {
 }
 
 Navbar.propTypes = {
-  title: string.isRequired
+  title: string.isRequired,
+  userLogged: bool
 }
 
 export default Navbar

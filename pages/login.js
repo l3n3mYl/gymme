@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Container from '../components/Handlers/ContentHandlers/Container'
+import Router from 'next/router'
 import styles from '../styles/Login.module.scss'
 
 const Login = () => {
@@ -10,8 +11,12 @@ const Login = () => {
 
   const [formValues, setFormValues] = useState(emptyForm)
   const [formErrors, setFormErrors] = useState({})
+  const [loginErrors, setLoginErrors] = useState('')
 
   function validateForm(e, values) {
+    e.preventDefault()
+    setLoginErrors('')
+
     const errors = {}
 
     if (!values.password) errors.password = 'Password is required'
@@ -19,9 +24,34 @@ const Login = () => {
     if (!values.email) errors.email = 'Email is required'
 
     if (Object.keys(errors).length > 0) {
-      e.preventDefault()
       setFormErrors(errors)
+    } else {
+      logIn()
     }
+  }
+
+  async function logIn() {
+    setFormErrors({})
+    await fetch(`${process.env.NEXT_PUBLIC_SERVER}/users/login`, {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formValues)
+    })
+      .then((e) => {
+        if (e.status === 400) setLoginErrors('Incorrect login details')
+        else if (e.status === 401) setLoginErrors('This User does not exist')
+        else {
+          if (e.ok) {
+            e.json().then((json) => {
+              window.sessionStorage.setItem('token', json.token)
+              Router.push('/')
+            })
+          }
+        }
+      })
+      .catch((err) => console.log('ERR 💥:', err))
   }
 
   function handleChange(e) {
@@ -31,14 +61,7 @@ const Login = () => {
 
   return (
     <Container center gutter size="small">
-      <form
-        action={`${process.env.NEXT_PUBLIC_SERVER}/api/login`}
-        method="POST"
-        // onSubmit={(e)=>handle(e)}
-        onSubmit={(e) => validateForm(e, formValues)}
-        // action="/api/login"
-        // method="post"
-      >
+      <form onSubmit={(e) => validateForm(e, formValues)}>
         <input
           onChange={handleChange}
           value={formValues.email}
@@ -62,6 +85,8 @@ const Login = () => {
         <p className={styles.error}>
           {formErrors.password && formErrors.password}
         </p>
+
+        <p className={styles.error}>{loginErrors && loginErrors}</p>
 
         <input type="submit" name="submit" id="submit" placeholder="Submit" />
       </form>
