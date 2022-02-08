@@ -60,11 +60,8 @@ async function changeInfo(req, res) {
 
 async function changePlan(req, res) {
   var { plan } = req.body
-  const queryPlan = query.body.plan
 
   const user = await User.findOne({})
-
-  if (!plan) plan = queryPlan
 
   if (plan) {
     user.plan = new Plan({
