@@ -1,30 +1,22 @@
 import Link from 'next/link'
-import React, { useState } from 'react'
-import { FetchJSON } from '../../functions/fetch'
+import { AuthContext } from '../../contexts/JWTVerification'
+import React, { useState, useEffect, useContext } from 'react'
 import Container from '../../components/Handlers/ContentHandlers/Container'
 
 import styles from '../../styles/UserInfo.module.scss'
 
 const UserInfo = () => {
   const [user, setUser] = useState({})
+  const { verifyJWT, authState } = useContext(AuthContext)
 
-  useState(() => {
-    if (typeof window !== 'undefined') {
-      FetchJSON(
-        `${process.env.NEXT_PUBLIC_SERVER}/users/getInfo`,
-        window.sessionStorage,
-        'get'
-      ).then((rez) => {
-        if (rez.ok) {
-          rez.json().then((json) => {
-            setUser(json.user[0])
-          })
-        }
-      })
+  useEffect(() => {
+    if (!Object.keys(user).length) {
+      verifyJWT(window.sessionStorage)
+      setUser(authState.user)
     }
-  })
+  }, [authState])
 
-  return user ? (
+  return authState.user ? (
     <Container>
       <div>
         <div className={styles.UserInfoCard}>

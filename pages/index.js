@@ -1,6 +1,7 @@
 import Layout from '../components/Layout/Layout'
-import { useState } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import { AuthContext } from '../contexts/JWTVerification'
 import { getHomeDataQuery } from '../lib/queries'
 import Meta from '../components/Meta/Meta'
 import {
@@ -35,26 +36,18 @@ const Index = ({
   })
 
   const [userLogged, setUserLogged] = useState(false)
-  var token
+  const [user, setUser] = useState({})
+  const { verifyJWT, authState } = useContext(AuthContext)
 
-  useState(() => {
-    if (typeof window !== 'undefined') {
-      token = window.sessionStorage.getItem('token')
-      fetch(`${process.env.NEXT_PUBLIC_SERVER}/users/verifyJWT`, {
-        method: 'post',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          token: token
-        })
-      })
-        .then((e) => {
-          console.log(token)
-          if (e.status === 201) setUserLogged(false)
-          else setUserLogged(true)
-        })
-        .catch((err) => console.log(err))
+  useEffect(() => {
+    if (!Object.keys(user).length) {
+      verifyJWT(window.sessionStorage)
+      setUser(authState.user)
+      if (authState.user === 'Token Expired' || authState.user === '')
+        setUserLogged(false)
+      else setUserLogged(true)
     }
-  })
+  }, [authState])
 
   const { home, siteSettings } = pageData
   const { openGraph } = siteSettings

@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Container from '../components/Handlers/ContentHandlers/Container'
 import Router from 'next/router'
+import { AuthContext } from '../contexts/JWTVerification'
 import styles from '../styles/Login.module.scss'
 
 const Login = () => {
@@ -12,6 +13,8 @@ const Login = () => {
   const [formValues, setFormValues] = useState(emptyForm)
   const [formErrors, setFormErrors] = useState({})
   const [loginErrors, setLoginErrors] = useState('')
+
+  const { setAuthState } = useContext(AuthContext)
 
   function validateForm(e, values) {
     e.preventDefault()
@@ -45,7 +48,7 @@ const Login = () => {
         else {
           if (e.ok) {
             e.json().then((json) => {
-              window.sessionStorage.setItem('token', json.token)
+              setAuthState({ token: json.token, user: json.user })
               Router.push('/')
             })
           }

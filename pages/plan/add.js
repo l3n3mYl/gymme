@@ -76,7 +76,7 @@ const Add = () => {
         `${process.env.NEXT_PUBLIC_SERVER}/users/changePlan`,
         window.sessionStorage,
         'post',
-        { plan: formValues.plan }
+        formValues
       ).then((rez) => {
         if (rez.status === 401)
           setRegisterErrors('Something went wrong when validating your details')

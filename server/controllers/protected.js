@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const User = require('../models/user')
 const Plan = require('../models/plan')
 
@@ -73,13 +74,12 @@ async function changePlan(req, res) {
   await user
     .save()
     .then((rez) => {
-      console.log(rez)
       res.json({
         rez,
         message: 'Update plan success'
       })
     })
-    .catch((err) => console.log('ERR 💥:', err))
+    .catch((err) => console.error('ERR 💥:', err))
 }
 
 module.exports = {
