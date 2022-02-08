@@ -16,7 +16,7 @@ const UserInfo = () => {
     }
   }, [authState])
 
-  return authState.user ? (
+  return authState.user !== 'Token Expired' ? (
     <Container>
       <div>
         <div className={styles.UserInfoCard}>
