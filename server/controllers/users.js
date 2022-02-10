@@ -102,7 +102,7 @@ async function login(req, res) {
       message: 'sign user success'
     })
   } else {
-    res.status(401).json({
+    res.status(process.env.MONGO_DB).json({
       message: 'Unauthenticated'
     })
   }

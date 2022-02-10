@@ -1,9 +1,9 @@
+require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const PORT = process.env.PORT || 9000
 const app = express()
 const database = process.env.MONGO_DB || 'mongodb://localhost:27017'
-require('dotenv').config()
 const userRouter = require('./routes/user')
 const cors = require('cors')
 const corsOptions = {
@@ -29,4 +29,4 @@ mongoose
     useUnifiedTopology: true
   })
   .then(() => console.log('DB connection success'))
-  .catch((err) => console.log('ERR 💥:', err))
+  .catch((err) => console.log(process.env))

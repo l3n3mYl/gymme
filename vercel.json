@@ -17,11 +17,7 @@
   ],
   "rewrites": [
     {
-      "source": "/api/login",
-      "destination": "/server/index.js"
-    },
-    {
-      "source": "/api/sign_up",
+      "source": "/users/(.*)",
       "destination": "/server/index.js"
     },
     {

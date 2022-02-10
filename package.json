@@ -2,8 +2,9 @@
   "name": "cms-sanity",
   "version": "1.0.0",
   "scripts": {
-    "dev:server": "NEXT='http://localhost:3000/' nodemon server/index.js",
+    "dev:server": "nodemon server/index.js",
     "dev:next": "next",
+    "build": "MONGO_DB='mongodb+srv://Sample:sample@cluster0.q4obt.mongodb.net/Cluster0?retryWrites=true&w=majority' && next build",
     "build:server": "cd server && NODE_ENV=production node index.js && cd ..",
     "build:web": "next build",
     "start:web": "next start",
