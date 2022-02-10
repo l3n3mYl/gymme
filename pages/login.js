@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import Container from '../components/Handlers/ContentHandlers/Container'
-import Router from 'next/router'
+import { useRouter } from 'next/router'
+import { AuthContext } from '../contexts/JWTVerification'
 import styles from '../styles/Login.module.scss'
 
 const Login = () => {
@@ -11,11 +12,20 @@ const Login = () => {
 
   const [formValues, setFormValues] = useState(emptyForm)
   const [formErrors, setFormErrors] = useState({})
-  const [loginErrors, setLoginErrors] = useState('')
+  const router = useRouter()
+  const [loginError, setLoginError] = useState('')
+
+  const { setAuthState } = useContext(AuthContext)
+
+  useEffect(() => {
+    if (router.query.error && !loginError) {
+      setLoginError(router.query.error)
+    }
+  })
 
   function validateForm(e, values) {
     e.preventDefault()
-    setLoginErrors('')
+    setLoginError('')
 
     const errors = {}
 
@@ -40,13 +50,16 @@ const Login = () => {
       body: JSON.stringify(formValues)
     })
       .then((e) => {
-        if (e.status === 400) setLoginErrors('Incorrect login details')
-        else if (e.status === 401) setLoginErrors('This User does not exist')
+        console.log(e)
+        if (e.status === 401) setLoginError('Incorrect login details')
+        else if (e.status === 400) setLoginError('This User does not exist')
         else {
           if (e.ok) {
             e.json().then((json) => {
+              console.log(json.user)
+              setAuthState({ token: json.token, user: json.user })
               window.sessionStorage.setItem('token', json.token)
-              Router.push('/')
+              router.push('/')
             })
           }
         }
@@ -86,7 +99,7 @@ const Login = () => {
           {formErrors.password && formErrors.password}
         </p>
 
-        <p className={styles.error}>{loginErrors && loginErrors}</p>
+        <p className={styles.error}>{loginError && loginError}</p>
 
         <input type="submit" name="submit" id="submit" placeholder="Submit" />
       </form>

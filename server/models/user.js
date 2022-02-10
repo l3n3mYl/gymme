@@ -5,6 +5,17 @@ function setPassword(value) {
   return bcrypt.hashSync(value, 10)
 }
 
+const PlanSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  expiration: {
+    type: Date,
+    required: true
+  }
+})
+
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -24,11 +35,11 @@ const UserSchema = new mongoose.Schema({
     set: setPassword
   },
   plan: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Plan'
+    type: PlanSchema
   }
 })
 
-const model = mongoose.model('User', UserSchema)
+const Plan = mongoose.model('Plan', PlanSchema)
+const User = mongoose.model('User', UserSchema)
 
-module.exports = model
+module.exports = { Plan, User }

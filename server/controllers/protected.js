@@ -1,13 +1,21 @@
-const User = require('../models/user')
-const Plan = require('../models/plan')
+/* eslint-disable no-console */
+const { Plan, User } = require('../models/user')
 
 async function getInfo(req, res) {
-  const user = await User.find({})
-
-  res.json({
-    user,
-    message: 'Get user info success'
-  })
+  User.findOne({})
+    .populate('plan')
+    .exec((err, doc) => {
+      if (err) {
+        res.json({
+          status: 'failed',
+          message: 'Something Went Wrong'
+        })
+      }
+      res.json({
+        user: doc,
+        message: 'Success'
+      })
+    })
 }
 
 async function changeInfo(req, res) {
@@ -60,11 +68,8 @@ async function changeInfo(req, res) {
 
 async function changePlan(req, res) {
   var { plan } = req.body
-  const queryPlan = query.body.plan
 
   const user = await User.findOne({})
-
-  if (!plan) plan = queryPlan
 
   if (plan) {
     user.plan = new Plan({
@@ -76,13 +81,12 @@ async function changePlan(req, res) {
   await user
     .save()
     .then((rez) => {
-      console.log(rez)
       res.json({
         rez,
         message: 'Update plan success'
       })
     })
-    .catch((err) => console.log('ERR 💥:', err))
+    .catch((err) => console.error('ERR 💥:', err))
 }
 
 module.exports = {

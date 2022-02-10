@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
-import Container from '../components/Handlers/ContentHandlers/Container'
-import styles from '../styles/SignUp.module.scss'
 import Router from 'next/router'
+import styles from '../styles/SignUp.module.scss'
+import React, { useState, useContext } from 'react'
+import { AuthContext } from '../contexts/JWTVerification'
+import Container from '../components/Handlers/ContentHandlers/Container'
 
 const SignUp = () => {
   const emptyForm = {
@@ -15,6 +16,8 @@ const SignUp = () => {
   const [formValues, setFormValues] = useState(emptyForm)
   const [formErrors, setFormErrors] = useState({})
   const [registerErrors, setRegisterErrors] = useState('')
+
+  const { setAuthState } = useContext(AuthContext)
 
   function validateForm(e, values) {
     e.preventDefault()
@@ -70,7 +73,7 @@ const SignUp = () => {
             else {
               if (res.ok) {
                 res.json().then((json) => {
-                  window.sessionStorage.setItem('token', json.token)
+                  setAuthState({ token: json.token, user: json.user })
                   Router.push('/')
                 })
               }
@@ -78,7 +81,7 @@ const SignUp = () => {
           })
         }
       })
-      .catch((err) => console.log(err))
+      .catch((err) => console.log('ERR 💥:', err))
   }
 
   function handleChange(e) {

@@ -2,6 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 import { string, array } from 'prop-types'
 import Image from '../../Handlers/ImageHandler'
+import { useRouter } from 'next/router'
 import SwiperCore, { Pagination } from 'swiper'
 import Container from '../../Handlers/ContentHandlers/Container'
 import 'swiper/css'
@@ -13,6 +14,7 @@ import IconHeading from '../../IconHeading'
 SwiperCore.use([Pagination])
 
 const PricingSection = ({ id, className, title, pricings }) => {
+  const router = useRouter()
   return (
     <Container center gutter size="mediumLarge">
       <div id={id} className={classNames(styles.PricingSection, className)}>
@@ -50,7 +52,20 @@ const PricingSection = ({ id, className, title, pricings }) => {
                         {ex}
                       </p>
                     ))}
-                    <button className={styles.JoinBtn}>Join Now</button>
+                    <button
+                      onClick={() =>
+                        router.push(
+                          {
+                            pathname: '/plan/add',
+                            query: { plan: plan.plan }
+                          },
+                          '/plan/add'
+                        )
+                      }
+                      className={styles.JoinBtn}
+                    >
+                      Join Now
+                    </button>
                   </div>
                 </div>
               )
