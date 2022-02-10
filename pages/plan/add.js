@@ -23,38 +23,36 @@ const Add = () => {
     phone: '',
     plan: ''
   }
-
-  useState(() => {
-    if (typeof window !== 'undefined') {
-      const token = window.sessionStorage.getItem('token')
-      const routerPlan = router.query.plan
-      if (!token || !routerPlan) Router.push('/')
-    }
-  })
+  let newDate = new Date()
+  let date = newDate.getDate()
+  let month = newDate.getMonth() + 2
+  let year = newDate.getFullYear()
+  const separator = '/'
 
   const [formValues, setFormValues] = useState(emptyForm)
   const [formErrors, setFormErrors] = useState({})
   const [registerErrors, setRegisterErrors] = useState('')
+
+  useState(() => {
+    if (typeof window !== 'undefined') {
+      const plan = {
+        name: router.query.plan,
+        expiration: `${year}${separator}${
+          month < 10 ? `0${month}` : `${month}`
+        }${separator}${date}`
+      }
+      const token = window.sessionStorage.getItem('token')
+      const routerPlan = router.query.plan
+      setFormValues({ ...formValues, plan: plan })
+      if (!token || !routerPlan) Router.push('/')
+    }
+  }, [])
 
   function validateForm(e, values) {
     e.preventDefault()
     const numbers = /^[0-9]*$/
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i
     const errors = {}
-    let newDate = new Date()
-    let date = newDate.getDate()
-    let month = newDate.getMonth() + 2
-    let year = newDate.getFullYear()
-    const separator = '/'
-
-    const plan = {
-      name: router.query.plan,
-      expiration: `${year}${separator}${
-        month < 10 ? `0${month}` : `${month}`
-      }${separator}${date}`
-    }
-
-    setFormValues({ ...formValues, plan: plan })
 
     if (!numbers.test(values.cardNumber))
       errors.cardNumber = 'Only numbers are accepted'
@@ -64,7 +62,7 @@ const Add = () => {
 
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors)
-    } else {
+    } else if (formValues.plan !== '') {
       addPlan()
     }
   }
@@ -80,9 +78,9 @@ const Add = () => {
       ).then((rez) => {
         if (rez.status === 401)
           setRegisterErrors('Something went wrong when validating your details')
-        else {
-          Router.push('/')
-        }
+        // else {
+        //   Router.push('/')
+        // }
       })
     }
   }

@@ -40,14 +40,15 @@ const Index = ({
   const { verifyJWT, authState } = useContext(AuthContext)
 
   useEffect(() => {
-    if (!Object.keys(user).length) {
-      verifyJWT(window.sessionStorage)
-      setUser(authState.user)
-      if (authState.user === 'Token Expired' || authState.user === '')
-        setUserLogged(false)
-      else setUserLogged(true)
+    if (Object.keys(user).length === 0) {
+      verifyJWT(window.sessionStorage.getItem('token'))
+      authState.user && setUser(authState.user)
     }
-  }, [authState])
+
+    if (user !== 'Token Expired' && Object.keys(user).length !== 0)
+      setUserLogged(true)
+    else setUserLogged(false)
+  }, [authState, user, verifyJWT])
 
   const { home, siteSettings } = pageData
   const { openGraph } = siteSettings

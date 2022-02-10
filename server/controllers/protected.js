@@ -1,14 +1,21 @@
 /* eslint-disable no-console */
-const User = require('../models/user')
-const Plan = require('../models/plan')
+const { Plan, User } = require('../models/user')
 
 async function getInfo(req, res) {
-  const user = await User.find({})
-
-  res.json({
-    user,
-    message: 'Get user info success'
-  })
+  User.findOne({})
+    .populate('plan')
+    .exec((err, doc) => {
+      if (err) {
+        res.json({
+          status: 'failed',
+          message: 'Something Went Wrong'
+        })
+      }
+      res.json({
+        user: doc,
+        message: 'Success'
+      })
+    })
 }
 
 async function changeInfo(req, res) {

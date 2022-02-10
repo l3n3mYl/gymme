@@ -1,4 +1,5 @@
-const User = require('../models/user')
+const { User, Plan } = require('../models/user')
+// const Plan = require('../models/plan')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
@@ -18,7 +19,7 @@ async function verifyJWT(req, res) {
       user: verification.user
     })
   } catch (error) {
-    res.status(201).json({
+    res.status(400).json({
       status: 'failed',
       message: error
     })
@@ -32,6 +33,10 @@ async function create(req, res) {
   const queryEmail = req.query.email
   const queryPhone = req.query.phone
   const queryPassword = req.query.password
+  const plan = new Plan({
+    name: 'None',
+    expiration: '1999-01-01'
+  })
 
   if (!name) name = queryName
   if (!email) email = queryEmail
@@ -42,10 +47,11 @@ async function create(req, res) {
 
   if (!user) {
     await User.create({
-      name,
-      email,
-      phone,
-      password
+      name: name,
+      email: email,
+      phone: phone,
+      password: password,
+      plan: plan
     })
       .then((rez) => {
         res.json({
@@ -78,14 +84,19 @@ async function login(req, res) {
 
   const user = await User.findOne({ email })
 
-  if (!user) throw Error('User not found')
+  if (!user) {
+    res.status(400).json({
+      message: 'User does not exist'
+    })
+    return
+  }
 
   if (bcrypt.compareSync(password, user.password)) {
     const token = jwt.sign({ user }, 'yourSecretKey', {
-      expiresIn: '1s'
+      expiresIn: '12h'
     })
 
-    res.json({
+    res.status(200).json({
       user,
       token,
       message: 'sign user success'

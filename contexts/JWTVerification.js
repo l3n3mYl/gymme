@@ -7,16 +7,16 @@ export const AuthProvider = ({ children }) => {
     token: ''
   })
 
-  const verifyJWT = async (storage) => {
+  const verifyJWT = async (token) => {
     try {
       return await fetch(`${process.env.NEXT_PUBLIC_SERVER}/users/verifyJWT`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          token: storage.getItem('token')
+          token: token
         })
       }).then((response) => {
-        if (response.status === 201) {
+        if (response.status === 400) {
           setAuthState({ user: 'Token Expired' })
         } else if (response.ok && response.status === 200) {
           response.json().then((json) => {
