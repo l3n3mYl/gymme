@@ -11,7 +11,7 @@ const UserInfo = () => {
   const [user, setUser] = useState({})
   const [userLogged, setUserLogged] = useState(false)
   const router = useRouter()
-  const { verifyJWT, authState } = useContext(AuthContext)
+  const { verifyJWT, authState, setAuthState } = useContext(AuthContext)
 
   async function getUserInfo() {
     await FetchJSON(
@@ -27,6 +27,15 @@ const UserInfo = () => {
           }
         })
     })
+  }
+
+  function logOut() {
+    setAuthState({
+      user: '',
+      token: ''
+    })
+    window.sessionStorage.clear()
+    router.push('/')
   }
 
   useEffect(() => {
@@ -46,7 +55,7 @@ const UserInfo = () => {
   }, [authState, router, user, verifyJWT])
 
   return userLogged ? (
-    <Container>
+    <Container gutter center size="small">
       <div>
         <div className={styles.UserInfoCard}>
           <p>{user.name}</p>
@@ -60,6 +69,7 @@ const UserInfo = () => {
         <button>
           <Link href="/user/changeUserInfo">Change My Info</Link>
         </button>
+        <button onClick={() => logOut()}>Log Out</button>
       </div>
     </Container>
   ) : (

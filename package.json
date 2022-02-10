@@ -2,8 +2,8 @@
   "name": "cms-sanity",
   "version": "1.0.0",
   "scripts": {
-    "dev": "NEXT='http://localhost:3000/' nodemon server/index.js",
-    "devv": "next",
+    "dev:server": "NEXT='http://localhost:3000/' nodemon server/index.js",
+    "dev:next": "next",
     "build:server": "cd server && NODE_ENV=production node index.js && cd ..",
     "build:web": "next build",
     "start:web": "next start",
