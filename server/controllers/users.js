@@ -1,12 +1,17 @@
 const { User, Plan } = require('../models/user')
-// const Plan = require('../models/plan')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const secret = process.env.SECRET_KEY || 'yourSecretKey'
 
 async function del(req, res) {
   const mongoose = require('mongoose')
   mongoose.connection.db.dropDatabase(function (err, result) {
-    console.log(err + result)
+    if(err) console.log(err)
+    console.log(result)
+
+    res.status(69).json({
+      message: 'nice',
+    })
   })
 }
 
@@ -14,7 +19,7 @@ async function verifyJWT(req, res) {
   const token = req.body.token
 
   try {
-    const verification = jwt.verify(token, 'yourSecretKey')
+    const verification = jwt.verify(token, secret)
     res.status(200).json({
       user: verification.user
     })
@@ -92,7 +97,7 @@ async function login(req, res) {
   }
 
   if (bcrypt.compareSync(password, user.password)) {
-    const token = jwt.sign({ user }, 'yourSecretKey', {
+    const token = jwt.sign({ user }, secret, {
       expiresIn: '12h'
     })
 
