@@ -95,6 +95,11 @@
       background-color: $accentColor;
       letter-spacing: 2px;
       text-transform: uppercase;
+
+      &:hover {
+        opacity: 0.9;
+        transition: opacity 0.2s linear;
+      }
     }
 
     .Buttons {

@@ -3,8 +3,9 @@ const userController = require('../controllers/users')
 const protectedController = require('../controllers/protected')
 const { withJWTAuthMiddleware } = require('express-kun')
 const router = Router()
+const secret = process.env.SECRET_KEY || 'yourSecretKey'
 
-const protectedRouter = withJWTAuthMiddleware(router, 'yourSecretKey')
+const protectedRouter = withJWTAuthMiddleware(router, secret)
 
 router.post('/', userController.create)
 router.post('/login', userController.login)

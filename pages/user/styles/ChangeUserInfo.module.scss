@@ -1,22 +1,16 @@
 .Container {
   text-align: center;
   background-color: $elementColor;
-  height: fit-content;
-  min-height: 100vh;
-  padding: 80px 0;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
 
   @include mq($breakpoint-tabletSmall) {
     border-radius: 15px;
-    position: absolute;
-    top: 50px;
-    left: 0;
-    right: 0;
+    margin-top: 50px;
     width: 500px;
-    min-height: 0;
-    height: max-content;
+    height: 700px;
   }
 
   .error {
@@ -25,13 +19,13 @@
 
   h1 {
     color: $accentColor;
+    text-align: center;
     font-weight: bold;
     font-size: 50px;
-    padding-bottom: 20px;
     font-family: $fontHeading;
   }
 
-  form {
+  .Form {
     font-family: $fontSubtitle;
     display: flex;
     flex-direction: column;
@@ -53,9 +47,9 @@
       font-family: $fontSubtitle;
       font-weight: 500;
       font-size: 26px;
+      margin-top: 50px;
       transition: opacity 0.2s linear;
       cursor: pointer;
-      margin-top: 50px;
 
       &:hover {
         opacity: 0.8;

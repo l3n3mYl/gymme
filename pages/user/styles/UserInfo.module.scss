@@ -1,4 +1,4 @@
-.Container {
+.UserInfo {
   text-align: center;
   background-color: $elementColor;
   height: fit-content;
@@ -19,10 +19,6 @@
     height: max-content;
   }
 
-  .error {
-    color: red;
-  }
-
   h1 {
     color: $accentColor;
     font-weight: bold;
@@ -31,17 +27,17 @@
     font-family: $fontHeading;
   }
 
-  form {
+  .Content { 
     font-family: $fontSubtitle;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    text-align: left;
-    padding: 0 40px;
-    height: 60%;
+    text-align: center;
+    margin: auto;
     color: #fff;
+    min-height: 500px;
+    justify-content: space-around;
 
-    #Submit {
+    button {
       align-self: center;
       border: none;
       text-align: center;
@@ -55,44 +51,15 @@
       font-size: 26px;
       transition: opacity 0.2s linear;
       cursor: pointer;
-      margin-top: 50px;
+
+      p {
+        text-decoration: none;
+        color: $elementColor;
+      }
 
       &:hover {
         opacity: 0.8;
         transition: opacity 0.2s linear;
-      }
-    }
-
-    .Field {
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      label {
-        margin-bottom: 20px;
-      }
-    }
-
-    input {
-      all: unset;
-      color: $backgroundMedium;
-    }
-
-    
-
-    .InputWithIcon {
-      display: flex;
-      padding-bottom: 20px;
-      margin-bottom: 10px;
-      border-bottom: 2px solid $backgroundMedium;
-
-      &:focus-within {
-        border-bottom: 2px solid $accentColor;
-      }
-
-      input {
-        padding-left: 10px;
-        text-align: left;
-        justify-content: left;
       }
     }
   }

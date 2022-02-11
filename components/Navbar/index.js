@@ -16,8 +16,14 @@ const Navbar = ({ userLogged }) => {
     var scrolled = document.scrollingElement.scrollTop
 
     for (let i in ids) {
-      if (200 >= document.getElementById(ids[i]).getBoundingClientRect().top) {
-        setPosition(ids[i])
+      try {
+        if (
+          200 >= document.getElementById(ids[i]).getBoundingClientRect().top
+        ) {
+          setPosition(ids[i])
+        }
+      } catch (e) {
+        console.log('Error : ' + e)
       }
     }
     if (scrolled >= 120) {
