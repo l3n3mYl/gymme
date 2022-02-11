@@ -1,6 +1,7 @@
 import Router from 'next/router'
 import styles from '../styles/SignUp.module.scss'
 import React, { useState, useContext } from 'react'
+import Image from '../components/Handlers/ImageHandler'
 import { AuthContext } from '../contexts/JWTVerification'
 import Container from '../components/Handlers/ContentHandlers/Container'
 
@@ -90,70 +91,113 @@ const SignUp = () => {
   }
 
   return (
-    <Container center gutter size="small">
+    <Container className={styles.Container} center gutter size="small">
+      <h1>Register</h1>
       <form onSubmit={(e) => validateForm(e, formValues)}>
-        <input
-          onChange={handleChange}
-          value={formValues.name}
-          type="text"
-          name="name"
-          id="name"
-          placeholder="Name"
-        />
-        <label htmlFor="name">Name</label>
-        <p className={styles.error}>{formErrors.name && formErrors.name}</p>
+        <div className={styles.Field}>
+          <label htmlFor="name">Name</label>
+          <div className={styles.InputWithIcon}>
+            <Image
+              className={styles.Image}
+              src="./FormIcons/login.svg"
+              alt="Name Icon"
+            />
+            <input
+              onChange={handleChange}
+              value={formValues.name}
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Name"
+            />
+          </div>
+          <p className={styles.error}>{formErrors.name && formErrors.name}</p>
+        </div>
 
-        <input
-          onChange={handleChange}
-          value={formValues.email}
-          type="email"
-          name="email"
-          id="email"
-          placeholder="Email"
-        />
-        <label htmlFor="email">Email</label>
-        <p className={styles.error}>{formErrors.email && formErrors.email}</p>
+        <div className={styles.Field}>
+          <label htmlFor="email">Email</label>
+          <div className={styles.InputWithIcon}>
+            <Image
+              className={styles.Image}
+              src="./FormIcons/email.svg"
+              alt="Name Icon"
+            />
+            <input
+              onChange={handleChange}
+              value={formValues.email}
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email"
+            />
+          </div>
+          <p className={styles.error}>{formErrors.email && formErrors.email}</p>
+        </div>
 
-        <input
-          onChange={handleChange}
-          value={formValues.password}
-          type="password"
-          name="password"
-          id="password"
-          placeholder="Password"
-        />
-        <label htmlFor="password">Password</label>
-        <p className={styles.error}>
-          {formErrors.password && formErrors.password}
-        </p>
+        <div className={styles.Field}>
+          <label htmlFor="password">Password</label>
+          <div className={styles.InputWithIcon}>
+            <Image src="./FormIcons/lock.svg" alt="Name Icon" />
+            <input
+              onChange={handleChange}
+              value={formValues.password}
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password"
+            />
+          </div>
+          <p className={styles.error}>
+            {formErrors.password && formErrors.password}
+          </p>
+        </div>
 
-        <input
-          onChange={handleChange}
-          value={formValues.repeatPassword}
-          type="password"
-          name="repeatPassword"
-          id="repeatPassword"
-          placeholder="Repeat Password"
-        />
-        <label htmlFor="password">Repeat Password</label>
-        <p className={styles.error}>
-          {formErrors.repeatPassword && formErrors.repeatPassword}
-        </p>
+        <div className={styles.Field}>
+          <label htmlFor="password">Repeat Password</label>
+          <div className={styles.InputWithIcon}>
+            <Image
+              className={styles.Image}
+              src="./FormIcons/lock.svg"
+              alt="Name Icon"
+            />
+            <input
+              onChange={handleChange}
+              value={formValues.repeatPassword}
+              type="password"
+              name="repeatPassword"
+              id="repeatPassword"
+              placeholder="Repeat Password"
+            />
+          </div>
+          <p className={styles.error}>
+            {formErrors.repeatPassword && formErrors.repeatPassword}
+          </p>
+        </div>
 
-        <input
-          onChange={handleChange}
-          value={formValues.phone}
-          type="text"
-          name="phone"
-          id="phone"
-          placeholder="Phone"
-        />
-        <label htmlFor="phone">Phone</label>
-        <p className={styles.error}>{formErrors.phone && formErrors.phone}</p>
+        <div className={styles.Field}>
+          <label htmlFor="phone">Phone</label>
+          <div className={styles.InputWithIcon}>
+            <Image src="./FormIcons/phone.svg" alt="Name Icon" />
+            <input
+              onChange={handleChange}
+              value={formValues.phone}
+              type="text"
+              name="phone"
+              id="phone"
+              placeholder="Phone"
+            />
+          </div>
+          <p className={styles.error}>{formErrors.phone && formErrors.phone}</p>
+        </div>
 
         <p className={styles.error}>{registerErrors && registerErrors}</p>
 
-        <input type="submit" name="submit" id="submit" placeholder="Submit" />
+        <input
+          type="submit"
+          name="submit"
+          id={styles.Submit}
+          placeholder="Submit"
+        />
       </form>
     </Container>
   )

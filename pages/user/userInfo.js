@@ -5,7 +5,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { FetchJSON } from '../../functions/fetch'
 import Container from '../../components/Handlers/ContentHandlers/Container'
 
-import styles from '../../styles/UserInfo.module.scss'
+import styles from './styles/UserInfo.module.scss'
 
 const UserInfo = () => {
   const [user, setUser] = useState({})

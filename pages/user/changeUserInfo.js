@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { FetchJSON } from '../../functions/fetch'
 import Container from '../../components/Handlers/ContentHandlers/Container'
 
-import styles from '../../styles/ChangeUserInfo.module.scss'
+import styles from './styles/ChangeUserInfo.module.scss'
 
 const ChangeUserInfo = () => {
   const router = useRouter()
@@ -63,7 +63,10 @@ const ChangeUserInfo = () => {
   return (
     user && (
       <Container center gutter size="small">
-        <form onSubmit={(e) => validateForm(e, formValues)}>
+        <form
+          className={styles.Form}
+          onSubmit={(e) => validateForm(e, formValues)}
+        >
           <input
             onChange={handleChange}
             value={formValues.name}

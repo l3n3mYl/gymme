@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import Container from '../components/Handlers/ContentHandlers/Container'
 import { useRouter } from 'next/router'
 import { AuthContext } from '../contexts/JWTVerification'
+import Image from '../components/Handlers/ImageHandler'
 import styles from '../styles/Login.module.scss'
 
 const Login = () => {
@@ -73,35 +74,62 @@ const Login = () => {
   }
 
   return (
-    <Container center gutter size="small">
-      <form onSubmit={(e) => validateForm(e, formValues)}>
-        <input
-          onChange={handleChange}
-          value={formValues.email}
-          type="email"
-          name="email"
-          id="email"
-          placeholder="Email"
-        />
-        <label htmlFor="email">Email</label>
-        <p className={styles.error}>{formErrors.email && formErrors.email}</p>
+    <Container className={styles.Container} center gutter size="small">
+      <h1>Login</h1>
+      <form
+        className={styles.Form}
+        onSubmit={(e) => validateForm(e, formValues)}
+      >
+        <div className={styles.Field}>
+          <label htmlFor="email">Email</label>
+          <div className={styles.InputWithIcon}>
+            <Image
+              className={styles.Image}
+              src="./FormIcons/email.svg"
+              alt="Email Icon"
+            />
+            <input
+              onChange={handleChange}
+              value={formValues.email}
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email"
+            />
+          </div>
+          <p className={styles.error}>{formErrors.email && formErrors.email}</p>
+        </div>
 
-        <input
-          onChange={handleChange}
-          value={formValues.password}
-          type="password"
-          name="password"
-          id="password"
-          placeholder="Password"
-        />
-        <label htmlFor="password">Password</label>
-        <p className={styles.error}>
-          {formErrors.password && formErrors.password}
-        </p>
+        <div className={styles.Field}>
+          <label htmlFor="password">Password</label>
+          <div className={styles.InputWithIcon}>
+            <Image
+              className={styles.Image}
+              src="./FormIcons/lock.svg"
+              alt="Password Icon"
+            />
+            <input
+              onChange={handleChange}
+              value={formValues.password}
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password"
+            />
+          </div>
+          <p className={styles.error}>
+            {formErrors.password && formErrors.password}
+          </p>
+        </div>
 
         <p className={styles.error}>{loginError && loginError}</p>
 
-        <input type="submit" name="submit" id="submit" placeholder="Submit" />
+        <input
+          type="submit"
+          name="submit"
+          id={styles.Submit}
+          placeholder="Login"
+        />
       </form>
     </Container>
   )
