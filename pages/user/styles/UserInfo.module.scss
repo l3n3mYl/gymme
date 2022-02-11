@@ -1,0 +1,66 @@
+.UserInfo {
+  text-align: center;
+  background-color: $elementColor;
+  height: fit-content;
+  min-height: 100vh;
+  padding: 80px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @include mq($breakpoint-tabletSmall) {
+    border-radius: 15px;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    width: 500px;
+    min-height: 0;
+    height: max-content;
+  }
+
+  h1 {
+    color: $accentColor;
+    font-weight: bold;
+    font-size: 50px;
+    padding-bottom: 20px;
+    font-family: $fontHeading;
+  }
+
+  .Content { 
+    font-family: $fontSubtitle;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: auto;
+    color: #fff;
+    min-height: 500px;
+    justify-content: space-around;
+
+    button {
+      align-self: center;
+      border: none;
+      text-align: center;
+      border-radius: 15px;
+      background-color: $accentColor;
+      color: $elementColor;
+      width: 230px;
+      height: 50px;
+      font-family: $fontSubtitle;
+      font-weight: 500;
+      font-size: 26px;
+      transition: opacity 0.2s linear;
+      cursor: pointer;
+
+      p {
+        text-decoration: none;
+        color: $elementColor;
+      }
+
+      &:hover {
+        opacity: 0.8;
+        transition: opacity 0.2s linear;
+      }
+    }
+  }
+}

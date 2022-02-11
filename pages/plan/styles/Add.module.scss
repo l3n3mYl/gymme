@@ -1,0 +1,104 @@
+.Container {
+  text-align: center;
+  background-color: $elementColor;
+  height: fit-content;
+  min-height: 100vh;
+  padding: 80px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @include mq($breakpoint-tabletSmall) {
+    border-radius: 15px;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    width: 500px;
+    min-height: 0;
+    height: max-content;
+  }
+
+  .error {
+    color: red;
+  }
+
+  h1 {
+    color: $accentColor;
+    font-weight: bold;
+    font-size: 50px;
+    padding-bottom: 20px;
+    font-family: $fontHeading;
+  }
+
+  form {
+    font-family: $fontSubtitle;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: left;
+    padding: 0 40px;
+    height: 60%;
+    color: #fff;
+
+    #Submit {
+      align-self: center;
+      border: none;
+      text-align: center;
+      border-radius: 15px;
+      background-color: $accentColor;
+      color: $elementColor;
+      width: 230px;
+      height: 50px;
+      font-family: $fontSubtitle;
+      font-weight: 500;
+      font-size: 26px;
+      transition: opacity 0.2s linear;
+      cursor: pointer;
+      margin-top: 50px;
+
+      &:hover {
+        opacity: 0.8;
+        transition: opacity 0.2s linear;
+      }
+    }
+
+    .Field {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      label {
+        margin-bottom: 20px;
+      }
+    }
+
+    input {
+      all: unset;
+      color: $backgroundMedium;
+    }
+
+    
+
+    .InputWithIcon {
+      display: flex;
+      padding-bottom: 20px;
+      margin-bottom: 10px;
+      border-bottom: 2px solid $backgroundMedium;
+
+      &:focus-within {
+        border-bottom: 2px solid $accentColor;
+      }
+
+      input {
+        padding-left: 10px;
+        text-align: left;
+        justify-content: left;
+
+        &::-webkit-calendar-picker-indicator {
+          filter: invert(1);
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}
