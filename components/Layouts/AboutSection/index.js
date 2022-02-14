@@ -20,7 +20,7 @@ const AboutSection = ({ className, title, description, id }) => {
           <BlockContent className={styles.Description} blocks={description} />
         )}
         <button className={styles.Button}>
-          <p>Join Now</p>
+          <a href="#Pricing">Join Now</a>
           <AnyImage src={'./Icons/Vector-8.svg'} className={styles.Image} />
         </button>
       </div>

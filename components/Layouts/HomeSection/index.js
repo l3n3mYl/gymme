@@ -1,9 +1,9 @@
 import React from 'react'
 import classNames from 'classnames'
-import { string, object } from 'prop-types'
-import Container from '../../Handlers/ContentHandlers/Container'
 import styles from './Home.module.scss'
+import { string, object } from 'prop-types'
 import AnyImage from '../../Handlers/ImageHandler'
+import Container from '../../Handlers/ContentHandlers/Container'
 
 const HomeSection = ({
   image,
@@ -24,7 +24,11 @@ const HomeSection = ({
             <span>{coloredTitle && coloredTitle}</span>
           </h1>
           <p className={styles.Subtitle}>{subtitle && subtitle}</p>
-          <button className={styles.Button}>Join Now</button>
+          <button className={styles.Button}>
+            <a className={styles.Link} href="#Pricing">
+              Join Now
+            </a>
+          </button>
         </div>
       </div>
     </Container>

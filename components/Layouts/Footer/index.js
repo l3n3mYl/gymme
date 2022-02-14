@@ -21,7 +21,9 @@ const Footer = () => {
             We`ll keep you updated on the things you need to know about Gymme.
             Nothing more, nothing less.
           </p>
-          <button>Join Now</button>
+          <button>
+            <a href="#Pricing">Join Now</a>
+          </button>
         </div>
         <div className={styles.BottomText}>
           <CompanyIcon />
