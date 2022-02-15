@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import { string, array } from 'prop-types'
 import BlockContent from '../../Handlers/BlockContentHandler'
@@ -16,6 +16,11 @@ const CommunitySection = ({ id, className, title, photos }) => {
   const prevRef = useRef(null)
   const nextRef = useRef(null)
   SwiperCore.use([Pagination])
+  const [swiperLoading, setSwiperLoading] = useState(true)
+
+  useEffect(() => {
+    setSwiperLoading(false)
+  }, [])
 
   return (
     <Container className={styles.Container}>
@@ -53,7 +58,8 @@ const CommunitySection = ({ id, className, title, photos }) => {
           }}
           centeredSlides={true}
         >
-          {photos &&
+          {!swiperLoading &&
+            photos &&
             photos.map((photo) => {
               return (
                 <SwiperSlide key={photo._key} className={styles.Card}>

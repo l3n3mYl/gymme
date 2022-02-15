@@ -1,10 +1,10 @@
-import React, { useRef } from 'react'
 import classNames from 'classnames'
 import { string, array } from 'prop-types'
 import styles from './Workouts.module.scss'
+import IconHeading from '../../IconHeading'
 import AnyImage from '../../Handlers/ImageHandler'
 import 'swiper/css'
-import IconHeading from '../../IconHeading'
+import React, { useRef, useState, useEffect } from 'react'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Navigation } from 'swiper'
@@ -17,6 +17,11 @@ const Workouts = ({ title, offerings, id, className }) => {
 
   const prevRef = useRef(null)
   const nextRef = useRef(null)
+  const [swiperLoading, setSwiperLoading] = useState(true)
+
+  useEffect(() => {
+    setSwiperLoading(false)
+  }, [])
 
   return (
     <Container center>
@@ -43,11 +48,11 @@ const Workouts = ({ title, offerings, id, className }) => {
               spaceBetween: 40,
               slidesPerView: 2.5
             },
-            960: {
+            1111: {
               spaceBetween: 20,
               slidesPerView: 3.5
             },
-            1268: {
+            1432: {
               slidesPerView: 4.5
             }
           }}
@@ -66,6 +71,7 @@ const Workouts = ({ title, offerings, id, className }) => {
             />
           </div>
           {offerings &&
+            !swiperLoading &&
             offerings.map((offer) => {
               return (
                 <SwiperSlide key={offer._key} className={styles.Card}>
