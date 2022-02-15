@@ -1,4 +1,5 @@
 import React, { useState, createContext } from 'react'
+import { useRouter } from 'next/router'
 
 export const AuthContext = createContext()
 export const AuthProvider = ({ children }) => {
@@ -6,6 +7,16 @@ export const AuthProvider = ({ children }) => {
     user: '',
     token: ''
   })
+  const router = useRouter()
+
+  const logout = (storage) => {
+    setAuthState({
+      user: '',
+      token: ''
+    })
+    storage.clear()
+    router.push('/')
+  }
 
   const verifyJWT = async (token) => {
     try {
@@ -17,10 +28,16 @@ export const AuthProvider = ({ children }) => {
         })
       }).then((response) => {
         if (response.status === 400) {
-          setAuthState({ user: 'Token Expired' })
+          setAuthState((prevState) => ({
+            ...prevState,
+            user: 'Token Expired'
+          }))
         } else if (response.ok && response.status === 200) {
           response.json().then((json) => {
-            setAuthState({ user: json.user })
+            setAuthState((prevState) => ({
+              ...prevState,
+              user: json.user
+            }))
           })
         }
       })
@@ -33,6 +50,7 @@ export const AuthProvider = ({ children }) => {
     <AuthContext.Provider
       value={{
         verifyJWT,
+        logout,
         authState,
         setAuthState
       }}

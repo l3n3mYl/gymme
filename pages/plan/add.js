@@ -2,6 +2,7 @@ import Router from 'next/router'
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 import { FetchJSON } from '../../functions/fetch'
+import withAuth from '../../components/HOC/withAuth'
 import Image from '../../components/Handlers/ImageHandler'
 import Container from '../../components/Handlers/ContentHandlers/Container'
 
@@ -42,10 +43,7 @@ const Add = () => {
           month < 10 ? `0${month}` : `${month}`
         }${separator}${date}`
       }
-      const token = window.sessionStorage.getItem('token')
-      const routerPlan = router.query.plan
       setFormValues({ ...formValues, plan: plan })
-      if (!token || !routerPlan) Router.push('/')
     }
   }, [])
 
@@ -380,4 +378,4 @@ const Add = () => {
 
 Add.propTypes = {}
 
-export default Add
+export default withAuth(Add)

@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router'
 import { FetchJSON } from '../../functions/fetch'
+import withAuth from '../../components/HOC/withAuth'
 import Image from '../../components/Handlers/ImageHandler'
-import { AuthContext } from '../../contexts/JWTVerification'
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import Container from '../../components/Handlers/ContentHandlers/Container'
 
 import styles from './styles/ChangeUserInfo.module.scss'
@@ -13,7 +13,6 @@ const ChangeUserInfo = () => {
   const [formValues, setFormValues] = useState({})
   const [formErrors, setFormErrors] = useState({})
   const [registerErrors, setRegisterErrors] = useState('')
-  const { verifyJWT, authState } = useContext(AuthContext)
 
   function handleChange(e) {
     const { name, value } = e.target
@@ -21,16 +20,9 @@ const ChangeUserInfo = () => {
   }
 
   useEffect(() => {
-    verifyJWT(window.sessionStorage.getItem('token'))
-    if (authState.user === 'Token Expired') {
-      router.push(
-        {
-          pathname: '/login',
-          query: { error: 'Please log in again' }
-        },
-        '/login'
-      )
-    } else setUser(authState.user)
+    if (typeof window !== 'undefined') {
+      setUser(JSON.parse(window.sessionStorage.getItem('user')))
+    }
   }, [])
 
   function validateForm(e, values) {
@@ -176,4 +168,4 @@ const ChangeUserInfo = () => {
 
 ChangeUserInfo.propTypes = {}
 
-export default ChangeUserInfo
+export default withAuth(ChangeUserInfo)
