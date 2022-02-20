@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import jwtDecode from 'jwt-decode'
 import { useRouter } from 'next/router'
-import toast from 'react-hot-toast'
 
 import { AuthContext } from '../../contexts/JWTVerification'
 import LoadingOverlay from '../LoadingOverlay/LoadingOverlay.js'
@@ -28,7 +27,6 @@ const withAuth = (WrappedComponent) => {
           )
           if (!isTokenValid) {
             if (authState.user !== '') logout(window.sessionStorage)
-            toast.error('You must be logged in to view this page')
             router.push(
               {
                 pathname: '/login',

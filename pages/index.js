@@ -1,9 +1,9 @@
-import Layout from '../components/Layout/Layout'
-import { useState, useContext, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { AuthContext } from '../contexts/JWTVerification'
-import { getHomeDataQuery } from '../lib/queries'
 import Meta from '../components/Meta/Meta'
+import Layout from '../components/Layout/Layout'
+import { getHomeDataQuery } from '../lib/queries'
+import { useState, useContext, useEffect } from 'react'
+import { AuthContext } from '../contexts/JWTVerification'
 import {
   getHomeData,
   getAboutPageData,
@@ -14,12 +14,13 @@ import {
   getFAQSectionData
 } from '../lib/sanity'
 
+import Workouts from '../components/Layouts/Workouts'
+import FAQSection from '../components/Layouts/FAQSection'
 import HomeSection from '../components/Layouts/HomeSection'
 import AboutSection from '../components/Layouts/AboutSection'
-import Workouts from '../components/Layouts/Workouts'
+import LoadingOverlay from '../components/LoadingOverlay/LoadingOverlay.js'
 import PricingSection from '../components/Layouts/PricingSection'
 import CommunitySection from '../components/Layouts/CommunitySection'
-import FAQSection from '../components/Layouts/FAQSection'
 
 const Index = ({
   homePageData,
@@ -35,8 +36,9 @@ const Index = ({
     enabled: router.query.preview !== null
   })
 
-  const [userLogged, setUserLogged] = useState(false)
   const [user, setUser] = useState({})
+  const [loading, setLoading] = useState(true)
+  const [userLogged, setUserLogged] = useState(false)
   const { verifyJWT, authState } = useContext(AuthContext)
 
   useEffect(() => {
@@ -45,48 +47,54 @@ const Index = ({
       authState.user && setUser(authState.user)
     }
 
-    if (user !== 'Token Expired' && Object.keys(user).length !== 0)
+    if (user !== 'Token Expired' && Object.keys(user).length !== 0) {
       setUserLogged(true)
-    else setUserLogged(false)
+      setLoading(false)
+    } else {
+      setUserLogged(false)
+      setLoading(false)
+    }
   }, [authState, user, verifyJWT])
 
   const { home, siteSettings } = pageData
   const { openGraph } = siteSettings
 
-  return (
-    <Layout userLogged={userLogged} title={siteSettings.openGraph.title}>
-      <Meta {...openGraph} />
-      <HomeSection
-        id="Home"
-        image={home.image}
-        title={home.title}
-        coloredTitle={home.coloredTitle}
-        subtitle={home.subtitle}
-      />
-      <AboutSection
-        id="About"
-        title={aboutPageData.title}
-        description={aboutPageData.description}
-        offerings={aboutPageData.offerings}
-      />
-      <Workouts
-        id="Workouts"
-        title={workoutsPageData.title}
-        offerings={workoutsPageData.offerings}
-      />
-      <PricingSection
-        id="Pricing"
-        title={pricingPageData.title}
-        pricings={pricingPageData.pricings}
-      />
-      <CommunitySection
-        id="Community"
-        title={communityPageData.title}
-        photos={communityPageData.photos}
-      />
-      <FAQSection id="FAQ" faq={FAQSectionData.faq} />
-    </Layout>
-  )
+  if (loading) return <LoadingOverlay loading />
+  else
+    return (
+      <Layout userLogged={userLogged} title={siteSettings.openGraph.title}>
+        <Meta {...openGraph} />
+        <HomeSection
+          id="Home"
+          image={home.image}
+          title={home.title}
+          coloredTitle={home.coloredTitle}
+          subtitle={home.subtitle}
+        />
+        <AboutSection
+          id="About"
+          title={aboutPageData.title}
+          description={aboutPageData.description}
+          offerings={aboutPageData.offerings}
+        />
+        <Workouts
+          id="Workouts"
+          title={workoutsPageData.title}
+          offerings={workoutsPageData.offerings}
+        />
+        <PricingSection
+          id="Pricing"
+          title={pricingPageData.title}
+          pricings={pricingPageData.pricings}
+        />
+        <CommunitySection
+          id="Community"
+          title={communityPageData.title}
+          photos={communityPageData.photos}
+        />
+        <FAQSection id="FAQ" faq={FAQSectionData.faq} />
+      </Layout>
+    )
 }
 
 export const getStaticProps = async () => {
