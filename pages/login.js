@@ -51,15 +51,14 @@ const Login = () => {
       body: JSON.stringify(formValues)
     })
       .then((e) => {
-        console.log(e)
         if (e.status === 401) setLoginError('Incorrect login details')
         else if (e.status === 400) setLoginError('This User does not exist')
         else {
           if (e.ok) {
             e.json().then((json) => {
-              console.log(json.user)
               setAuthState({ token: json.token, user: json.user })
               window.sessionStorage.setItem('token', json.token)
+              window.sessionStorage.setItem('user', JSON.stringify(json.user))
               router.push('/')
             })
           }

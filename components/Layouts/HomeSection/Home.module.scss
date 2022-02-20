@@ -55,6 +55,11 @@
       font-weight: 700;
       width: 125px;
       height: 40px;
+
+      .Link {
+        text-decoration: none;
+        color: $elementColor;
+      }
     }
   }
 }

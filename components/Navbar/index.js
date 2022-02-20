@@ -22,9 +22,7 @@ const Navbar = ({ userLogged }) => {
         ) {
           setPosition(ids[i])
         }
-      } catch (e) {
-        console.log('Error : ' + e)
-      }
+      } catch (e) {}
     }
     if (scrolled >= 120) {
       if (!scrollState !== 'highlight') {
